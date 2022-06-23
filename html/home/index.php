@@ -406,17 +406,16 @@
                                             </div>
                                         </div>
                                     </div><!-- add post new box -->
-                                    <a data-toggle="modal" data-target="#modalSurvey">Let's go!</a>
-                                    <?php include '../survey/question.php' ?>
                                     <div class="loadMore">
                                         <div class="central-meta item">
+
                                             <div class="user-post">
                                                 <div class="friend-info">
                                                     <figure>
                                                         <img src="../images/resources/friend-avatar10.jpg" alt="">
                                                     </figure>
                                                     <div class="friend-name">
-                                                        <ins><a href="time-line.html" title="">Janice Griffith</a></ins>
+                                                        <ins><a href="time-line.html" title="">Janice el Griffith</a></ins>
                                                         <span>published: june,2 2018 19:PM</span>
                                                     </div>
                                                     <div class="post-meta">
@@ -603,6 +602,11 @@
                                                     </ul>
                                                 </div>
                                             </div>
+
+                                            <hr/>
+
+                                            <?php include '../pubsheet/fiche_pub.php'; ?>
+
                                         </div>
                                         <div class="central-meta item">
                                             <div class="user-post">
@@ -1115,12 +1119,16 @@
             </div>
         </form>
     </div>
+    <a data-toggle="modal" data-target="#modalSurvey">Let's go!</a>
+    <?php include '../survey/question.php' ?>
 
     <script src="../js/main.min.js"></script>
     <script src="../js/script.js"></script>
     <script src="../js/map-init.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8c55_YHLvDHGACkQscgbGLtLRdxBDCfI"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <script>
@@ -1143,6 +1151,37 @@
                 } else {
                     alert("Please! Do your choice");
                 }
+
+
+                /* TYPE RADIO
+                <div class='form-check'>
+                    <input class='form-check-input' type='radio' name='radio' id='radio1'>
+                    <label class='form-check-label'>Default radio</label>
+                </div>
+                <div class='form-check'>
+                    <input class='form-check-input' type='radio' name='radio' id='radio2'>
+                    <label class='form-check-label'>Default checked radio
+                    </label>
+                </div> */
+
+                /* TYPE CHECKBOX SWITCH
+                <div class='form-check form-switch'>
+                    <input class='form-check-input' type='checkbox' role='switch' name='switch[]'>
+                    <label class='form-check-label'>Villa</label>
+                </div>
+                <div class='form-check form-switch'>
+                    <input class='form-check-input' type='checkbox' role='switch' name='switch[]'>
+                    <label class='form-check-label'>Cité</label>
+                </div>
+                <div class='form-check form-switch'>
+                    <input class='form-check-input' type='checkbox' role='switch' name='switch[]'>
+                    <label class='form-check-label'>Alentour</label>
+                </div>
+                <div class='form-check form-switch'>
+                    <input class='form-check-input' type='checkbox' role='switch' name='switch[]'>
+                    <label class='form-check-label'>Appartement</label>
+                </div>
+                */
             });
             for (let i = 1; i <= 8; i++) {
                 $("#mp" + i).click(function() {
