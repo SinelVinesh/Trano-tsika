@@ -314,7 +314,6 @@ $(function() {
 	
 /** Post a Comment **/
 jQuery(".post-comt-box textarea").on("keydown", function(event) {
-
 	if (event.keyCode == 13) {
 		var comment = jQuery(this).val();
 		var parent = jQuery(".showmore").parent("li");
@@ -322,7 +321,7 @@ jQuery(".post-comt-box textarea").on("keydown", function(event) {
 		$(comment_HTML).insertBefore(parent);
 		jQuery(this).val('');
 	}
-}); 
+});
 	
 //inbox page 	
 //***** Message Star *****//  
