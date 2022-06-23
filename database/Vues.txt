@@ -1,0 +1,29 @@
+Vue:
+Question - Reponse:
+	. Question.intitule
+	. Reponse.intitule
+
+Message - Client(notification message):
+	.Client.nom(sender) where vu = false
+	. Message.date_message
+	. Client.photo
+
+Commentaire - Publication - Client(notification commentaire):
+	. Client.nom where vu=false
+	. Commentaire.date_commentaire
+	. Client.photo
+
+Message - Client : last_message
+	. Client.nom(sender) order by date desc
+	. Message.date_message
+	. Client.photo
+
+Publication - DetailLocation - Client - Commentaire - Reaction;
+	. Publication.lieu
+	. DetailLocation.nbr_piece
+	. Client.image
+	. Client.nom
+	. Publication.date
+	. Publication.prix
+	. sum par type de reaction
+	. sum commentaire
