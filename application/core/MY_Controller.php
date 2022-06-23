@@ -32,7 +32,7 @@
          * Get all submitted data in a dictionnary
          */
         protected function get_datas($input_names,$method){
-            $datas = [];
+            $datas = array();
 
             if (strcasecmp($method,"post") == 0){
                 foreach ($input_names as $name) {
