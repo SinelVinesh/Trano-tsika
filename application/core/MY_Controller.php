@@ -29,7 +29,7 @@
          * input_names: name of the inputs 
          * method: http method
          * 
-         * Get all submitted data in a dictionnary
+         * Get all submitted data in a dictionnary ["motdepasse","nom"]
          */
         protected function get_datas($input_names,$method){
             $datas = array();
