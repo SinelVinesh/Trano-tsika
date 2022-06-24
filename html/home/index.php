@@ -799,6 +799,9 @@
                                                     </ul>
                                                 </div>
                                             </div>
+
+                                            <!-- <?php include '../pubsheet/fiche_pub.php'; ?> -->
+
                                         </div>
                                         <div class="central-meta item">
                                             <div class="user-post">
