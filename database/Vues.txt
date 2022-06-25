@@ -18,11 +18,12 @@ Message - Client : last_message
 	. Message.date_message
 	. Client.photo
 
-Publication - DetailLocation - Client - Commentaire - Reaction;
-	. Publication.lieu
-	. DetailLocation.nbr_piece
-	. Client.image
+Publication - Client - Commentaire;
+	. Publication.id
+	. Publication.titre
+	. Client.id
 	. Client.nom
+	. Client.image
 	. Publication.date
 	. Publication.prix
 	. sum par type de reaction
