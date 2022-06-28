@@ -20,17 +20,7 @@
             }
         }
 
-        public function ajout_publication(){
-
-            $this->load->model('Publication');
-            $this->load->model('Photo');
-            $this->load->model('DetailUtilite');
-            $this->load->model('DetailTag');
-
-            $inputs = ["titre","location","rooms","description","tags[]","images","position_lat","position_lng","tagsUtil[],prix,surface,lieu"];
-            //autoload session + form_validation
-            $datas = $this->get_datas($inputs,"post");
-            
+        public function set_rules(){
             $this->form_validation->set_rules('titre','Titre','required');
             $this->form_validation->set_rules('location','Location','required');
             $this->form_validation->set_rules('rooms','Rooms','required');
@@ -42,7 +32,21 @@
             $this->form_validation->set_rules('prix','Prix','required');
             $this->form_validation->set_rules('surface','Surface','required');
             $this->form_validation->set_rules('lieu','Lieu','required');
+        }
+
+        public function ajout_publication(){
+
+            $this->load->model('Publication');
+            $this->load->model('Photo');
+            $this->load->model('DetailUtilite');
+            $this->load->model('DetailTag');
+
+            $inputs = ["titre","location","rooms","description","tags[]","images","position_lat","position_lng","tagsUtil[],prix,surface,lieu"];
+            //autoload session + form_validation
+            $datas = $this->get_datas($inputs,"post");
             
+            $this->set_rules();
+
             $count = count($_FILES['images']['name']);
             
             if ($this->form_validation->run()){
@@ -50,7 +54,8 @@
                 $noms=array();
                 $id_pub=$this->Publication->get_next_val_serial("Publication","id_publication");
                 $dossier="assets/Images/".$id_pub."/";
-                $this->Publication->insert($id_pub,$_SESSION["id_client"],$datas["location"],$datas["titre"],$datas["description"],$datas["prix"],$datas["lieu"],$datas["position_lat"],$datas["position_lng"],$datas["rooms"],$datas["surface"]);
+                $this->Publication->insert($id_pub,$_SESSION["id_client"],$datas["location"],$datas["titre"],$datas["description"],$datas["prix"],
+                $datas["lieu"],$datas["position_lat"],$datas["position_lng"],$datas["rooms"],$datas["surface"]);
                 
                 for($i=0;$i<$count;$i++){
                     $id_img=$this->Photo->get_next_val_serial("Photo","id_photo");
@@ -69,7 +74,7 @@
 
                 $this->DetailUtilite->insert($id_pub,$datas["utilite"]);
                 $this->db->trans_complete();
-                #mkdir(base_url($dossier.$id_pub));
+                mkdir(base_url($dossier.$id_pub)); // aiza ilay chemin hicren ilay fichier
                 $this->uploadImage($dossier,$noms);
             }
             $this->load_view('.');    
