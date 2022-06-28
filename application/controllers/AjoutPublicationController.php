@@ -72,7 +72,6 @@
                 #mkdir(base_url($dossier.$id_pub));
                 $this->uploadImage($dossier,$noms);
             }
-            $this->load_view('.');    
         } 
     }
 ?>
