@@ -6,6 +6,10 @@
             $this->db->query($sql);
         }
 
+
+
+
+        
         public function get_all($limit,$offset){
             $sql="SELECT * from v_Publication offset %s limit %s";
             $sql=sprintf($sql,$this->db->escape($offset),$this->db->escape($limit));
