@@ -77,7 +77,6 @@
                 mkdir(base_url($dossier.$id_pub)); // aiza ilay chemin hicren ilay fichier
                 $this->uploadImage($dossier,$noms);
             }
-            $this->load_view('.');    
         } 
     }
 ?>
