@@ -8,7 +8,7 @@
                 </a>
             </div>
             <div class="modal-body">
-                <h6>Andoharanofotsy Room <?php echo $i ?></h6><hr/>
+                <h6>Andoharanofotsy Room <?php echo $i ?></h6>
                 <div class="chat-list">
                     <ul id="onemessage<?php echo $i ?>">
                         <li class="me">
@@ -53,8 +53,8 @@
                             <div class="col-10 text-box">
                                 <textarea placeholder="your message ..." id="corpsmessage<?php echo $i ?>"></textarea>
                             </div>
-                            <div class="col-2 align-items-center justify-content-center my-auto">
-                                <span id="sendmessage<?php echo $i ?>" class="align-middle"><i class="fa fa-paper-plane"></i></span>
+                            <div class="col-2" style="margin-top: 18px;">
+                                <span style="margin-left: 12px;" id="sendmessage<?php echo $i ?>"><i class="fa fa-paper-plane"></i></span>
                             </div>
                         </div>
                     </form>

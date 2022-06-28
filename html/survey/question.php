@@ -2,14 +2,12 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalSurveyTitle">Survey</h5>
+                <h6 id="questionSurvey">Are you walawala be Lorem Ipsum?</h6>
                 <a type="button" class="closeSurvey" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </a>
             </div>
             <div class="modal-body">
-                <h6 id="questionSurvey">Are you walawala be Lorem Ipsum?</h6>
-                <hr />
                 <form>
                     <div class="form">
                         <div class="form-check">
