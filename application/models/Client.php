@@ -20,5 +20,10 @@
             return $get_last_notification->result_array();
         }
 
+        public function insert($first_name,$last_name,$date_birth,$phone,$email,$password)
+        {
+            $sql = "insert into Client(first_name,last_name,date_birth,phone,email,password) values('".$first_name."','".$last_name."','".$date_birth."','".$phone."','".$email."',md5('".$password."'));";
+            $this->db->query($sql);
+        }
     }
 ?>
