@@ -27,7 +27,7 @@
 
         protected function get_by_id($table_name, $id_column, $id_value){
             $sql = "select * from $table_name where  $id_column=$id_value ";
-            return $this->execute_query($sql)->row_array();
+            return $this->execute_query($sql)->result_array();
         }
 
     }

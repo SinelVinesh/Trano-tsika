@@ -11,6 +11,5 @@
             $sql=sprintf($sql,$this->db->escape($id_publication),$this->db->escape($id_client));
             $this->db->query($sql);
         }
-
     }
 ?>

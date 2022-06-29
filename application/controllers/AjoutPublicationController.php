@@ -15,8 +15,7 @@
                 $config['max_size'] = '5000';
                 $config['file_name'] = $_FILES['images']['name'][$i];
                 $this->load->library('upload',$config);      
-                if($this->upload->do_upload('image')){
-                }
+                $this->upload->do_upload('image');
             }
         }
 
@@ -53,10 +52,12 @@
                 $this->db->trans_start();
                 $noms=array();
                 $id_pub=$this->Publication->get_next_val_serial("Publication","id_publication");
-                $dossier="assets/Images/".$id_pub."/";
+                
                 $this->Publication->insert($id_pub,$_SESSION["id_client"],$datas["location"],$datas["titre"],$datas["description"],$datas["prix"],
                 $datas["lieu"],$datas["position_lat"],$datas["position_lng"],$datas["rooms"],$datas["surface"]);
                 
+                $dossier="assets/img/pub_".$id_pub."/";
+                //insertion des photos dans la bdd
                 for($i=0;$i<$count;$i++){
                     $id_img=$this->Photo->get_next_val_serial("Photo","id_photo");
                     $lien=base_url($dossier.$id_img.$_FILES['images']['type'][$i]);
@@ -64,18 +65,22 @@
                     $noms[]=$id_img.$_FILES['images']['type'][$i];
                 }
 
+                //insertion detail tag
                 foreach ($datas["tags"] as $tag) {
                     $this->DetailTag->insert($tag,$id_pub);
                 }
 
+                //insertion detail util
                 foreach ($datas["tagsUtil"] as $util) {
                     $this->DetailUtilite->insert($util,$id_pub);
                 }
-
-                $this->DetailUtilite->insert($id_pub,$datas["utilite"]);
                 $this->db->trans_complete();
-                mkdir(base_url($dossier.$id_pub)); // aiza ilay chemin hicren ilay fichier
+
+                mkdir($dossier);
                 $this->uploadImage($dossier,$noms);
+                http_response_code(200);
+            }else{
+                http_response_code(400);
             }
         } 
     }

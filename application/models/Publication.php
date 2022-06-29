@@ -8,7 +8,7 @@
         }
 
         public function get_pub($id){
-            return $this->get_by_id("publication","id_publication",$id);
+            return $this->get_by_id("publication","id_publication",$id)[0];
         }
 
         public function get_next_pub($limit,$offset){
@@ -18,29 +18,26 @@
             return $query->result_array();
         }
 
-        // public function get_number_comment($id_publication){
-        //     $sql="SELECT count(*) as total_comment from Commentaire where id_publication = %s";
-        //     $sql=sprintf($sql,$this->db->escape($id_publication));
-        //     $query=$this->db->query($sql);
-        //     return $query->row_array();
-        // }
+        public function  get_detail_utilite($id)
+		{
+			return $this->get_by_id("v_detail_utilite","id_publication", $id);
+		} 
 
-        // public function get_number_like($id_publication){
-        //     $sql="SELECT count(*) as total_like from 
-        //         Reaction as r join Reaction_item as ri on r.id_reaction_item = ri.id_reaction_item 
-        //         where id_reaction_item = 1 and id_publication = %s";
-        //     $sql=sprintf($sql,$this->db->escape($id_publication));
-        //     $query=$this->db->query($sql);
-        //     return $query->row_array();
-        // }
+		public function get_commentaire($id,$limit)
+		{
+			$sql = "select * from v_commentaire where id_publication=$id limit $limit";
+			$requete = $this->db->query($sql);
+			return $requete;
+		}
 
-        // public function get_number_like($id_publication){
-        //     $sql="SELECT count(*) as total_dislike from 
-        //         Reaction as r join Reaction_item as ri on r.id_reaction_item = ri.id_reaction_item 
-        //         where id_reaction_item = 2 and id_publication = %s";
-        //     $sql=sprintf($sql,$this->db->escape($id_publication));
-        //     $query=$this->db->query($sql);
-        //     return $query->row_array();
-        // }
+		public function get_detail_tags($id)
+		{
+			return $this->get_by_id("v_detail_tags","id_publication",$id);
+		}
+
+		public function get_photo($id)
+		{
+			return $this->get_by_id("photo","id_publication",$id);
+		}
     }
 ?>
