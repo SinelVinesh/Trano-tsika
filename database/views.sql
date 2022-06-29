@@ -84,6 +84,10 @@ create OR REPLACE function getPoint(idPublication INT, idClient INT)
             nUnlike INT;
             nTagsEq INT;
             nBoost INT;
+            pointLike INT;
+            pointUnlike INT;
+            pointTag INT;
+            pointBoost INT;
             point INT;
         
         begin
@@ -91,9 +95,14 @@ create OR REPLACE function getPoint(idPublication INT, idClient INT)
             SELECT COALESCE(nbUnlike,0) into nUnlike FROM v_publication where id_publication = idPublication;
             SELECT count(*) into nTagsEq FROM v_tag_client_pub where id_publication = idPublication and id_client = idClient;
             SELECT count(*) into nBoost FROM v_boost_encours where id_publication = IdPublication;
+            SELECT valeur_point into pointLike FROM Classement_point where intitule_point = 'like';
+            SELECT valeur_point into pointUnlike FROM Classement_point where intitule_point = 'unlike';
+            SELECT valeur_point into pointTag FROM Classement_point where intitule_point = 'tag';
+            SELECT valeur_point into pointBoost FROM Classement_point where intitule_point = 'boost';
+            
 
 
-            point = nLike*3 + nUnlike*(-3) + nTagsEq*5 + nBoost*10;
+            point = nLike*pointLike + nUnlike*pointUnlike + nTagsEq*pointTag + nBoost*pointBoost;
             return point;
 
         end;
@@ -127,4 +136,101 @@ create OR REPLACE function getPoint(idPublication INT, idClient INT)
     $$;
 
 
+-- detail_utilite + utilte : v_detail_utilite 
+CREATE or REPLACE VIEW v_detail_utilite as
+SELECT d.*,u.nom_utilite
+FROM Detail_utilite d
+JOIN 
+Utilite u
+on
+d.id_utilite = u.id_utilite;
 
+
+-- detail_tags + tags : v_details
+CREATE or REPLACE VIEW v_details as
+SELECT d.*,t.nom_tag FROM Tag t
+JOIN
+Detail_tags d
+on
+t.id_tag = d.id_tag;
+
+
+-- notifications message + commentaire : v_notifications
+CREATE or REPLACE VIEW v_notifications as
+SELECT m.id_message,
+m.date_envoye,
+m.id_client_receiver,
+c.id_client,
+c.first_name,
+c.last_name,
+'message' as type
+FROM Message m
+JOIN Client c
+on
+m.id_client_sender = c.id_client
+JOIN Client c1
+on
+m.id_client_receiver = c1.id_client
+WHERE m.vu = false
+UNION ALL
+SELECT comm.id_commentaire,
+comm.date_commentaire,
+p.id_client as id_client_receiver,
+c.id_client,
+c.first_name,
+c.last_name,
+'commentaire' as type
+FROM Commentaire comm
+JOIN Client c
+on comm.id_client = c.id_client
+JOIN Publication p
+on
+comm.id_publication = p.id_publication
+WHERE vu = false
+order by date_envoye desc;
+
+
+-- commentaire + client : v_commentaire
+CREATE OR REPLACE VIEW v_commentaire AS(
+    SELECT
+    Client.id_client AS id_client,
+    Client.first_name AS first_name,
+    Client.last_name AS last_name,
+    Commentaire.date_commentaire AS date_commentaire,
+    Commentaire.texte_commentaire AS texte_commentaire
+    FROM Publication
+    JOIN Commentaire ON
+    Commentaire.id_publication=Publication.id_publication
+    JOIN Client ON
+    Client.id_client=Commentaire.id_client
+);
+
+-- message + client_sender + client_receiver : v_message
+CREATE OR REPLACE VIEW v_message AS(
+    SELECT
+    c1.id_client AS id_client_sender,
+    c1.first_name AS first_name_sender,
+    c1.last_name AS last_name_sender,
+    c2.id_client AS id_client_receiver,
+    c2.first_name AS first_name_receiver,
+    c2.last_name AS last_name_receiver,
+    Message.date_envoye AS date_envoye,
+    Message.message_texte AS message_texte
+    FROM Message
+    JOIN Client as c1 ON
+    c1.id_client=Message.id_client_sender
+    JOIN Client as c2 ON
+    c2.id_client=Message.id_client_receiver
+);
+
+
+-- question non repondu
+CREATE OR REPLACE VIEW v_question_non_replied AS(
+    SELECT
+    Question.id_question AS id_question,
+    Question.intitule AS intitule
+    FROM Question
+    JOIN Reponse_client ON
+    Question.id_question=Reponse_client.id_question
+    where Question.id_question not in (select id_question from Reponse_client)
+);

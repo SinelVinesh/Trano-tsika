@@ -18,7 +18,7 @@ Message - Client : last_message
 	. Message.date_message
 	. Client.photo
 
-Publication - Client - Commentaire;
+Publication - Client - Commentaire; 
 	. Publication.id
 	. Publication.titre
 	. Client.id

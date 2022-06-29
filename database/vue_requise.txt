@@ -1,0 +1,20 @@
+Vue:
+detail_utilite + utilte : v_detail_utilite (Andy)
+detail_tags + tags : v_detail_tags (Andy)
+notifications message + commentaire : v_notifications (Andy)
+commentaire + client : v_commentaire (Mahery)
+message + client_sender + client_receiver : v_message (Mahery)
+question non repondu: (Mahery)
+
+Generation de donnée:
+photo_trano: insert 20, random pour tout (Mahery)
+photo_de_profile: insert 20, random pour tout (Mahery)
+Localisation: insert 100, unique (Mahery)
+Utilité: unique (Mahery)
+Classement de point: unique (Mahery)
+Detail_utilité: random (Andy)
+Message: random (Andy)
+Boost: random, condition si debut<fin (Andy)
+Tag: unique reel (Mahery) 20
+Abonnement: random id_client (Andy)
+Publication, random description , insert description 20, insert titre 20
