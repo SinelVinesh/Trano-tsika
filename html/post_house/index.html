@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,
+            shrink-to-fit=no">
+    <title>pub_sheet</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body style="background: rgb(235,229,229);width: 100%;">
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Post a
+                        rental house.</h4><button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row row-cols-2">
+                            <div class="col"><span>Titre<input type="text" class="form-control"
+                                        id="formGroupExampleInput" placeholder="Titre" style="width:100%;"><br /></span>
+                            </div>
+                            <div class="col"><span>Location
+                                    <select id="inputState" class="form-control" style="width:100%;">
+                                        <option selected>Choose...</option>
+                                        <option>...</option>
+                                    </select></span></div>
+                            <div class="col"><span>Description <div class="mb-3">
+                                        <textarea class="form-control" id="validationTextarea" placeholder="Description"
+                                            style="width:100%;"></textarea>
+
+                                    </div></span></div>
+                            <div class="col"><span>Rooms<input type="text" class="form-control"
+                                        id="formGroupExampleInput" placeholder="Rooms" style="width:100%;"></span></div>
+                        </div>
+                    </div>
+
+
+                    <li>Water <input class="form-check-input" type="checkbox" id="gridCheck" style="margin-left:
+                            35px;"></li>
+                    <li>Electricity<input class="form-check-input" type="checkbox" id="gridCheck" style="margin-left:
+                            10px;"></li>
+                    <li>Furniture<input class="form-check-input" type="checkbox" id="gridCheck"
+                            style="margin-left: 14px;"></li>
+                    </ul>
+                    <div class="container">
+                        <div class="row row-cols-2">
+                            <div class="col"><span>Image<div class="input-group mb-3">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="file-input"
+                                                accept="image/*" onchange="preview()" multiple>
+                                            <label class="custom-file-label" for="inputGroupFile01"
+                                                style="width:100%;">Choose file</label>
+                                        </div>
+                                    </div></span></div>
+
+                            <div class="col"><span>Link
+                                    map:<input type="text" class="form-control" id="formGroupExampleInput"
+                                        placeholder="Link map" style="width:100%;"></span></div>
+
+                        </div>
+                    </div>
+                    <span>Villa<input type="checkbox" class="b"></span><span>Yard<input type="checkbox"
+                            class="b"></span><span>For
+                        Students<input type="checkbox" class="b"></span><span>Foreground<input type="checkbox"
+                            class="b"></span><span>Restroom
+                        Indoor<input type="checkbox" class="b"></span><span>Garage<input type="checkbox"
+                            class="b"></span><br /><span>Image
+                        predisplay:</span><br />
+                    <div class="container-img">
+                        <p id="num-of-files">No Files Chosen</p>
+
+                        <div id="images" class="images">
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button"
+                        data-dismiss="modal">Close</button><button class="btn btn-primary" type="button" style="background:
+                            rgb(93,11,227);">Post</button></div>
+            </div>
+        </div>
+    </div><button class="btn btn-primary" type="button" data-target="#modal-1" data-toggle="modal">Button</button>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        let fileInput = document.getElementById("file-input");
+        let imageContainer = document.getElementById("images");
+        let numOfFiles = document.getElementById("num-of-files");
+        let nb = 0;
+        function preview() {
+            // imageContainer.innerHTML = "";
+            numOfFiles.textContent = ``;
+
+            for (i of fileInput.files) {
+                let reader = new FileReader();
+                let figure = document.createElement("figure");
+                let figCap = document.createElement("figcaption");
+                let x = document.createElement("span");
+                let sp = document.createElement("span");
+
+                figCap.innerText = i.name;
+                figure.appendChild(figCap);
+                reader.onload = () => {
+                    sp.textContent = 'x';
+                    let img = document.createElement("img");
+                    img.setAttribute("src", reader.result);
+                    // img.setAttribute("id", i);
+                    x.setAttribute("id", nb + "m");
+                    sp.setAttribute("id", nb);
+                    sp.setAttribute("class", "x");
+                    // figure.setAttribute("id", i);
+                    figure.insertBefore(img, figCap);
+                    x.appendChild(sp);
+                    x.appendChild(figure);
+                    nb = nb + 1;
+                }
+                sp.addEventListener('click', function delImg(event) {
+                    let rm = document.getElementById("" + event.target.id + "m")
+                    rm.remove();
+                });
+
+                // imageContainer.appendChild(figure);
+                imageContainer.appendChild(x);
+                reader.readAsDataURL(i);
+            }
+        }
+    </script>
+</body>
+
+</html>
