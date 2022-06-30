@@ -371,157 +371,150 @@ echo $id;
                                         <div class="user-post">
                                             <div class="friend-info">
                                                 <div class="friend-name">
-                                                    <h2>Titre <?php echo $id; ?> <button class="btn btn-outline-info"><a style="font-size: 15px;" data-toggle="modal" data-target="#modalContact<?php echo $id ?>" id="mpc<?php echo $id; ?>" discussion-idc="<?php echo $id; ?>"><strong style="color: #088DCD; text-decoration: underline;"> Contact <i class="fa fa-paper-plane"></i></strong></a></button></h2>
-                                                    <?php include 'contact.php' ?>
+                                                    <h2>Titre <?php echo $id; ?> </h2>
                                                 </div>
                                                 <div class="post-meta">
                                                     <div class="row">
-                                                        <div class="col-3">
-                                                            <div class="description">
-                                                                <p><i class="fa fa-map-marker"></i> Location</p>
-                                                                <p><i class="fa fa-door-open"></i> Room</p>
-                                                                <p><i class="fa fa-dollar"></i> 1,200,000.0 Ar</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-9" style="font-size: 15px">
+                                                        <div class="col-12">
                                                             <div class="description">
                                                                 <p style="color: black; font-size: 17px">
-                                                                    <i class="fa fa-check-square-o"></i> Water &NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
-                                                                    <i class="fa fa-check-square-o"></i> Water &NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
-                                                                    <i class="fa fa-check-square-o"></i> Water &NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
+                                                                    <i class="fa fa-check-square-o"></i> <i class="fa fa-map-marker"></i> Location &NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
+                                                                    <i class="fa fa-check-square-o"></i> <i class="fa fa-door-open"></i> Room &NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
+                                                                    <i class="fa fa-check-square-o"></i> <i class="fa fa-dollar"></i> 1,200,000.0 Ar &NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
                                                                     <i class="fa fa-check-square-o"></i> Water &NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
                                                                 </p>
                                                                 <p style="color: black; font-size: 17px">
-                                                                    <i class="fa fa-check-square-o"></i> Water &NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
-                                                                    <i class="fa fa-check-square-o"></i> Water &NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
-                                                                    <i class="fa fa-check-square-o"></i> Water &NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
+                                                                    <i class="fa fa-check-square-o"></i> <i class="fa fa-map-marker"></i> Location &NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
+                                                                    <i class="fa fa-check-square-o"></i> <i class="fa fa-door-open"></i> Room &NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
+                                                                    <i class="fa fa-check-square-o"></i> <i class="fa fa-dollar"></i> 1,200,000.0 Ar &NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
                                                                     <i class="fa fa-check-square-o"></i> Water &NonBreakingSpace;&NonBreakingSpace;&NonBreakingSpace;
                                                                 </p>
+
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="row friend-info">
-                                                        <figure>
-                                                            <img src="../images/resources/friend-avatar10.jpg" alt="">
-                                                        </figure>
-                                                        <div class="friend-name">
-                                                            <h6>Client <?php echo $id; ?></h6>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <div class="description" style="background-color: lightgrey; border-radius: 5px">
-                                                                <p style="color: black; font-size: 15px;">
-                                                                    World's most beautiful car in Curabitur test drive booking the most
-                                                                    beatuiful car available in america and the saudia
-                                                                    arabia, you can book your test drive by our official
-                                                                    website
-                                                                </p>
+                                                        <div class="row friend-info">
+                                                            <figure style="margin-right: -20px">
+                                                                <img src="../images/resources/friend-avatar10.jpg" alt="">
+                                                            </figure>
+                                                            <div class="friend-name">
+                                                                <h6>Client <?php echo $id; ?> <a style="font-size: 15px;" data-toggle="modal" data-target="#modalContact<?php echo $id ?>" id="mpc<?php echo $id; ?>" discussion-idc="<?php echo $id; ?>"><strong style="color: #088DCD; text-decoration: underline;"> Contact <i class="fa fa-paper-plane"></i></strong></a></h6>
+                                                                <?php include 'contact.php' ?>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <div class="description" style="background-color: lightgrey; border-radius: 5px">
+                                                                    <p style="color: black; margin: 0 auto; margin: 10px 10px 10px 10px">
+                                                                        World's most beautiful car in Curabitur test drive booking the most
+                                                                        beatuiful car available in america and the saudia
+                                                                        arabia, you can book your test drive by our official
+                                                                        website
+                                                                    </p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <div class="description">
-                                                                <p>
-                                                                    <button style="border-radius: 25px;" title="">#city</button>
-                                                                    <button style="border-radius: 25px;" title="">#lowprice</button>
-                                                                    <button style="border-radius: 25px;" title="">#appartement</button>
-                                                                    <span class="like" data-toggle="tooltip" title="like" style="color: red"> <i class="ti-heart"></i> <ins>2.2k</ins><span>
-                                                                </p>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="description">
+                                                                    <p>
+                                                                        <button style="border-radius: 25px;" title="">#city</button>
+                                                                        <button style="border-radius: 25px;" title="">#lowprice</button>
+                                                                        <button style="border-radius: 25px;" title="">#appartement</button>
+                                                                        <span class="like" data-toggle="tooltip" title="like" style="color: red"> <i class="ti-heart"></i> <ins>2.2k</ins><span>
+                                                                    </p>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-6 overflow-auto" style="height: 330px">
-                                                            <?php for ($i = 1; $i <= 5; $i++) { ?>
-                                                                <img src="../images/resources/user-post.jpg" alt="" data-toggle="modal" data-target="#modalPhoto<?php echo $i ?>" id="photo<?php echo $i; ?>" photo-id="<?php echo $i; ?>">
-                                                                <div class="modal fade" id="modalPhoto<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="modalPhotoTitle" aria-hidden="true">
-                                                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                                                        <div class="modal-content">
-                                                                            <div class="modal-body">
-                                                                                <img src="../images/resources/user-post.jpg" alt="" height="100">
+                                                        <div class="row">
+                                                            <div class="col-6 overflow-auto" style="height: 330px">
+                                                                <?php for ($i = 1; $i <= 5; $i++) { ?>
+                                                                    <img src="../images/resources/user-post.jpg" alt="" data-toggle="modal" data-target="#modalPhoto<?php echo $i ?>" id="photo<?php echo $i; ?>" photo-id="<?php echo $i; ?>">
+                                                                    <div class="modal fade" id="modalPhoto<?php echo $i ?>" tabindex="-1" role="dialog" aria-labelledby="modalPhotoTitle" aria-hidden="true">
+                                                                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-body">
+                                                                                    <img src="../images/resources/user-post.jpg" alt="" height="100">
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                                <p></p>
-                                                            <?php } ?>
+                                                                    <p></p>
+                                                                <?php } ?>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="post-map">
+                                                                    <div class="nearby-map">
+                                                                        <div id="map-canvas"></div>
+                                                                    </div>
+                                                                </div><!-- near by map -->
+                                                            </div>
                                                         </div>
-                                                        <div class="col-6">
-                                                            <div class="post-map">
-                                                                <div class="nearby-map">
-                                                                    <div id="map-canvas"></div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="coment-area">
+                                                                    <h6>Comments <i class="fa fa-comments"></i></h6>
+                                                                    <ul class="we-comet" id="comment<?php echo $id; ?>">
+                                                                        <li>
+                                                                            <div class="comet-avatar">
+                                                                                <img src="../images/resources/comet-1.jpg" alt="">
+                                                                            </div>
+                                                                            <div class="we-comment">
+                                                                                <div class="coment-head">
+                                                                                    <h5><a href="time-line.html" title="">Jason
+                                                                                            borne</a></h5>
+                                                                                    <span>1 year ago</span>
+                                                                                    <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+                                                                                </div>
+                                                                                <p>we are working for the dance and sing songs. this car
+                                                                                    is very awesome for the youngster. please vote this
+                                                                                    car and like our post</p>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li>
+                                                                            <div class="comet-avatar">
+                                                                                <img src="../images/resources/comet-1.jpg" alt="">
+                                                                            </div>
+                                                                            <div class="we-comment">
+                                                                                <div class="coment-head">
+                                                                                    <h5><a href="time-line.html" title="">Jason
+                                                                                            borne</a></h5>
+                                                                                    <span>1 year ago</span>
+                                                                                    <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+                                                                                </div>
+                                                                                <p>we are working for the dance and sing songs. this car
+                                                                                    is very awesome for the youngster. please vote this
+                                                                                    car and like our post</p>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <p class="post-comment">
+                                                                    <div class="post-comt-box">
+                                                                        <form method="post">
+                                                                            <div class="row">
+                                                                                <div class="col-11 text-box">
+                                                                                    <textarea placeholder="your comment ..." id="corpscomment<?php echo $id ?>"></textarea>
+                                                                                </div>
+                                                                                <div class="col-1" style="margin-top: 3px;">
+                                                                                    <span id="addcomment<?php echo $id ?>" style="font-size: 30px; margin-left: 25px;"><i class="fa fa-comment"></i></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                    </p>
                                                                 </div>
-                                                            </div><!-- near by map -->
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <div class="coment-area">
-                                                                <h6>Comments <i class="fa fa-comments"></i></h6>
-                                                                <ul class="we-comet" id="comment<?php echo $id; ?>">
-                                                                    <li>
-                                                                        <div class="comet-avatar">
-                                                                            <img src="../images/resources/comet-1.jpg" alt="">
-                                                                        </div>
-                                                                        <div class="we-comment">
-                                                                            <div class="coment-head">
-                                                                                <h5><a href="time-line.html" title="">Jason
-                                                                                        borne</a></h5>
-                                                                                <span>1 year ago</span>
-                                                                                <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-                                                                            </div>
-                                                                            <p>we are working for the dance and sing songs. this car
-                                                                                is very awesome for the youngster. please vote this
-                                                                                car and like our post</p>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li>
-                                                                        <div class="comet-avatar">
-                                                                            <img src="../images/resources/comet-1.jpg" alt="">
-                                                                        </div>
-                                                                        <div class="we-comment">
-                                                                            <div class="coment-head">
-                                                                                <h5><a href="time-line.html" title="">Jason
-                                                                                        borne</a></h5>
-                                                                                <span>1 year ago</span>
-                                                                                <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-                                                                            </div>
-                                                                            <p>we are working for the dance and sing songs. this car
-                                                                                is very awesome for the youngster. please vote this
-                                                                                car and like our post</p>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                                <p class="post-comment">
-                                                                <div class="post-comt-box">
-                                                                    <form method="post">
-                                                                        <div class="row">
-                                                                            <div class="col-11 text-box">
-                                                                                <textarea placeholder="your comment ..." id="corpscomment<?php echo $id ?>"></textarea>
-                                                                            </div>
-                                                                            <div class="col-1" style="margin-top: 3px;">
-                                                                                <span id="addcomment<?php echo $id ?>" style="font-size: 30px; margin-left: 25px;"><i class="fa fa-comment"></i></span>
-                                                                            </div>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                                </p>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             </div>
 
                                         </div>
+                                    </div><!-- centerl meta -->
 
-                                    </div>
-                                </div><!-- centerl meta -->
-
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
 
         <div class="bottombar">
@@ -648,7 +641,7 @@ echo $id;
                     }
                 });
             }
-            for(let i=1; i <= 5; i++) {
+            for (let i = 1; i <= 5; i++) {
                 $("#photo" + i).click(function() {
                     $("#modalPhoto" + i).modal("show");
                 });

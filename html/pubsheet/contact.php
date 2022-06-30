@@ -9,7 +9,6 @@
             </div>
             <div class="modal-body">
                 <h6>Andoharanofotsy Room <?php echo $id ?></h6>
-                <hr />
                 <div class="chat-list">
                     <ul id="onemessagecontact<?php echo $id ?>">
                         <li class="me">
