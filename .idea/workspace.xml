@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d297bd59-6e45-4dea-9115-fe41692c07a6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/_index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/home/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/manolo/assets/bootstrap/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/manolo/assets/bootstrap/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/manolo/assets/css/Contact-Form-Clean.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/manolo/assets/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/manolo/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/manolo/login-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/manolo/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/manolo/login.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/manolo/search.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/manolo/sign-up.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/html/manolo/sign-up.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Axx78ONGjnYuw3O1zP5nyLc03J" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/tsinjo/WORK_SPACE/Trano-Tsika/html/manolo",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/html/manolo" />
+      <recent name="$PROJECT_DIR$/html" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d297bd59-6e45-4dea-9115-fe41692c07a6" name="Changes" comment="" />
+      <created>1655964884557</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1655964884557</updated>
+      <workItem from="1655964893102" duration="9699000" />
+      <workItem from="1656000913653" duration="3925000" />
+      <workItem from="1656005069000" duration="34000" />
+      <workItem from="1656348507814" duration="753000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
