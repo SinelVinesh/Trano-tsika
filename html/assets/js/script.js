@@ -135,10 +135,12 @@ $('#nightmode').on('change', function() {
     }
 });
 
+// tsy ilaina
+
 //chosen select plugin
-if ($.isFunction($.fn.chosen)) {
-	$("select").chosen();
-}
+// if ($.isFunction($.fn.chosen)) {
+// 	$("select").chosen();
+// }
 
 //----- add item plus minus button
 if ($.isFunction($.fn.userincr)) {
