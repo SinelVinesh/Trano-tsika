@@ -22,6 +22,20 @@
     <link rel="stylesheet" href="custom-assets/css/post-css.css">
     <link rel="stylesheet" href="custom-assets/css/map.css">
 
+    <style>
+        .message-modal .modal-dialog{
+            max-width: 450px;
+        }
+        .discussion {
+            cursor: pointer;
+        }
+        .discussion:hover {
+            background-color: rgba(115, 112, 112, 0.78);
+            /*position: absolute;*/
+            width: 140%;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -106,7 +120,7 @@
                         <span>5 New Messages</span>
                         <ul class="drops-menu">
                             <li>
-                                <a href="notifications.html" title="">
+                                <a class="discussion" discussion-id="1">
                                     <img src="assets/images/resources/thumb-1.jpg" alt="">
                                     <div class="mesg-meta">
                                         <h6>sarah Loren</h6>
@@ -114,10 +128,10 @@
                                         <i>2 min ago</i>
                                     </div>
                                 </a>
-                                <span class="tag green">New</span>
+<!--                                <span class="tag green">New</span>-->
                             </li>
                             <li>
-                                <a href="notifications.html" title="">
+                                <a class="discussion" discussion-id="2">
                                     <img src="assets/images/resources/thumb-2.jpg" alt="">
                                     <div class="mesg-meta">
                                         <h6>Jhon doe</h6>
@@ -125,10 +139,10 @@
                                         <i>2 min ago</i>
                                     </div>
                                 </a>
-                                <span class="tag red">Reply</span>
+<!--                                <span class="tag red">Reply</span>-->
                             </li>
                             <li>
-                                <a href="notifications.html" title="">
+                                <a class="discussion" discussion-id="3">
                                     <img src="assets/images/resources/thumb-3.jpg" alt="">
                                     <div class="mesg-meta">
                                         <h6>Andrew</h6>
@@ -136,10 +150,10 @@
                                         <i>2 min ago</i>
                                     </div>
                                 </a>
-                                <span class="tag blue">Unseen</span>
+<!--                                <span class="tag blue">Unseen</span>-->
                             </li>
                             <li>
-                                <a href="notifications.html" title="">
+                                <a class="discussion" discussion-id="4">
                                     <img src="assets/images/resources/thumb-4.jpg" alt="">
                                     <div class="mesg-meta">
                                         <h6>Tom cruse</h6>
@@ -150,7 +164,7 @@
                                 <span class="tag">New</span>
                             </li>
                             <li>
-                                <a href="notifications.html" title="">
+                                <a class="discussion" discussion-id="5">
                                     <img src="assets/images/resources/thumb-5.jpg" alt="">
                                     <div class="mesg-meta">
                                         <h6>Amy</h6>
@@ -598,6 +612,7 @@
     </div>
 </div>
 
+<!-- locate your home -->
 <div class="modal fade p-0" role="dialog" tabindex="-1" id="link-map">
     <div class="modal-dialog" role="document">
         <div class="modal-content rounded-0">
@@ -620,6 +635,73 @@
     </div>
 </div>
 
+<!-- message box -->
+<div class="modal fade message-modal" id="message" tabindex="-1" role="dialog" >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="messageTitle">Client</h5>
+                <a type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </a>
+            </div>
+            <div class="modal-body">
+                <h6>Andoharanofotsy Room </h6>
+                <div class="chat-list">
+                    <ul id="onemessage">
+                        <li class="me">
+                            <div class="chat-thumb"><img src="assets/images/resources/chatlist1.jpg" alt=""></div>
+                            <div class="notification-event">
+                                <span class="chat-message-item">
+                                    Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks
+                                </span>
+                                <span class="notification-date"><time datetime="2004-07-24T18:18" class="entry-date updated">Yesterday at 8:10pm</time></span>
+                            </div>
+                        </li>
+                        <li class="you">
+                            <div class="chat-thumb"><img src="assets/images/resources/chatlist2.jpg" alt=""></div>
+                            <div class="notification-event">
+                                <span class="chat-message-item">
+                                    Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks
+                                </span>
+                                <span class="notification-date"><time datetime="2004-07-24T18:18" class="entry-date updated">Yesterday at 8:10pm</time></span>
+                            </div>
+                        </li>
+                        <li class="me">
+                            <div class="chat-thumb"><img src="assets/images/resources/chatlist1.jpg" alt=""></div>
+                            <div class="notification-event">
+                                <span class="chat-message-item">
+                                    Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks
+                                </span>
+                                <span class="notification-date"><time datetime="2004-07-24T18:18" class="entry-date updated">Yesterday at 8:10pm</time></span>
+                            </div>
+                        </li>
+                        <li class="you">
+                            <div class="chat-thumb"><img src="assets/images/resources/chatlist2.jpg" alt=""></div>
+                            <div class="notification-event">
+                                <span class="chat-message-item">
+                                    Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks
+                                </span>
+                                <span class="notification-date"><time datetime="2004-07-24T18:18" class="entry-date updated">Yesterday at 8:10pm</time></span>
+                            </div>
+                        </li>
+                    </ul>
+                    <form>
+                        <div class="row pt-1">
+                            <div class="col-10 text-box">
+                                <textarea placeholder="your message ..." id="corpsmessage"></textarea>
+                            </div>
+                            <div class="col-2 mt-2 pt-1 border-0">
+                                <i class="fa-solid fa-circle-arrow-right"></i>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -633,6 +715,25 @@
 <script src="custom-assets/js/map.js"></script>
 <script src="custom-assets/js/modals.js"></script>
 <script src="custom-assets/js/image-preview.js"></script>
+
+<script>
+    $(".discussion").on("click", (e) => {
+        $("#message").modal("show");
+        let target = $(e.target);
+        while (target.attr("discussion-id") == null) {
+            target = target.parent();
+        }
+        console.log(target.attr("discussion-id"));
+    });
+
+    let messageObserver = new ResizeObserver(() => {
+        let messages = $("#onemessage");
+        console.log(messages[0].scrollHeight);
+        messages.animate({scrollTop: messages[0].scrollHeight}, 1000, 'easeOutCirc');
+    });
+
+    messageObserver.observe(document.getElementById("onemessage"))
+</script>
 
 </body>
 </html>
