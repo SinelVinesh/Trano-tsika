@@ -299,7 +299,7 @@
                         <div class="col-12">
                             <div class="coment-area">
                                 <h6>Comments <i class="fa fa-comments"></i></h6>
-                                <ul class="we-comet" id="comment<?php echo $id; ?>">
+                                <ul class="we-comet" id="comment">
                                     <li>
                                         <div class="we-comment">
                                             <div class="coment-head">

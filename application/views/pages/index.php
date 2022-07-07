@@ -7,21 +7,21 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <title>Trano'tsik</title>
-    <link rel="icon" href="<?php echo base_url()?>assets/images/fav.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="<?= base_url()?>assets/images/fav.png" type="image/png" sizes="16x16">
 
-    <link rel="stylesheet" href="<?php echo base_url()?>assets/css/main.min.css">
-    <link rel="stylesheet" href="<?php echo base_url()?>assets/css/style.css">
-    <link rel="stylesheet" href="<?php echo base_url()?>assets/css/color.css">
-    <link rel="stylesheet" href="<?php echo base_url()?>assets/css/responsive.css">
+    <link rel="stylesheet" href="<?= base_url()?>assets/css/main.min.css">
+    <link rel="stylesheet" href="<?= base_url()?>assets/css/style.css">
+    <link rel="stylesheet" href="<?= base_url()?>assets/css/color.css">
+    <link rel="stylesheet" href="<?= base_url()?>assets/css/responsive.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'><link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
 
-    <link rel="stylesheet" href="<?php echo base_url()?>custom-assets/css/style.css">
-    <link rel="stylesheet" href="<?php echo base_url()?>custom-assets/css/post-css.css">
-    <link rel="stylesheet" href="<?php echo base_url()?>custom-assets/css/map.css">
-    <link rel="stylesheet" href="<?php echo base_url()?>custom-assets/css/message.css">
+    <link rel="stylesheet" href="<?= base_url()?>custom-assets/css/style.css">
+    <link rel="stylesheet" href="<?= base_url()?>custom-assets/css/post-css.css">
+    <link rel="stylesheet" href="<?= base_url()?>custom-assets/css/map.css">
+    <link rel="stylesheet" href="<?= base_url()?>custom-assets/css/message.css">
 
 </head>
 <body>
@@ -693,16 +693,16 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-<script src="<?php echo base_url()?>assets/js/main.min.js"></script>
-<script src="<?php echo base_url()?>assets/js/script.js"></script>
-<script src="<?php echo base_url()?>assets/js/map-init.js"></script>
+<script src="<?= base_url()?>assets/js/main.min.js"></script>
+<script src="<?= base_url()?>assets/js/script.js"></script>
+<script src="<?= base_url()?>assets/js/map-init.js"></script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDD7GRQJx0_fNz6eeUSJjf7Yw5_6s0OEaA&libraries=geometry,places"></script>
 
-<script src="<?php echo base_url()?>custom-assets/js/map.js"></script>
-<script src="<?php echo base_url()?>custom-assets/js/modals.js"></script>
-<script src="<?php echo base_url()?>custom-assets/js/image-preview.js"></script>
-<script src="<?php echo base_url()?>custom-assets/js/message.js" />
+<script src="<?= base_url()?>custom-assets/js/map.js"></script>
+<script src="<?= base_url()?>custom-assets/js/modals.js"></script>
+<script src="<?= base_url()?>custom-assets/js/image-preview.js"></script>
+<script src="<?= base_url()?>custom-assets/js/message.js" ></script>
 
 </body>
 </html>
