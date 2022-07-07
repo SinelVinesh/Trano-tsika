@@ -11,7 +11,7 @@
             if ($this->form_validation->run()){
                 if($this->Client->exist($datas["email"],$datas["password"]) != null){
                     $this->session->set_userdata($datas);
-                    redirect('accueilController');  //a faire plus tard
+                    redirect('accueilController'); 
                     return;
                 }
             }

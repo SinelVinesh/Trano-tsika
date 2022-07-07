@@ -21,6 +21,9 @@
             $this->form_validation->set_rules('message','Message','required');
             if ($this->form_validation->run()){
                 $this->Message->insert($datas["id_client_sender"],$datas["id_pub"],$datas["id_client_receiver"],$datas["message_texte"]);
+                http_response_code(200);
+            }else{
+                http_response_code(400);
             }
         }
     }

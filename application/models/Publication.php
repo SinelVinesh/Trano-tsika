@@ -39,14 +39,6 @@
 		{
 			return $this->get_by_id("photo","id_publication",$id);
 		}
-        // public function get_number_like($id_publication){
-        //     $sql="SELECT count(*) as total_dislike from 
-        //         Reaction as r join Reaction_item as ri on r.id_reaction_item = ri.id_reaction_item 
-        //         where id_reaction_item = 2 and id_publication = %s";
-        //     $sql=sprintf($sql,$this->db->escape($id_publication));
-        //     $query=$this->db->query($sql);
-        //     return $query->row_array();
-        // }
 
         public function createSearchCondition($titre,$location,$prix_min,$prix_max,$room_min,$room_max,$tags,$tags_util){
             $condition = "";
@@ -92,7 +84,8 @@
         public function search($titre,$location,$prix_min,$prix_max,$room_min,$room_max,$tags,$tags_util){
             $condition=$this->Publication->createSearchCondition($titre,$location,$prix_min,$prix_max,$room_min,$room_max,$tags,$tags_util);
             $sql = "SELECT * FROM v_publication WHERE 1=1".$condition;  
-            $query = execute_query($sql);
+            $query = $this->execute_query($sql);
+            return $query->result_array();
         }
     }
 ?>

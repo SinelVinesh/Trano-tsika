@@ -19,9 +19,7 @@
             }
         }
 
-        public function inscription(){
-            $this->load->library('form_validation');
-
+        public function set_rules(){
             $this->form_validation->set_rules('first_name','First name','required');
             $this->form_validation->set_rules('last_name','Last name','required');
             $this->form_validation->set_rules('date_birth','Date of birth','required');
@@ -29,14 +27,19 @@
             $this->form_validation->set_rules('email','Email','required|callback_email_validation');
             $this->form_validation->set_rules('password','Password','required');
             $this->form_validation->set_rules('re_password','Confirm password','required|callback_email_validation');
+        }
+
+        public function inscription(){
+            $this->load->library('form_validation');
+            $this->set_rules();
 
             if($this->form_validation->run() == FALSE){
-                load_view("inscription.php");
+                $this->load_view("inscription.php");
             }
             else{
                 $this->load->model('Client');
                 $input_names = array('first_name','last_name','date_birth','phone','email','password');
-                $datas = get_datas($input_names,'post');
+                $datas = $this->get_datas($input_names,'post');
                 $this->Client->insert($datas['first_name'],$datas['last_name'],$datas['date_birth'],$datas['phone'],$datas['email'],$datas['password']);
             }
         }
