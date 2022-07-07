@@ -1,3 +1,4 @@
+<?= validation_errors(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -286,6 +287,11 @@
                         <div class="form-group">
                             <label for="titre">Titre</label>
                             <input type="text" name="titre" id="titre" placeholder="Entrez le titre votre publication">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="titre">Description</label>
+                            <input type="text" name="description" id="description" placeholder="...">
                         </div>
 
                         <div class="utilities">

@@ -24,10 +24,10 @@
             $this->form_validation->set_rules('location','Location','required');
             $this->form_validation->set_rules('room','Rooms','required');
             $this->form_validation->set_rules('description','Description','required');
-            $this->form_validation->set_rules('tags','Tags','required');
+            // $this->form_validation->set_rules('tags','Tags','required');
             $this->form_validation->set_rules('lat','lat','required');
             $this->form_validation->set_rules('lng','lng','required');
-            $this->form_validation->set_rules('tagsUtil','Tags_Util','required');
+            // $this->form_validation->set_rules('tagsUtil','Tags_Util','required');
             $this->form_validation->set_rules('price','price','required');
             // $this->form_validation->set_rules('surface','Surface','required');
         }
@@ -45,14 +45,14 @@
             $tagsUtil=$this->input->post('tagsUtil[]');
             $tags=$this->input->post('tags');
            
-            print_r($tagsUtil);
+            // print_r($tagsUtil);
             foreach ($tagsUtil as $k ) {
-                echo $k;
+                // echo $k;
             }
 
             $this->set_rules();
-            print_r($_FILES);
-            print_r($_POST);
+            // print_r($_FILES);
+            // print_r($_POST);
             $count = count($_FILES['images']['name']);
             
             if ($this->form_validation->run()){
@@ -60,16 +60,20 @@
                 $noms=array();
                 $id_pub=$this->Publication->get_next_val_serial("Publication","id_publication");
                 
-                $this->Publication->insert($id_pub,$_SESSION["id_client"],$datas["location"],$datas["titre"],$datas["description"],$datas["price"],
-            $datas["lieu"],$datas["lat"],$datas["lng"],$datas["room"],/*$datas["surface"]*/null);
+                $this->Publication->insert($id_pub,1,$datas["location"],$datas["titre"],$datas["description"],$datas["price"],$datas["lat"],$datas["lng"],$datas["room"],/*$datas["surface"]*/0);
+                // $this->Publication->insert($id_pub,$_SESSION["id_client"],$datas["location"],$datas["titre"],$datas["description"],$datas["price"],$datas["lieu"],$datas["lat"],$datas["lng"],$datas["room"],/*$datas["surface"]*/0);
                 
-                $dossier="assets/img/pub_".$id_pub."/";
+                $dossier="files/pub_".$id_pub."/";
                 //insertion des photos dans la bdd
                 for($i=0;$i<$count;$i++){
                     $id_img=$this->Photo->get_next_val_serial("Photo","id_photo");
-                    $lien=base_url($dossier.$id_img.$_FILES['images']['type'][$i]);
+                    $type = explode('.', $_FILES['images']['name'][$i]);
+                    $extension=end($type);
+                    $lien=$dossier.$id_img.".".$extension;
+                    // $lien=$dossier.$id_img.$_FILES['images']['type'][$i];
                     $this->Photo->insert($id_img,$lien,$id_pub);
-                    $noms[]=$id_img.$_FILES['images']['type'][$i];
+                    $noms[]=$id_img.".".$extension;
+                    // $noms[]=$id_img.".".$_FILES['images']['type'][$i];
                 }
 
                 //insertion detail tag
@@ -85,10 +89,12 @@
 
                 mkdir($dossier);
                 $this->uploadImage($dossier,$noms);
-                http_response_code(200);
-            }else{
-                http_response_code(400);
+                //http_response_code(200);
             }
+            $this->load->view('pages/index.php');
+            /*else{
+                http_response_code(400);
+            }*/
         } 
     }
 ?>
