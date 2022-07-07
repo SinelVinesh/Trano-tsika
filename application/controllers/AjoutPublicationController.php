@@ -40,7 +40,7 @@
             $this->load->model('DetailUtilite');
             $this->load->model('DetailTag');
 
-            $inputs = ["titre","location","rooms","description","tags[]","images","position_lat","position_lng","tagsUtil[],prix,surface,lieu"];
+            $inputs = ["titre","location","rooms","description","tags[]","images","position_lat","position_lng","tagsUtil[]","prix","surface","lieu"];
             //autoload session + form_validation
             $datas = $this->get_datas($inputs,"post");
             
