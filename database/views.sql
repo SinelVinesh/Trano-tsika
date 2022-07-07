@@ -95,10 +95,10 @@ create OR REPLACE function getPoint(idPublication INT, idClient INT)
             SELECT COALESCE(nbUnlike,0) into nUnlike FROM v_publication where id_publication = idPublication;
             SELECT count(*) into nTagsEq FROM v_tag_client_pub where id_publication = idPublication and id_client = idClient;
             SELECT count(*) into nBoost FROM v_boost_encours where id_publication = IdPublication;
-            SELECT valeur_point into pointLike FROM Classement_point where intitule_point = 'like';
-            SELECT valeur_point into pointUnlike FROM Classement_point where intitule_point = 'unlike';
-            SELECT valeur_point into pointTag FROM Classement_point where intitule_point = 'tag';
-            SELECT valeur_point into pointBoost FROM Classement_point where intitule_point = 'boost';
+            SELECT valeur_point into pointLike FROM Classement_point where id_classement_point = 2;
+            SELECT valeur_point into pointUnlike FROM Classement_point where id_classement_point = 3;
+            SELECT valeur_point into pointTag FROM Classement_point where id_classement_point = 4;
+            SELECT valeur_point into pointBoost FROM Classement_point where id_classement_point = 1;
             
 
 
@@ -130,8 +130,9 @@ create OR REPLACE function getPoint(idPublication INT, idClient INT)
         begin
 
             RETURN QUERY
-            SELECT p.*,getpoint(p.id_publication,idClient)
-            from v_publication p;
+            SELECT p.*,getpoint(p.id_publication,idClient) as point
+            from v_publication p
+            order by point desc;
         end;
     $$;
 

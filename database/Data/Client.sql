@@ -998,3 +998,6 @@ insert into Client (first_name, last_name, email, password, date_naissance, phon
 insert into Client (first_name, last_name, email, password, date_naissance, phone_number) values ('Elsi', 'Leithgoe', 'eleithgoerp@goo.gl', 'N3pAjQuV', '1973-07-23', '+261322065496');
 insert into Client (first_name, last_name, email, password, date_naissance, phone_number) values ('Janine', 'Frake', 'jfrakerq@sourceforge.net', 'lgPR6tsRyOm', '1959-03-11', '+261343588572');
 insert into Client (first_name, last_name, email, password, date_naissance, phone_number) values ('Vicky', 'Killich', 'vkillichrr@howstuffworks.com', 'S7VvrREy', '1965-06-18', '+261330251360');
+
+
+update client set password=md5(password);

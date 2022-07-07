@@ -1,0 +1,26 @@
+Client
+Reaction_Item
+Tag
+Classement point
+Localisation
+Utilite
+abonnement
+Publication
+Tag_client
+reaction
+detail_utilite
+boost
+
+
+
+ToDo
+
+Detail_tags
+
+photo
+message
+commentaire
+
+question
+reponse
+reponse_client
