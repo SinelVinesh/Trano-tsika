@@ -39,13 +39,20 @@
             $this->load->model('DetailUtilite');
             $this->load->model('DetailTag');
 
-            $inputs = ["titre","location","room","description","tags","images","lat","lng","price","surface"];
+            $inputs = ["titre","location","room","description","tags","images","lat","lng","price"];
             //autoload session + form_validation
             $datas = $this->get_datas($inputs,"post");
-            $tagsUtil=$this->input->post('tagsUtil');
+            $tagsUtil=$this->input->post('tagsUtil[]');
             $tags=$this->input->post('tags');
-            $this->set_rules();
+           
+            print_r($tagsUtil);
+            foreach ($tagsUtil as $k ) {
+                echo $k;
+            }
 
+            $this->set_rules();
+            print_r($_FILES);
+            print_r($_POST);
             $count = count($_FILES['images']['name']);
             
             if ($this->form_validation->run()){
@@ -54,7 +61,7 @@
                 $id_pub=$this->Publication->get_next_val_serial("Publication","id_publication");
                 
                 $this->Publication->insert($id_pub,$_SESSION["id_client"],$datas["location"],$datas["titre"],$datas["description"],$datas["price"],
-                $datas["lieu"],$datas["lat"],$datas["lng"],$datas["room"],$datas["surface"]);
+            $datas["lieu"],$datas["lat"],$datas["lng"],$datas["room"],/*$datas["surface"]*/null);
                 
                 $dossier="assets/img/pub_".$id_pub."/";
                 //insertion des photos dans la bdd
