@@ -22,15 +22,14 @@
         public function set_rules(){
             $this->form_validation->set_rules('titre','Titre','required');
             $this->form_validation->set_rules('location','Location','required');
-            $this->form_validation->set_rules('rooms','Rooms','required');
+            $this->form_validation->set_rules('room','Rooms','required');
             $this->form_validation->set_rules('description','Description','required');
-            $this->form_validation->set_rules('tags[]','Tags','required');
-            $this->form_validation->set_rules('position_lat','Position_lat','required');
-            $this->form_validation->set_rules('position_lng','Position_lng','required');
-            $this->form_validation->set_rules('tagsUtil[]','Tags_Util','required');
-            $this->form_validation->set_rules('prix','Prix','required');
-            $this->form_validation->set_rules('surface','Surface','required');
-            $this->form_validation->set_rules('lieu','Lieu','required');
+            $this->form_validation->set_rules('tags','Tags','required');
+            $this->form_validation->set_rules('lat','lat','required');
+            $this->form_validation->set_rules('lng','lng','required');
+            $this->form_validation->set_rules('tagsUtil','Tags_Util','required');
+            $this->form_validation->set_rules('price','price','required');
+            // $this->form_validation->set_rules('surface','Surface','required');
         }
 
         public function ajout_publication(){
@@ -40,10 +39,11 @@
             $this->load->model('DetailUtilite');
             $this->load->model('DetailTag');
 
-            $inputs = ["titre","location","rooms","description","tags[]","images","position_lat","position_lng","tagsUtil[]","prix","surface","lieu"];
+            $inputs = ["titre","location","room","description","tags","images","lat","lng","price","surface"];
             //autoload session + form_validation
             $datas = $this->get_datas($inputs,"post");
-            
+            $tagsUtil=$this->input->post('tagsUtil');
+            $tags=$this->input->post('tags');
             $this->set_rules();
 
             $count = count($_FILES['images']['name']);
@@ -53,8 +53,8 @@
                 $noms=array();
                 $id_pub=$this->Publication->get_next_val_serial("Publication","id_publication");
                 
-                $this->Publication->insert($id_pub,$_SESSION["id_client"],$datas["location"],$datas["titre"],$datas["description"],$datas["prix"],
-                $datas["lieu"],$datas["position_lat"],$datas["position_lng"],$datas["rooms"],$datas["surface"]);
+                $this->Publication->insert($id_pub,$_SESSION["id_client"],$datas["location"],$datas["titre"],$datas["description"],$datas["price"],
+                $datas["lieu"],$datas["lat"],$datas["lng"],$datas["room"],$datas["surface"]);
                 
                 $dossier="assets/img/pub_".$id_pub."/";
                 //insertion des photos dans la bdd
@@ -66,12 +66,12 @@
                 }
 
                 //insertion detail tag
-                foreach ($datas["tags"] as $tag) {
+                foreach ($tags as $tag) {
                     $this->DetailTag->insert($tag,$id_pub);
                 }
 
                 //insertion detail util
-                foreach ($datas["tagsUtil"] as $util) {
+                foreach ($tagsUtil as $util) {
                     $this->DetailUtilite->insert($util,$id_pub);
                 }
                 $this->db->trans_complete();

@@ -269,6 +269,7 @@
 </div>
 
 <!-- modal post house -->
+<form action="<?= site_url('AjoutPublicationController/ajout_publication') ?>" method="post">
 <div class="modal fade p-0" role="dialog" tabindex="-1" id="make-post">
     <div class="modal-dialog" role="document">
         <div class="modal-content rounded-0">
@@ -291,19 +292,19 @@
                             <label>Veuillez selectionnez les proprietes de la maison</label>
                             <div class="utilities-checks">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="courant">
+                                    <input class="form-check-input" name="tagsUtil" type="checkbox" value="2" id="courant">
                                     <label class="form-check-label" for="courant">
                                         Courant
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="Eau">
+                                    <input class="form-check-input" name="tagsUtil" type="checkbox" value="1" id="Eau">
                                     <label class="form-check-label" for="Eau">
                                         Eau
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="Meuble">
+                                    <input class="form-check-input" name="tagsUtil" type="checkbox" value="3" id="Meuble">
                                     <label class="form-check-label" for="Meuble">
                                         Meuble
                                     </label>
@@ -337,19 +338,19 @@
                                 <div class="row p-0 m-0">
                                     <div class="col-md-3 p-0 m-0">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="Villa">
+                                            <input class="form-check-input" name="tags" type="checkbox" value="1" id="Villa">
                                             <label class="form-check-label" for="Villa">
                                                 Villa
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="Yard">
+                                            <input class="form-check-input" name="tags" type="checkbox" value="2" id="Yard">
                                             <label class="form-check-label" for="Yard">
                                                 Yard
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="For_students">
+                                            <input class="form-check-input" name="tags" type="checkbox" value="3" id="For_students">
                                             <label class="form-check-label" for="For_students">
                                                 For students
                                             </label>
@@ -357,19 +358,19 @@
                                     </div>
                                     <div class="col-md-3 p-0 m-0">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="Foreground">
+                                            <input class="form-check-input" name="tags" type="checkbox" value="4" id="Foreground">
                                             <label class="form-check-label" for="Foreground">
                                                 Foreground
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="Restroom_indoor">
+                                            <input class="form-check-input" name="tags" type="checkbox" value="5" id="Restroom_indoor">
                                             <label class="form-check-label" for="Restroom_indoor">
                                                 Restroom indoor
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="Garage">
+                                            <input class="form-check-input" name="tags" type="checkbox" value="6" id="Garage">
                                             <label class="form-check-label" for="Garage">
                                                 Garage
                                             </label>
@@ -385,7 +386,7 @@
                             <input type="number" name="price" id="price" min="1" step="0.01" placeholder="Prix du location par mois?">
                         </div>
 
-                        <input type="file" class="custom-file-input" id="file-input"  accept="image/*" onchange="preview()" multiple>
+                        <input type="file" name="images" class="custom-file-input" id="file-input"  accept="image/*" onchange="preview()" multiple>
                         <input type="hidden" name="img-removed" id="img-removed" >
                         <input type="hidden" name="lat" id="lat">
                         <input type="hidden" name="lng" id="lng">
@@ -407,7 +408,7 @@
         </div>
     </div>
 </div>
-
+</form>
 <!-- locate your home -->
 <div class="modal fade p-0" role="dialog" tabindex="-1" id="link-map">
     <div class="modal-dialog" role="document">
