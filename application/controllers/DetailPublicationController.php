@@ -15,7 +15,7 @@ class DetailPublicationController extends My_Controller {
 		$pub["detail_utils"] = $this->Publication->get_detail_utilite($data["id_pub"]);
 		$pub["photos"] = $this->Publication->get_photo($data["id_pub"]);
 		$this->load->view('fiche.php',$pub);
-	}
+	}//lat //lng
 
 	public function comment()
 	{

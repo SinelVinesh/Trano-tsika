@@ -2,24 +2,22 @@
     class AcceuilController extends MY_Controller{
         public function index(){
             $this->load->model('Publication');
+            $limit = 10;
+            $offset = 0;
 
-           $limit = 10;
-           $offset = 0;
+            $pubs = $this->Publication->get_next_pub($limit,$offset);
 
-           $pubs = $this->Publication->get_next_pub($limit,$offset);
-
-           foreach($pubs as $pub){
-                $pub["commentaires"] =$this->Publication->get_commentaire($pub["id_publication"],3);
-                $pub["photos"] = $this->Publication->get_photo($pub["id_publication"]);
-           }
+        //    foreach($pubs as $pub){
+        //         $pub["commentaires"] =$this->Publication->get_commentaire($pub["id_publication"],3);
+        //         $pub["photos"] = $this->Publication->get_photo($pub["id_publication"]);
+        //    }
            
-           $_SESSION["offset"] = $offset + $limit;
-           $_SESSION["limit"] = $limit;
+        //    $_SESSION["offset"] = $offset + $limit;
+        //    $_SESSION["limit"] = $limit;
 
-           $data["pubs"]=$pubs;
+        //    $data["pubs"]=$pubs;
 
-           $this->load->view("header");
-           $this->load->view("publications",$data);
+           $this->load->view("pages/index.php");
         }
 
         public function like_pub(){
