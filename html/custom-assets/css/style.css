@@ -1,0 +1,90 @@
+.modal{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-backdrop{
+    position: relative;
+}
+
+body {
+    font-family: 'Quicksand';
+}
+
+.topbar {
+    height: auto;
+    font-size: 14px;
+    /*box-shadow: unset;*/
+}
+
+a.menu-item {
+    text-decoration: unset;
+}
+
+ul li a.connected {
+    color: whitesmoke;
+}
+
+.menu-item {
+    border-bottom: 1px #111111 solid;
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+    border-bottom: 8px #304efe solid;
+    color: #000000;
+}
+
+.logo {
+    width: 175px;
+}
+
+.dropdowns.active {
+    opacity: 1;
+    visibility: visible;
+    box-shadow: 3px 17px 63px -15px;
+}
+
+.site-blocks-cover, .site-blocks-cover .middle {
+    min-height: 500px;
+    height: calc(100vh - 174px);
+}
+
+.caption {
+    /*background: url("../south-master/img/bg-img/hero5.jpg") no-repeat;*/
+    background-size: cover;
+    opacity: 0.5;
+}
+
+.caption .card {
+    opacity: unset;
+}
+
+.add-shadow {
+    box-shadow: 0px 2px 18px -12px;
+}
+
+.align {
+    margin: 0 0.3rem!important;
+}
+
+.custom-btn {
+    padding: 10px;
+    background-color: #BD760B;
+    color: white;
+}
+.custom-btn:hover {
+    color: white;
+    text-decoration: unset;
+    background-color: rgba(189, 118, 11, 0.59);
+}
+
+.pub-details{
+    font-size: 14px;
+    color: #947054;
+}
+
+a.pub-link {
+    color: unset;
+    text-decoration: unset;
+    cursor: pointer;
+    transition: unset;
+}
