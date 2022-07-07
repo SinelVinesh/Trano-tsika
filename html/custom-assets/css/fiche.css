@@ -1,0 +1,33 @@
+.images-list {
+    height: 330px;
+    overflow-y: scroll;
+    border-radius: 5px;
+}
+
+.images-list img {
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+#map-canvas {
+    border-radius: 5px;
+}
+
+.post-description, .user-description, .tags {
+    font-size: 14px;
+}
+
+.tag, .post-description {
+    background-color: rgba(93, 88, 88, 0.22);
+    border-radius: 5px;
+}
+
+.btn-color{
+    background-color: #977151;
+    border: 0;
+    border-radius: 0;
+}
+
+.btn-color:hover {
+    background-color: rgba(151, 113, 81, 0.78);
+}
