@@ -1893,9 +1893,9 @@ li.post-comment .comet-avatar {
 
 .post-comt-box {
     display: inline-block;
-    padding-left: 15px;
+    /*padding-left: 15px;*/
     position: relative;
-    width: 93%;
+    width: 100%;
 }
 
 .post-comt-box form textarea {

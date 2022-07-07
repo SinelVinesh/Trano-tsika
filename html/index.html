@@ -21,20 +21,7 @@
     <link rel="stylesheet" href="custom-assets/css/style.css">
     <link rel="stylesheet" href="custom-assets/css/post-css.css">
     <link rel="stylesheet" href="custom-assets/css/map.css">
-
-    <style>
-        .message-modal .modal-dialog{
-            max-width: 450px;
-        }
-        .discussion {
-            cursor: pointer;
-        }
-        .discussion:hover {
-            background-color: rgba(115, 112, 112, 0.78);
-            /*position: absolute;*/
-            width: 140%;
-        }
-    </style>
+    <link rel="stylesheet" href="custom-assets/css/message.css">
 
 </head>
 <body>
@@ -715,25 +702,7 @@
 <script src="custom-assets/js/map.js"></script>
 <script src="custom-assets/js/modals.js"></script>
 <script src="custom-assets/js/image-preview.js"></script>
-
-<script>
-    $(".discussion").on("click", (e) => {
-        $("#message").modal("show");
-        let target = $(e.target);
-        while (target.attr("discussion-id") == null) {
-            target = target.parent();
-        }
-        console.log(target.attr("discussion-id"));
-    });
-
-    let messageObserver = new ResizeObserver(() => {
-        let messages = $("#onemessage");
-        console.log(messages[0].scrollHeight);
-        messages.animate({scrollTop: messages[0].scrollHeight}, 1000, 'easeOutCirc');
-    });
-
-    messageObserver.observe(document.getElementById("onemessage"))
-</script>
+<script src="custom-assets/js/message.js" />
 
 </body>
 </html>

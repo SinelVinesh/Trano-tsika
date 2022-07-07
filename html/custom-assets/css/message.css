@@ -1,0 +1,13 @@
+.message-modal .modal-dialog{
+    max-width: 450px;
+}
+
+.discussion {
+    cursor: pointer;
+}
+
+.discussion:hover {
+    background-color: rgba(115, 112, 112, 0.78);
+    /*position: absolute;*/
+    width: 140%;
+}

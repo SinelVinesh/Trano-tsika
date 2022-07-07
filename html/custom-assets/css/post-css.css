@@ -50,20 +50,20 @@ input[type="checkbox"] {
 }
 
 
-.images::-webkit-scrollbar {
+.images::-webkit-scrollbar, .images-list::-webkit-scrollbar {
     width: 8px;
     border-radius: 20px;
 
 }
 
 
-.images::-webkit-scrollbar-thumb {
+.images::-webkit-scrollbar-thumb, .images-list::-webkit-scrollbar-thumb {
     background-color: #797676;
     border-radius: 21px;
 }
 
 
-.images::-webkit-scrollbar-track {
+.images::-webkit-scrollbar-track, .images-list::-webkit-scrollbar-track {
     background-color: #e4dddd;
 }
 
