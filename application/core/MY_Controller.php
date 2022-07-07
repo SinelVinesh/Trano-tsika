@@ -17,7 +17,7 @@
          *
          * Load a page
          */
-        protected function load_view($page, $data=null){
+        public function load_view($page, $data=null){
             // $this->load->view($this->page_header,$data);
             $this->load->view($page,$data);
             // $this->load->view($this->page_footer,$data);
@@ -31,7 +31,7 @@
          * 
          * Get all submitted data in a dictionnary
          */
-        protected function get_datas($input_names,$method){
+        public function get_datas($input_names,$method){
             $datas = [];
 
             if (strcasecmp($method,"post") == 0){
@@ -39,7 +39,7 @@
                     # code...
                     $datas[$name] = $this->input->post($name);
                 }
-            }if (strcasecmp($method,"get") == 0){
+            }else if (strcasecmp($method,"get") == 0){
                 foreach ($input_names as $name) {
                     # code...
                     $datas[$name] = $this->input->get($name);

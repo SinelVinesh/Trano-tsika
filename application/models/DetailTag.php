@@ -6,9 +6,9 @@
             $this->db->query($sql);
         }
 
-        public function get_all(){
+        public function get_tags(){
             $sql = "SELECT * FROM v_detail_tags";
-            $query = execute_query($sql);
+            $query =$this->execute_query($sql);
             return $query->result_array();
         }
     }
