@@ -865,6 +865,7 @@
 </script>
 
 <script>
+
     $("#load-next").click(() => {
         $.ajax({
             url: "<?= site_url("NextPublicationController") ?>"
@@ -885,6 +886,7 @@
 
 </script>
 <script>
+
     $("#show-notif").click(() => {
         let notifBox = $("#notif-box > .drops-menu");
         $(".number").empty();
@@ -897,6 +899,7 @@
         });
         notifBox.append()
     });
+
 </script>
 </body>
 

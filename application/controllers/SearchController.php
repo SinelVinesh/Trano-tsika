@@ -1,6 +1,10 @@
 <?php 
     class SearchController extends MY_Controller {
 
+        public function index() {
+            $this->load->view("pages/search.php");
+        }
+
         public function search(){
             $this->load->model('Publication');
 
