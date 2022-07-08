@@ -63,17 +63,15 @@
                 $this->Publication->insert($id_pub,1,$datas["location"],$datas["titre"],$datas["description"],$datas["price"],$datas["lat"],$datas["lng"],$datas["room"],/*$datas["surface"]*/0);
                 // $this->Publication->insert($id_pub,$_SESSION["id_client"],$datas["location"],$datas["titre"],$datas["description"],$datas["price"],$datas["lieu"],$datas["lat"],$datas["lng"],$datas["room"],/*$datas["surface"]*/0);
                 
-                $dossier="files/pub_".$id_pub."/";
+                $dossier="files/imgs/";
                 //insertion des photos dans la bdd
                 for($i=0;$i<$count;$i++){
                     $id_img=$this->Photo->get_next_val_serial("Photo","id_photo");
                     $type = explode('.', $_FILES['images']['name'][$i]);
                     $extension=end($type);
-                    $lien=$dossier.$id_img.".".$extension;
-                    // $lien=$dossier.$id_img.$_FILES['images']['type'][$i];
+                    $lien=$id_img.".".$extension;
                     $this->Photo->insert($id_img,$lien,$id_pub);
                     $noms[]=$id_img.".".$extension;
-                    // $noms[]=$id_img.".".$_FILES['images']['type'][$i];
                 }
 
                 //insertion detail tag
