@@ -217,7 +217,7 @@
                         <img src="assets/images/resources/admin2.jpg" alt="">
                     </figure>
                     <div class="newpst-input">
-                        <textarea rows="1" placeholder="Post your house..."></textarea>
+                        <textarea rows="1" placeholder="Post your house..." id="show-post-modal"></textarea>
                         <div class="attachments">
                             <ul>
                                 <li>
@@ -251,17 +251,17 @@
                             </div>
                             <!-- Property Content -->
                             <div class="property-content">
-                                <h5>Andoharanofotsy, 2 rooms (<?= $pub["titre"] ?>)</h5>
+                                <h5><?= $pub["titre"] ?></h5>
                                 <p class="location"><i class="fa-solid fa-location-dot"></i> Andoharanofotsy</p>
                                 <p>Integer nec bibendum lacus. Suspendisse dictum enim sit (description)</p>
 
                                 <div class="property-meta-data d-flex align-items-end justify-content-between">
                                     <!--                            <a href="#" class="custom-btn">Plus de details</a>-->
                                     <div class="pub-details">
-                                        <i class="fa-solid fa-thumbs-up"></i> <?= $pub["nblike"] ?>
+                                        <i class="fa-solid fa-thumbs-up"></i> <?= $pub["nblike"] ?? 0 ?>
                                     </div>
                                     <div class="pub-details">
-                                        <i class="fa-solid fa-thumbs-down"></i> <?= $pub["nbunlike"] ?>
+                                        <i class="fa-solid fa-thumbs-down"></i> <?= $pub["nbunlike"] ?? 0 ?>
                                     </div>
                                     <div class="pub-details">
                                         by <i><?= $pub["first_name"] . " " . $pub["last_name"] ?></i>
@@ -939,6 +939,11 @@
             shown = false;
         }
     });
+
+    $("#show-post-modal").click(() => {
+        $("#make-post").modal("show");
+    });
+
 </script>
 </body>
 
