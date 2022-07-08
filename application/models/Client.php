@@ -22,7 +22,7 @@
 
         public function insert($first_name,$last_name,$date_birth,$phone,$email,$password)
         {
-            $sql = "insert into Client(first_name,last_name,date_birth,phone,email,password) values('".$first_name."','".$last_name."','".$date_birth."','".$phone."','".$email."',md5('".$password."'));";
+            $sql = "insert into Client(first_name,last_name,date_naissance,phone_number,email,password) values('".$first_name."','".$last_name."','".$date_birth."','".$phone."','".$email."',md5('".$password."'));";
             $this->db->query($sql);
         }
     }

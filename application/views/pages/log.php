@@ -66,7 +66,7 @@
 
 </head>
 <body>
-
+<?= validation_errors() ?>
 <div class="theme-layout">
 	<div class="container-fluid p-0">
 		<div class="row merged">
@@ -91,7 +91,7 @@
 							<p>
 								Don’t use Winku Yet? <a href="#" title="">Take the tour</a> or <a href="#" title="">Join now</a>
 							</p>
-						<form action="LoginController/log" method="post">
+						<form action="<?= base_url() ?>LoginController/log" method="post">
 							<div class="form-group">	
 							  <input type="text" name="email" id="input" required="required"/>
 							  <label class="control-label" for="input">Email</label><i class="mtrl-select"></i>
@@ -107,7 +107,7 @@
 							</div>
 							<a href="#" title="" class="forgot-pwd">Forgot Password?</a>
 							<div class="submit-btns">
-								<button class="mtr-btn signin" type="button"><span>Login</span></button>
+								<button class="mtr-btn signin" type="submit"><span>Login</span></button>
 								<button class="mtr-btn signup" type="button"><span>Register</span></button>
 							</div>
 						</form>
@@ -117,7 +117,7 @@
 						<p>
 							Don’t use Winku Yet? <a href="#" title="">Take the tour</a> or <a href="#" title="">Join now</a>
 						</p>
-						<form method="post" action="<?= base_url() ?>/InscriptionController/" >
+						<form method="post" action="<?= base_url() ?>InscriptionController/inscription" >
 							<div class="form-group">	
 							  <input type="text" name="first_name" required="required"/>
 							  <label class="control-label" for="input">First name</label><i class="mtrl-select"></i>
@@ -166,7 +166,7 @@
 							<a href="#" title="" class="already-have w-75" style="display: none" id="go-back">Already have an account</a>
 
 							<div class="submit-btns d-flex justify-content-between">
-								<button class="mtr-btn signup"><span>Register</span></button>
+								<button class="btn btn-primary rounded-0"><span>Register</span></button>
 								<a class="mt-3 pt-1 border-0 rounded-0 have-account" onclick="goBack()" style="font-size: 13px;"  ><span>I already have an account</span></a>
 							</div>
 						</form>
@@ -176,6 +176,10 @@
 		</div>
 	</div>
 </div>
+
+<!-- a implementer  -->
+<?php if(isset($success)) { echo $success; } ?>
+<?php if(isset($error)) { echo $error; } ?>
 <?= validation_errors() ?>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
