@@ -9,9 +9,11 @@
             $tab = $this->get_datas($inputs, "get");
             
             $data["messages"] = $this->Message->get_messages($tab["client1"],$tab["client2"],$tab["id_pub"]);
+            echo $tab["id_pub"];
             $data["publication"] = $this->Publication->get_pub($tab["id_pub"]);
-            
-            $this->load_view('message.php',$data);
+
+            echo json_encode($data);
+//            $this->load_view('message.php',$data);
         }
 
         function envoyer(){

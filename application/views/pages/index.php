@@ -920,6 +920,15 @@
             $("#pub-container").append(data);
         });
     });
+    window.onscroll = function(ev) {
+        if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight)) {
+            $.ajax({
+                url: "<?= site_url("NextPublicationController") ?>"
+            }).done((data) => {
+                $("#pub-container").append(data);
+            });
+        }
+    };
 </script>
 </body>
 

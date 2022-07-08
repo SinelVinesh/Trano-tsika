@@ -12,9 +12,10 @@
     
             return $get_id_client->result_array();
         }
+
         public function get_last_notifications($id_client)
         {
-            $sql = "select * from notification where id_client=$id_client order by date_envoye limit 5";
+            $sql = "select * from v_notifications where id_client=$id_client order by date_envoye limit 5";
             $get_last_notification = $this->db->query($sql);
     
             return $get_last_notification->result_array();
