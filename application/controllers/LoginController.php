@@ -9,7 +9,7 @@
             $this->form_validation->set_rules('password','Password','required');
             
             if ($this->form_validation->run()){
-                if($this->Client->exist($datas["email"],$datas["password"]) != null){
+                if(empty($this->Client->exist($datas["email"],$datas["password"]))==false) {
                     $this->session->set_userdata($datas);
                     redirect('accueilController'); 
                     return;

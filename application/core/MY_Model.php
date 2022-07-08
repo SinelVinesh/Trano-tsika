@@ -20,6 +20,11 @@
             return $this->execute_query($sql)->result_array();
         }
 
+        protected function get_row($table_name, $condition=""){
+            $sql = "select * from $table_name where 1=1 and $condition";
+            return $this->execute_query($sql)->row_array();
+        }
+
         protected function get_by_id($table_name, $id_column, $id_value){
             $sql = "select * from $table_name where  $id_column=$id_value ";
             return $this->execute_query($sql)->row_array();
