@@ -29,20 +29,22 @@ class DetailPublicationController extends My_Controller {
 		$_SESSION["offset"] = 3;
 		$pub["commentaires"] = $this->Publication->get_limited_commentaire($id_pub,3,0);
 		$pub["messages"] = $this->Message->get_messages($_SESSION["id_client"], $id_pub);
+        $pub["pos"] = $this->Publication->getPosition($id_pub);
 		$data["pub"] = $pub;
-        // echo json_encode($pub);
+//         echo json_encode($pub);
 		$this->load->view('pages/fiche.php',$data);
-		// print_r($pub);
-	}//lat //lng
+	}
 
 	public function comment($id_pub)
 	{
         $this->form_validation->set_rules('commentaire','Commentaire','required');
+
         if ($this->form_validation->run()){
 			$this->load->model('Commentaire');
             $this->Commentaire->insert($id_pub,$_SESSION["id_client"],$this->input->post("commentaire"));
         }
-		$this->load_detail($id_pub);
+
+		echo json_encode(["success" => true]);
 	}
 
 	function envoyer($id_receiver,$id_pub){

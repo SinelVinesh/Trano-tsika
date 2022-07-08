@@ -91,7 +91,7 @@
 							<p>
 								Don’t use Winku Yet? <a href="#" title="">Take the tour</a> or <a href="#" title="">Join now</a>
 							</p>
-						<form action="<?= base_url() ?>LoginController/log" method="post">
+						<form action="<?= site_url("LoginController/log") ?>" method="post">
 							<div class="form-group">	
 							  <input type="text" name="email" id="input" required="required"/>
 							  <label class="control-label" for="input">Email</label><i class="mtrl-select"></i>
@@ -117,7 +117,7 @@
 						<p>
 							Don’t use Winku Yet? <a href="#" title="">Take the tour</a> or <a href="#" title="">Join now</a>
 						</p>
-						<form method="post" action="<?= base_url() ?>InscriptionController/inscription" >
+						<form method="post" action="<?= site_url("InscriptionController/inscription") ?>" >
 							<div class="form-group">	
 							  <input type="text" name="first_name" required="required"/>
 							  <label class="control-label" for="input">First name</label><i class="mtrl-select"></i>
