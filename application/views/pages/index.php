@@ -1,3 +1,4 @@
+<?= validation_errors(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -244,7 +245,7 @@
                                             <i class="fa-solid fa-thumbs-down"></i> <?= $pub["nbunlike"] ?>
                                         </div>
                                         <div class="pub-details">
-                                            by <i><?= $pub["first_name"]." ".$pub["last_name"]   ?></i>
+                                            by <i><?= $pub["first_name"] . " " . $pub["last_name"]   ?></i>
                                         </div>
                                     </div>
                                 </div>
@@ -286,124 +287,101 @@
                                 <div class="form-group">
                                     <label for="titre">Titre</label>
                                     <input type="text" name="titre" id="titre" placeholder="Entrez le titre votre publication">
-                                </div>
-
-                                <div class="utilities">
-                                    <label>Veuillez selectionnez les proprietes de la maison</label>
-                                    <div class="utilities-checks">
-                                        <div class="form-check">
-                                            <input class="form-check-input" name="tagsUtil" type="checkbox" value="2" id="courant">
-                                            <label class="form-check-label" for="courant">
-                                                Courant
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" name="tagsUtil" type="checkbox" value="1" id="Eau">
-                                            <label class="form-check-label" for="Eau">
-                                                Eau
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" name="tagsUtil" type="checkbox" value="3" id="Meuble">
-                                            <label class="form-check-label" for="Meuble">
-                                                Meuble
-                                            </label>
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="titre">Description</label>
+                                        <input type="text" name="description" id="description" placeholder="...">
                                     </div>
-                                </div>
 
-                                <div class="form-group">
-                                    <label for="titre">Chambre</label>
-                                    <input type="number" name="room" id="room" min="1" placeholder="Combien de chambre ?">
-                                </div>
+                                    <div class="utilities">
+                                        <label>Veuillez selectionnez les proprietes de la maison</label>
+                                        <div class="utilities-checks">
+                                            <div class="form-check">
+                                                <input class="form-check-input" name="tagsUtil[]" type="checkbox" value="2" id="courant">
+                                                <label class="form-check-label" for="courant">
+                                                    Courant
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" name="tagsUtil[]" type="checkbox" value="1" id="Eau">
+                                                <label class="form-check-label" for="Eau">
+                                                    Eau
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" name="tagsUtil[]" type="checkbox" value="3" id="Meuble">
+                                                <label class="form-check-label" for="Meuble">
+                                                    Meuble
+                                                </label>
+                                            </div>
 
-                                <div class="form-group">
-                                    <label for="location">Location</label>
-                                    <select id="location" name="location">
-                                        <option selected>Choisir une ville</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                </div>
-
-
-                                <div class="utilities">
-                                    <label>Liez votre maison avec google map <a data-target="#link-map" data-toggle="modal"><u class="link-map">Link to google map</u></a></label>
-                                </div>
-
-                                <div class="utilities">
-                                    <label>Ajoutez des <a><u class="underline-custom">#tag</u></a> autant que possible pour ameliorez votre publication</label>
-                                    <div class="utilities-checks">
-                                        <div class="row p-0 m-0">
-                                            <div class="col-md-3 p-0 m-0">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" name="tags" type="checkbox" value="1" id="Villa">
-                                                    <label class="form-check-label" for="Villa">
-                                                        Villa
-                                                    </label>
+                                            <div class="utilities">
+                                                <label>Veuillez selectionnez les proprietes de la maison</label>
+                                                <div class="utilities-checks">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" name="tags[]" type="checkbox" value="1" id="Villa">
+                                                        <label class="form-check-label" for="Villa">
+                                                            Villa
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" name="tags[]" type="checkbox" value="2" id="Yard">
+                                                        <label class="form-check-label" for="Yard">
+                                                            Yard
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" name="tags[]" type="checkbox" value="3" id="For_students">
+                                                        <label class="form-check-label" for="For_students">
+                                                            For students
+                                                        </label>
+                                                    </div>
                                                 </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" name="tags" type="checkbox" value="2" id="Yard">
-                                                    <label class="form-check-label" for="Yard">
-                                                        Yard
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" name="tags" type="checkbox" value="3" id="For_students">
-                                                    <label class="form-check-label" for="For_students">
-                                                        For students
-                                                    </label>
+                                                <div class="col-md-3 p-0 m-0">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" name="tags[]" type="checkbox" value="4" id="Foreground">
+                                                        <label class="form-check-label" for="Foreground">
+                                                            Foreground
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" name="tags[]" type="checkbox" value="5" id="Restroom_indoor">
+                                                        <label class="form-check-label" for="Restroom_indoor">
+                                                            Restroom indoor
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" name="tags[]" type="checkbox" value="6" id="Garage">
+                                                        <label class="form-check-label" for="Garage">
+                                                            Garage
+                                                        </label>
+                                                    </div>
+
                                                 </div>
                                             </div>
-                                            <div class="col-md-3 p-0 m-0">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" name="tags" type="checkbox" value="4" id="Foreground">
-                                                    <label class="form-check-label" for="Foreground">
-                                                        Foreground
-                                                    </label>
+
+                                            <div class="form-group">
+                                                <label for="price">Prix par mois</label>
+                                                <input type="number" name="price" id="price" min="1" step="0.01" placeholder="Prix du location par mois?">
+                                            </div>
+
+                                            <input type="file" name="images[]" class="custom-file-input" id="file-input" accept="image/*" onchange="preview()" multiple>
+                                            <input type="hidden" name="img-removed" id="img-removed">
+                                            <input type="hidden" name="lat" id="lat">
+                                            <input type="hidden" name="lng" id="lng">
+
+                                            <div class="container-img">
+                                                <div class="label-container">
+                                                    <label for="file-input" class="d-flex justify-content-center"><span>Add images <i class="ti-plus"></i></span></label>
                                                 </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" name="tags" type="checkbox" value="5" id="Restroom_indoor">
-                                                    <label class="form-check-label" for="Restroom_indoor">
-                                                        Restroom indoor
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" name="tags" type="checkbox" value="6" id="Garage">
-                                                    <label class="form-check-label" for="Garage">
-                                                        Garage
-                                                    </label>
-                                                </div>
+                                                <div class="images"></div>
                                             </div>
                                         </div>
 
                                     </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="price">Prix par mois</label>
-                                    <input type="number" name="price" id="price" min="1" step="0.01" placeholder="Prix du location par mois?">
-                                </div>
-
-                                <input type="file" name="images" class="custom-file-input" id="file-input" accept="image/*" onchange="preview()" multiple>
-                                <input type="hidden" name="img-removed" id="img-removed">
-                                <input type="hidden" name="lat" id="lat">
-                                <input type="hidden" name="lng" id="lng">
-
-                                <div class="container-img">
-                                    <div class="label-container">
-                                        <label for="file-input" class="d-flex justify-content-center"><span>Add images <i class="ti-plus"></i></span></label>
+                                    <div class="modal-footer d-flex justify-content-between">
+                                        <button class="btn btn-light rounded-0" type="button" data-dismiss="modal">Close</button>
+                                        <button class="btn btn-primary rounded-0">Post</button>
                                     </div>
-                                    <div class="images"></div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="modal-footer d-flex justify-content-between">
-                            <button class="btn btn-light rounded-0" type="button" data-dismiss="modal">Close</button>
-                            <button class="btn btn-primary rounded-0">Post</button>
-                        </div>
                     </form>
                 </div>
             </div>

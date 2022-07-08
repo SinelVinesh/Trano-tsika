@@ -9,7 +9,7 @@
             return $this->db->query($sql);
         }
 
-        protected function get_next_val_serial($table_name, $column_name){
+        public function get_next_val_serial($table_name, $column_name){
             $sql = "select nextval(pg_get_serial_sequence('$table_name', '$column_name')) as new_id";
             $query = $this->execute_query($sql)->row_array();
             return $query["new_id"];
