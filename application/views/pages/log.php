@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-	<title>Winku Social Network Toolkit</title>
-    <link rel="icon" href="assets/images/fav.png" type="image/png" sizes="16x16">
+	<title>Login</title>
+    <link rel="icon" href="<?= base_url() ?>assets/images/fav.png" type="image/png" sizes="16x16">
     
-    <link rel="stylesheet" href="assets/css/main.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/color.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/main.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/color.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/responsive.css">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
@@ -117,19 +117,19 @@
 						<p>
 							Don’t use Winku Yet? <a href="#" title="">Take the tour</a> or <a href="#" title="">Join now</a>
 						</p>
-						<form method="post">
+						<form method="post" action="<?= base_url() ?>/InscriptionController/" >
 							<div class="form-group">	
-							  <input type="text" required="required"/>
+							  <input type="text" name="first_name" required="required"/>
 							  <label class="control-label" for="input">First name</label><i class="mtrl-select"></i>
 							</div>
 
 							<div class="form-group">
-							  <input type="text" required="required"/>
+							  <input type="text" name="last_name" required="required"/>
 							  <label class="control-label" for="input">Last name</label><i class="mtrl-select"></i>
 							</div>
 
 							<div class="form-group">	
-							  <input type="date" required="required"/>
+							  <input type="date" name="date_birth" required="required"/>
 							  <label class="control-label" for="input">Date of birth</label><i class="mtrl-select"></i>
 							</div>
 
@@ -138,22 +138,22 @@
 							</div>
 
 							<div class="form-group">
-								<input type="text" required="required"/>
+								<input type="text" name="phone" required="required"/>
 								<label class="control-label" for="input">Phone number</label><i class="mtrl-select"></i>
 							</div>
 
 							<div class="form-group">
-								<input type="text" required="required"/>
+								<input type="text" name="email" required="required"/>
 								<label class="control-label" for="input"><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6c29010d05002c">[email&#160;protected]</a></label><i class="mtrl-select"></i>
 							</div>
 
 							<div class="form-group">
-								<input type="password" required="required"/>
+								<input type="password" name="password" required="required"/>
 								<label class="control-label" for="input">Password</label><i class="mtrl-select"></i>
 							</div>
 
 							<div class="form-group">
-								<input type="password" required="required"/>
+								<input type="password" name="re_password" required="required"/>
 								<label class="control-label" for="input">Confirm password</label><i class="mtrl-select"></i>
 							</div>
 
@@ -176,6 +176,7 @@
 		</div>
 	</div>
 </div>
+<?= validation_errors() ?>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script>
@@ -183,8 +184,8 @@
 		$("#go-back").trigger("click");
 	}
 </script>
-<script src="assets/js/main.min.js"></script>
-<script src="assets/js/script.js"></script>
+<script src="<?= base_url() ?>assets/js/main.min.js"></script>
+<script src="<?= base_url() ?>assets/js/script.js"></script>
 
 </body>	
 
