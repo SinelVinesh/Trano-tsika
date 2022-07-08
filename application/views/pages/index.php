@@ -37,6 +37,9 @@
             color: red;
             /*font-size: 20px;*/
         }
+        .mesg-meta > span {
+            white-space: unset;
+        }
     </style>
 
 </head>
@@ -60,68 +63,15 @@
 
             <ul class="setting-area">
                 <li>
-                    <a href="#" title="Notification" data-ripple="" class="menu-item">
+                    <a href="#" title="Notification" data-ripple="" class="menu-item" id="show-notif">
                         Notifications
                     </a>
-                    <div class="dropdowns">
-                        <span>4 New Notifications</span>
+                    <div class="dropdowns" id="notif-box">
+                        <span><span class="number"></span> New Notifications</span>
+
                         <ul class="drops-menu">
-                            <li>
-                                <a href="notifications.html" title="">
-                                    <img src="assets/images/resources/thumb-1.jpg" alt="">
-                                    <div class="mesg-meta">
-                                        <h6>sarah Loren</h6>
-                                        <span>Hi, how r u dear ...?</span>
-                                        <i>2 min ago</i>
-                                    </div>
-                                </a>
-                                <span class="tag green">New</span>
-                            </li>
-                            <li>
-                                <a href="notifications.html" title="">
-                                    <img src="assets/images/resources/thumb-2.jpg" alt="">
-                                    <div class="mesg-meta">
-                                        <h6>Jhon doe</h6>
-                                        <span>Hi, how r u dear ...?</span>
-                                        <i>2 min ago</i>
-                                    </div>
-                                </a>
-                                <span class="tag red">Reply</span>
-                            </li>
-                            <li>
-                                <a href="notifications.html" title="">
-                                    <img src="assets/images/resources/thumb-3.jpg" alt="">
-                                    <div class="mesg-meta">
-                                        <h6>Andrew</h6>
-                                        <span>Hi, how r u dear ...?</span>
-                                        <i>2 min ago</i>
-                                    </div>
-                                </a>
-                                <span class="tag blue">Unseen</span>
-                            </li>
-                            <li>
-                                <a href="notifications.html" title="">
-                                    <img src="assets/images/resources/thumb-4.jpg" alt="">
-                                    <div class="mesg-meta">
-                                        <h6>Tom cruse</h6>
-                                        <span>Hi, how r u dear ...?</span>
-                                        <i>2 min ago</i>
-                                    </div>
-                                </a>
-                                <span class="tag">New</span>
-                            </li>
-                            <li>
-                                <a href="notifications.html" title="">
-                                    <img src="assets/images/resources/thumb-5.jpg" alt="">
-                                    <div class="mesg-meta">
-                                        <h6>Amy</h6>
-                                        <span>Hi, how r u dear ...?</span>
-                                        <i>2 min ago</i>
-                                    </div>
-                                </a>
-                                <span class="tag">New</span>
-                            </li>
                         </ul>
+                        <!-- notications -->
                         <a href="notifications.html" title="" class="more-mesg">view more</a>
                     </div>
                 </li>
@@ -235,6 +185,7 @@
         </div>
 
         <!-- posts -->
+        <!-- helper which diplays the posts -->
         <?=  displayPubs($pubs); ?>
     </div>
     <button class="btn-view btn-load-more mb-4" id="load-next">Load More</button>
@@ -912,7 +863,9 @@
     });
 
 </script>
+
 <script>
+
     $("#load-next").click(() => {
         $.ajax({
             url: "<?= site_url("NextPublicationController") ?>"
@@ -920,6 +873,7 @@
             $("#pub-container").append(data);
         });
     });
+
     window.onscroll = function(ev) {
         if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight)) {
             $.ajax({
@@ -929,6 +883,23 @@
             });
         }
     };
+
+</script>
+<script>
+
+    $("#show-notif").click(() => {
+        let notifBox = $("#notif-box > .drops-menu");
+        $(".number").empty();
+        notifBox.empty();
+        $.ajax({
+            url: "<?= site_url("LastNotificationController") ?>"
+        }).done((data) => {
+            notifBox.append(data);
+            $(".number").text(($("#notif-box > .drops-menu > li").length));
+        });
+        notifBox.append()
+    });
+
 </script>
 </body>
 
