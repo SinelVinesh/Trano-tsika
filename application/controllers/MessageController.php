@@ -16,17 +16,13 @@
 //            $this->load_view('message.php',$data);
         }
 
-        function envoyer(){
+        function envoyer($id_receiver,$id_pub){
             $this->load->model('Message');
-            $inputs = ["id_client_sender","id_pub","id_client_receiver","message_texte"];
-            $datas = $this->get_datas($inputs, "post");
-            $this->form_validation->set_rules('message','Message','required');
+            $this->form_validation->set_rules('message_texte','Message','required');
             if ($this->form_validation->run()){
-                $this->Message->insert($datas["id_client_sender"],$datas["id_pub"],$datas["id_client_receiver"],$datas["message_texte"]);
-                http_response_code(200);
-            }else{
-                http_response_code(400);
+                $this->Message->insert($_SESSION["id_client"],$id_pub,$id_receiver,$this->input->post["message_texte"]);
             }
+            redirect("/DetailPublicationController");
         }
     }
 ?>

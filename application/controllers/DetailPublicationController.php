@@ -3,33 +3,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class DetailPublicationController extends My_Controller {
 
-	public function load_detail()
+	public function load_detail($id_pub)
 	{
 		$this->load->model('Publication');
+		$this->load->model('Message');
 		$pub = array();
-		$inputs = ["id_pub"];
-		$data = $this->get_datas($inputs,"get");
-		$pub["publication"] = $this->Publication->get_pub($data["id_pub"]);
-		$pub["commentaires"] = $this->Publication->get_commentaire($data["id_pub"],3);
-		$pub["detail_tags"] = $this->Publication->get_detail_tags($data["id_pub"]);
-		$pub["detail_utils"] = $this->Publication->get_detail_utilite($data["id_pub"]);
-		$pub["photos"] = $this->Publication->get_photo($data["id_pub"]);
-        echo json_encode($pub);
-//		$this->load->view('fiche.php',$pub);
+
+		$pub = $this->Publication->get_pub($id_pub);
+		$pub["commentaires"] = $this->Publication->get_commentaire($id_pub);
+		$pub["id_client"] = $this->Publication->get_id_client($id_pub);
+		$pub["detail_tags"] = $this->Publication->get_detail_tags($id_pub);
+		$pub["detail_utils"] = $this->Publication->get_detail_utilite($id_pub);
+		$pub["photos"] = $this->Publication->get_photo($id_pub);
+		$pub["commentaires"] = $this->Publication->get_limited_commentaire($id_pub,3,0);
+		$pub["messages"] = $this->Message->get_messages($_SESSION["id_client"], $id_pub);
+		$data["pub"] = $pub;
+        // echo json_encode($pub);
+		$this->load->view('pages/fiche.php',$data);
+		// print_r($pub);
 	}//lat //lng
 
-	public function comment()
+	public function comment($id_pub)
 	{
-		$this->load->model('Commentaire');
-		$inputs = ["id_pub","id_client","texte_commentaire"];
-        $datas = $this->get_datas($inputs,"post");
         $this->form_validation->set_rules('commentaire','Commentaire','required');
-		
         if ($this->form_validation->run()){
-            $this->Commentaire->insert($datas["id_pub"],$datas["id_client"],$datas["texte_commentaire"]);
-			http_response_code(200);
-        }else{
-			http_response_code(400);
+			$this->load->model('Commentaire');
+            $this->Commentaire->insert($id_pub,$_SESSION["id_client"],$this->input->post("commentaire"));
+        }
+		$this->load_detail($id_pub);
+	}
+
+	function envoyer($id_receiver,$id_pub){
+		$this->load->model('Message');
+		$this->form_validation->set_rules('message_texte','Message','required');
+		if ($this->form_validation->run()){
+			$this->Message->insert($_SESSION["id_client"],$id_pub,$id_receiver,$this->input->post("message_texte"));
 		}
+		$this->load_detail($id_pub);
 	}
 }

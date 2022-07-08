@@ -6,7 +6,6 @@
         }
 
         public function log(){
-            $this->load->model('Client');
             $inputs = ["email","password"];
             //autoload session + form_validation
             
@@ -17,9 +16,12 @@
             $data = array();
 
             if ($this->form_validation->run()){
-                if(empty($this->Client->exist($datas["email"],$datas["password"]))==false) {
-                    $this->load->library('session');
-                    $this->session->set_userdata($datas);
+                $this->load->model('Client');
+                $client = $this->Client->exist($datas["email"],$datas["password"]);
+                if(empty($client)==false) {
+                    $_SESSION["id_client"] = $client["id_client"];
+                    $_SESSION["first_name"] = $client["first_name"];
+                    $_SESSION["last_name"] = $client["last_name"];
                     // redirect(''); 
                     echo ("success");
                 }else{

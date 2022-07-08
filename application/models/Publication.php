@@ -8,7 +8,7 @@
         }
 
         public function get_pub($id){
-            return $this->get_by_id("publication","id_publication",$id);
+            return $this->get_by_id("v_publication","id_publication",$id);
         }
 
         public function get_next_pub($limit,$offset){
@@ -20,24 +20,35 @@
 
         public function  get_detail_utilite($id)
 		{
-			return $this->get_by_id("v_detail_utilite","id_publication", $id);
+			return $this->get_all("v_detail_utilite","id_publication=$id");
 		} 
 
-		public function get_commentaire($id,$limit)
+        public function get_id_client($id){
+            $data = $this->get_row("publication","id_publication=$id");
+            return $data["id_client"];
+        }
+
+		public function get_commentaire($id)
 		{
-			$sql = "select * from v_commentaire where id_publication=$id limit $limit";
-			$requete = $this->db->query($sql);
-			return $requete;
+			return $this->get_all("v_commentaire","id_publication=$id");
 		}
+
+        public function get_limited_commentaire($id,$limit,$offset)
+		{
+            $sql = "select * from v_commentaire where id_publication=$id limit $limit offset $offset ";
+            $query = $this->db->query($sql);
+			return $query->result_array() ;
+		}
+
 
 		public function get_detail_tags($id)
 		{
-			return $this->get_by_id("v_detail_tags","id_publication",$id);
+			return $this->get_all("v_detail_tags","id_publication=$id");
 		}
 
 		public function get_photo($id)
 		{
-			return $this->get_by_id("photo","id_publication",$id);
+			return $this->get_all("photo","id_publication=$id");
 		}
 
         public function createSearchCondition($titre,$location,$prix_min,$prix_max,$room_min,$room_max,$tags,$tags_util){
