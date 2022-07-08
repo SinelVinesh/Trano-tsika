@@ -16,24 +16,28 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
           integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
 
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/style.css">
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/post-css.css">
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/map.css">
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/message.css">
 
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
           integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/survey.css">
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/boost.css">
+
+    <style>
+        .mandatory {
+            color: red;
+            /*font-size: 20px;*/
+        }
+    </style>
 
 </head>
 
@@ -312,13 +316,13 @@
 
 
                         <div class="form-group">
-                            <label for="titre">Titre</label>
+                            <label for="titre">Titre<span class="mandatory">*</span></label>
                             <input type="text" name="titre" id="titre" placeholder="Entrez le titre votre publication">
                         </div>
 
                         <div class="form-group">
-                            <label for="titre">Description</label>
-                            <input type="text" name="description" id="description" placeholder="...">
+                            <label for="titre">Description<span class="mandatory">*</span></label>
+                            <input type="text" name="description" id="description" placeholder="Veuillez decrire la maison">
                         </div>
 
                         <div class="utilities">
@@ -348,13 +352,20 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="titre">Chambre</label>
-                            <input type="number" name="room" id="room" min="1" placeholder="Combien de chambre ?">
+                        <div class="row m-0 p-0">
+                            <div class="form-group col-md-6 m-0 pl-0">
+                                <label for="titre">Chambre<span class="mandatory">*</span></label>
+                                <input type="number" name="room" id="room" min="1" placeholder="Combien de chambre ?">
+                            </div>
+
+                            <div class="form-group col-md-6 m-0 p-0">
+                                <label for="titre">Surface</label>
+                                <input type="number" name="surface" min="0" step="0.01" placeholder="Surface occupe par la maison (m2)">
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="location">Location</label>
+                            <label for="location">Location<span class="mandatory">*</span></label>
                             <select id="location" name="location">
                                 <option selected>Choisir une ville</option>
                                 <option value="1">One</option>
@@ -426,7 +437,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="price">Prix par mois</label>
+                            <label for="price">Prix par mois<span class="mandatory">*</span></label>
                             <input type="number" name="price" id="price" min="1" step="0.01"
                                    placeholder="Prix du location par mois?">
                         </div>
@@ -439,8 +450,7 @@
 
                         <div class="container-img">
                             <div class="label-container">
-                                <label for="file-input" class="d-flex justify-content-center"><span>Add images <i
-                                                class="ti-plus"></i></span></label>
+                                <label for="file-input" class="d-flex justify-content-center"><span>Add images<span class="mandatory">*</span> <i class="fa-solid fa-plus"></i></span></label>
                             </div>
                             <div class="images"></div>
                         </div>
@@ -448,11 +458,11 @@
                     </form>
                 </div>
             </div>
+
             <div class="modal-footer d-flex justify-content-between">
                 <button class="btn btn-light rounded-0" type="button" data-dismiss="modal">Close</button>
                 <button class="btn btn-primary rounded-0" id="submit-make-post">Post</button>
             </div>
-
         </div>
     </div>
 </div>
