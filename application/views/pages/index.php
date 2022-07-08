@@ -217,7 +217,7 @@
                         <img src="assets/images/resources/admin2.jpg" alt="">
                     </figure>
                     <div class="newpst-input">
-                        <textarea rows="1" placeholder="Post your house..."></textarea>
+                        <textarea rows="1" placeholder="Post your house..." id="show-post-modal"></textarea>
                         <div class="attachments">
                             <ul>
                                 <li>
@@ -943,6 +943,11 @@
             shown = false;
         }
     });
+
+    $("#show-post-modal").click(() => {
+        $("#make-post").modal("show");
+    });
+
 </script>
 </body>
 
