@@ -2,7 +2,7 @@
     class AcceuilController extends MY_Controller{
         public function index(){
         $this->load->model('Publication');
-        $limit = 10;
+        $limit = 6;
         $offset = 0;
 
         $pubs = $this->Publication->get_next_pub($limit,$offset);

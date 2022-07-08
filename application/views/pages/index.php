@@ -277,12 +277,8 @@
                 </div>
             <?php } ?>
         </div>
-
-
     </div>
-
     <button class="btn-view btn-load-more mb-4">Load More</button>
-
 </div>
 
 <!--  footer  -->

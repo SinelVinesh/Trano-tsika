@@ -1,5 +1,10 @@
 <?php
     class LoginController extends MY_Controller{
+
+        public function index(){
+            $this->load_view('pages/log.php'); 
+        }
+
         public function log(){
             $this->load->model('Client');
             $inputs = ["email","password"];
@@ -12,10 +17,11 @@
                 if(empty($this->Client->exist($datas["email"],$datas["password"]))==false) {
                     $this->session->set_userdata($datas);
                     redirect('accueilController'); 
-                    return;
                 }
+            }else{
+                $this->load_view('pages/log.php');  
             }
-            $this->load_view('pages/log.php');    
+              
         } 
     }
 ?>
