@@ -211,7 +211,7 @@
     </div>
 
     <!--  main content  -->
-    <div class="container">
+    <div class="container" id="pub-container" >
 
         <!-- post form -->
         <div class="row align pt-4">
@@ -235,50 +235,9 @@
         </div>
 
         <!-- posts -->
-        <div class="row pl-1 pr-1">
-
-            <!-- Single Featured Property -->
-            <?php foreach ($pubs as $pub) { ?>
-                <div class="col-12 col-md-6 col-xl-4">
-                    <a href="" class="pub-link" title="Voir details">
-                        <div class="single-featured-property mb-5 wow fadeInUp" data-wow-delay="100ms">
-                            <!-- Property Thumbnail -->
-                            <div class="property-thumb">
-                                <img src="assets/bg-img/feature1.jpg" alt="">
-
-                                <div class="tag">
-                                    <span>A louer</span>
-                                </div>
-                                <div class="list-price">
-                                    <p><?= number_format($pub["prix"]) ?> Ar</p>
-                                </div>
-                            </div>
-                            <!-- Property Content -->
-                            <div class="property-content">
-                                <h5><?= $pub["titre"] ?></h5>
-                                <p class="location"><i class="fa-solid fa-location-dot"></i> Andoharanofotsy</p>
-                                <p>Integer nec bibendum lacus. Suspendisse dictum enim sit (description)</p>
-
-                                <div class="property-meta-data d-flex align-items-end justify-content-between">
-                                    <!--                            <a href="#" class="custom-btn">Plus de details</a>-->
-                                    <div class="pub-details">
-                                        <i class="fa-solid fa-thumbs-up"></i> <?= $pub["nblike"] ?? 0 ?>
-                                    </div>
-                                    <div class="pub-details">
-                                        <i class="fa-solid fa-thumbs-down"></i> <?= $pub["nbunlike"] ?? 0 ?>
-                                    </div>
-                                    <div class="pub-details">
-                                        by <i><?= $pub["first_name"] . " " . $pub["last_name"] ?></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            <?php } ?>
-        </div>
+        <?=  displayPubs($pubs); ?>
     </div>
-    <button class="btn-view btn-load-more mb-4">Load More</button>
+    <button class="btn-view btn-load-more mb-4" id="load-next">Load More</button>
 </div>
 
 <!--  footer  -->
@@ -921,9 +880,7 @@
 <script src="<?= base_url() ?>custom-assets/js/image-preview.js"></script>
 <script src="<?= base_url() ?>custom-assets/js/message.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
-        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="<?= base_url() ?>custom-assets/js/survey.js"></script>
 <script src="<?= base_url() ?>custom-assets/js/boost.js"></script>
 
@@ -954,6 +911,15 @@
         $("#make-post").modal("show");
     });
 
+</script>
+<script>
+    $("#load-next").click(() => {
+        $.ajax({
+            url: "<?= site_url("NextPublicationController") ?>"
+        }).done((data) => {
+            $("#pub-container").append(data);
+        });
+    });
 </script>
 </body>
 
