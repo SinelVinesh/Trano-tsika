@@ -15,7 +15,7 @@
                     return;
                 }
             }
-            $this->load_view('login.php');    
+            $this->load_view('pages/log.php');    
         } 
     }
 ?>
