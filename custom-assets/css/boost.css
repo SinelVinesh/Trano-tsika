@@ -1,0 +1,13 @@
+.modal-boost-advantage {
+    max-width: 850px;
+}
+
+.boost-header {
+    height: 10px;
+}
+.one-disadvantage i {
+    color: red;
+}
+.one-advantage i {
+    color: green;
+}
