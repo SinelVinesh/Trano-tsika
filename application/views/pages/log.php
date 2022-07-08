@@ -91,13 +91,13 @@
 							<p>
 								Don’t use Winku Yet? <a href="#" title="">Take the tour</a> or <a href="#" title="">Join now</a>
 							</p>
-						<form method="post">
+						<form action="LoginController/log" method="post">
 							<div class="form-group">	
-							  <input type="text" id="input" required="required"/>
-							  <label class="control-label" for="input">Username</label><i class="mtrl-select"></i>
+							  <input type="text" name="email" id="input" required="required"/>
+							  <label class="control-label" for="input">Email</label><i class="mtrl-select"></i>
 							</div>
 							<div class="form-group">	
-							  <input type="password" required="required"/>
+							  <input type="password" name="password" required="required"/>
 							  <label class="control-label" for="input">Password</label><i class="mtrl-select"></i>
 							</div>
 							<div class="checkbox">
