@@ -7,7 +7,7 @@
         }
 
         public function get_utilities(){
-            $sql = "SELECT * FROM v_detail_utilite";
+            $sql = "SELECT * FROM utilite";
             $query = $this->execute_query($sql);
             return $query->result_array();
         }

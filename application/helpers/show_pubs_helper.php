@@ -10,7 +10,7 @@
                     <div class="single-featured-property mb-5 wow fadeInUp" data-wow-delay="100ms">
                         <!-- Property Thumbnail -->
                         <div class="property-thumb">
-                            <img src="assets/bg-img/feature1.jpg" alt="">
+                            <img src="'.base_url().'assets/bg-img/feature1.jpg" alt="">
 
                             <div class="tag">
                                 <span>A louer</span>
@@ -23,7 +23,7 @@
                         <div class="property-content">
                             <h5>'.$pub["titre"].'</h5>
                             <p class="location"><i class="fa-solid fa-location-dot"></i> Andoharanofotsy</p>
-                            <p>Integer nec bibendum lacus. Suspendisse dictum enim sit (description)</p>
+                            <p>'.$pub["description"].'</p>
 
                             <div class="property-meta-data d-flex align-items-end justify-content-between">
                                 <!--                            <a href="#" class="custom-btn">Plus de details</a>-->

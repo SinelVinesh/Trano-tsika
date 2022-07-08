@@ -44,11 +44,6 @@
             $datas = $this->get_datas($inputs,"post");
             $tagsUtil=$this->input->post('tagsUtil[]');
             $tags=$this->input->post('tags');
-           
-            // print_r($tagsUtil);
-            foreach ($tagsUtil as $k ) {
-                // echo $k;
-            }
 
             $this->set_rules();
             // print_r($_FILES);
