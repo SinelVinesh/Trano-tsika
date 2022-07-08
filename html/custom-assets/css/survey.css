@@ -1,0 +1,18 @@
+.survey-modal {
+    max-width: 500px;
+}
+
+.toast-custom-class {
+    background-color: rgb(151, 113, 81);
+    opacity: 1;
+}
+
+#toast-container > div {
+    opacity: 1;
+}
+
+.btn-color{
+    background-color: #977151;
+    border: 0;
+    border-radius: 0;
+}
