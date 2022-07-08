@@ -8,7 +8,7 @@
         }
 
         public function get_pub($id){
-            return $this->get_by_id("publication","id_publication",$id)[0];
+            return $this->get_by_id("publication","id_publication",$id);
         }
 
         public function get_next_pub($limit,$offset){

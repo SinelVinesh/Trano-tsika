@@ -9,12 +9,13 @@ class DetailPublicationController extends My_Controller {
 		$pub = array();
 		$inputs = ["id_pub"];
 		$data = $this->get_datas($inputs,"get");
-		$pub["publication"] = $this->Publication->get_publication($data["id_pub"]);
+		$pub["publication"] = $this->Publication->get_pub($data["id_pub"]);
 		$pub["commentaires"] = $this->Publication->get_commentaire($data["id_pub"],3);
-		$pub["detail_tags"] = $this->Publication->get_details_tags($data["id_pub"]);
+		$pub["detail_tags"] = $this->Publication->get_detail_tags($data["id_pub"]);
 		$pub["detail_utils"] = $this->Publication->get_detail_utilite($data["id_pub"]);
 		$pub["photos"] = $this->Publication->get_photo($data["id_pub"]);
-		$this->load->view('fiche.php',$pub);
+        echo json_encode($pub);
+//		$this->load->view('fiche.php',$pub);
 	}//lat //lng
 
 	public function comment()

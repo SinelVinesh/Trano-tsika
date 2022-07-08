@@ -8,8 +8,7 @@
         }
 
         function get_messages($idClient1, $idClient2,$id_pub){
-            $condition = "id_publication = $id_pub and (id_client_sender=$idClient1 or id_client_receiver=$idClient2) and (id_client_sender=$idClient2 or id_client_receiver=$idClient1)";
+            $condition = "id_publication = $id_pub and ((id_client_sender=$idClient1 and id_client_receiver=$idClient2) or (id_client_sender=$idClient2 and id_client_receiver=$idClient1))";
             return $this->get_all("v_message",$condition);
         }
     }
-?>

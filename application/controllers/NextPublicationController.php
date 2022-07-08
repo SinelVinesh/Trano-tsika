@@ -14,8 +14,6 @@
            }
            
            $_SESSION["offset"] = $offset + $limit;
-           $data["pubs"] = $pubs;
-           $this->load->view("publications",$data);
+           echo displayPubs($pubs);
        }
     }
-?>
