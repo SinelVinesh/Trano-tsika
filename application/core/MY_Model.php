@@ -22,7 +22,7 @@
 
         protected function get_row($table_name, $condition=""){
             $sql = "select * from $table_name where 1=1 and $condition";
-            echo $sql;
+//            echo $sql;
             return $this->execute_query($sql)->row_array();
         }
 

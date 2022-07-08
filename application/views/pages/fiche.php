@@ -71,7 +71,7 @@
                                 </li>
                                 <li>
                                     <a href="notifications.html" title="">
-                                        <img src="assets/images/resources/thumb-3.jpg" alt="">
+                                        <img src="<?= base_url() ?>assets/images/resources/thumb-3.jpg" alt="">
                                         <div class="mesg-meta">
                                             <h6>Andrew</h6>
                                             <span>Hi, how r u dear ...?</span>
@@ -82,7 +82,7 @@
                                 </li>
                                 <li>
                                     <a href="notifications.html" title="">
-                                        <img src="assets/images/resources/thumb-4.jpg" alt="">
+                                        <img src="<?= base_url() ?>assets/images/resources/thumb-4.jpg" alt="">
                                         <div class="mesg-meta">
                                             <h6>Tom cruse</h6>
                                             <span>Hi, how r u dear ...?</span>
@@ -93,7 +93,7 @@
                                 </li>
                                 <li>
                                     <a href="notifications.html" title="">
-                                        <img src="assets/images/resources/thumb-5.jpg" alt="">
+                                        <img src="<?= base_url() ?>assets/images/resources/thumb-5.jpg" alt="">
                                         <div class="mesg-meta">
                                             <h6>Amy</h6>
                                             <span>Hi, how r u dear ...?</span>
@@ -113,7 +113,7 @@
                             <ul class="drops-menu">
                                 <li>
                                     <a class="discussion" discussion-id="1">
-                                        <img src="assets/images/resources/thumb-1.jpg" alt="">
+                                        <img src="<?= base_url() ?>assets/images/resources/thumb-1.jpg" alt="">
                                         <div class="mesg-meta">
                                             <h6>sarah Loren</h6>
                                             <span>Hi, how r u dear ...?</span>
@@ -124,7 +124,7 @@
                                 </li>
                                 <li>
                                     <a class="discussion" discussion-id="2">
-                                        <img src="assets/images/resources/thumb-2.jpg" alt="">
+                                        <img src="<?= base_url() ?>assets/images/resources/thumb-2.jpg" alt="">
                                         <div class="mesg-meta">
                                             <h6>Jhon doe</h6>
                                             <span>Hi, how r u dear ...?</span>
@@ -135,7 +135,7 @@
                                 </li>
                                 <li>
                                     <a class="discussion" discussion-id="3">
-                                        <img src="assets/images/resources/thumb-3.jpg" alt="">
+                                        <img src="<?= base_url() ?>assets/images/resources/thumb-3.jpg" alt="">
                                         <div class="mesg-meta">
                                             <h6>Andrew</h6>
                                             <span>Hi, how r u dear ...?</span>
@@ -146,7 +146,7 @@
                                 </li>
                                 <li>
                                     <a class="discussion" discussion-id="4">
-                                        <img src="assets/images/resources/thumb-4.jpg" alt="">
+                                        <img src="<?= base_url() ?>assets/images/resources/thumb-4.jpg" alt="">
                                         <div class="mesg-meta">
                                             <h6>Tom cruse</h6>
                                             <span>Hi, how r u dear ...?</span>
@@ -157,7 +157,7 @@
                                 </li>
                                 <li>
                                     <a class="discussion" discussion-id="5">
-                                        <img src="assets/images/resources/thumb-5.jpg" alt="">
+                                        <img src="<?= base_url() ?>assets/images/resources/thumb-5.jpg" alt="">
                                         <div class="mesg-meta">
                                             <h6>Amy</h6>
                                             <span>Hi, how r u dear ...?</span>
@@ -223,7 +223,7 @@
                         <div class="row mt-3">
                             <div class="col">
                                 <i class="fa-solid fa-user"></i> by <?php echo $pub["first_name"] . " " . $pub["last_name"]  ?>
-                                <button data-toggle="modal" class="btn btn-primary btn-color" data-target="#message" discussion-id="1">Contact
+                                <button data-toggle="modal" class="btn btn-primary btn-color ml-2" data-target="#message" discussion-id="1">Contact
                                     <i class="fa fa-paper-plane">
                                     </i>
                                 </button>
@@ -266,35 +266,42 @@
                         <div class="row mt-3 border-0">
                             <div class="col-12">
                                 <div class="coment-area">
+
                                     <h6>Comments <i class="fa fa-comments"></i></h6>
+
                                     <ul class="we-comet" id="comment">
+
                                         <?php foreach ($pub["commentaires"] as $commentaire) { ?>
                                             <li>
                                                 <div class="we-comment">
                                                     <div class="coment-head">
                                                         <h5>
-                                                            <a href="time-line.html" title="">
-                                                                <?php echo $commentaire["first_name"] . " " . $commentaire["last_name"] ?>
-                                                            </a>
+<!--                                                            <a href="time-line.html" title="">-->
+                                                                <?= $commentaire["first_name"] . " " . $commentaire["last_name"] ?>
+<!--                                                            </a>-->
                                                         </h5>
-                                                        <span><?= $commentaire["date_commentaire"] ?></span>
+                                                        <span><?= displayDate($commentaire["date_commentaire"]) ?></span>
                                                         <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
                                                     </div>
                                                     <p><?= $commentaire["texte_commentaire"] ?></p>
                                                 </div>
                                             </li>
+
                                         <?php } ?>
+
+                                        <button class="btn-view btn-load-more mb-4" id="load-next-comments">Load More</button>
 
                                         <li class="post-comment">
                                             <div class="post-comt-box">
-                                                <form method="post" action="<?= base_url() ?>/DetailPublicationController/comment/<?= $pub["id_publication"] ?>">
-                                                    <textarea placeholder="Post your comment" name="commentaire"></textarea>
-                                                    <input type="submit" value="Comment">
+                                                <form>
+                                                    <div class="post-comt-box">
+                                                        <textarea placeholder="Post your comment" name="commentaire" id="text-area-comment"></textarea>
+                                                    </div>
                                                 </form>
-                                                <?= validation_errors() ?>
                                             </div>
                                         </li>
                                     </ul>
+
                                 </div>
                             </div>
                         </div>
@@ -311,7 +318,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <span class="copyright"><a target="_blank" href="https://www.templateshub.net"> &copy; Trano-Tsika</a></span>
-                        <i><img src="assets/images/credit-cards.png" alt=""></i>
+                        <i><img src="<?= base_url() ?>assets/images/credit-cards.png" alt=""></i>
                     </div>
                 </div>
             </div>
@@ -366,16 +373,83 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+    <script>
+        let commentArea = $("#text-area-comment");
+        let commentTemplate = (text) => `
+            <li>
+                <div class="we-comment">
+                    <div class="coment-head">
+                        <h5>
+                            <a href="time-line.html" title="">
+                                <?= $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?>
+                            </a>
+                        </h5>
+                        <span>a l'instant</span>
+                        <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+                    </div>
+                    <p>${text}</p>
+                </div>
+            </li>`;
+
+        commentArea.keyup((e) => {
+            if(e.keyCode === 13) {
+                let curVal = commentArea.val();
+                $("#comment li:last").before(commentTemplate(curVal));
+                console.log(curVal);
+                $.ajax({
+                    type: "POST",
+                    url: "<?= site_url() ?>/DetailPublicationController/comment/<?= $pub["id_publication"] ?>",
+                    data: {
+                        commentaire: curVal
+                    }
+                }).done((data) => {
+                    console.log(data);
+                });
+                commentArea.val('');
+            }
+        });
+
+        $("#load-next-comments").click(() => {
+
+        });
+
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script src="<?= base_url() ?>assets/js/main.min.js"></script>
     <script src="<?= base_url() ?>assets/js/script.js"></script>
-    <script src="<?= base_url() ?>assets/js/map-init.js"></script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDD7GRQJx0_fNz6eeUSJjf7Yw5_6s0OEaA&libraries=geometry,places"></script>
 
-    <script src="<?= base_url() ?>custom-assets/js/map.js"></script>
+    <script>
+
+        var map;
+        function initialize() {
+            let pubPos = new google.maps.LatLng(<?= $pub['pos']['lat'] ?>, <?= $pub['pos']['lng'] ?> );
+
+            var mapOptions = {
+                zoom: 12,
+                center: pubPos
+            };
+
+
+            map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+            new google.maps.Marker({
+                position: pubPos,
+                map: map
+            });
+
+            let marker = new google.maps.Marker
+
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+<!--    <script src="--><?//= base_url() ?><!--custom-assets/js/map.js"></script>-->
     <script src="<?= base_url() ?>custom-assets/js/modals.js"></script>
     <script src="<?= base_url() ?>custom-assets/js/image-preview.js"></script>
     <script src="<?= base_url() ?>custom-assets/js/message.js"></script>

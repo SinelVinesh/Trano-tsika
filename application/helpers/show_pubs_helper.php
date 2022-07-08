@@ -6,7 +6,7 @@
         <!-- Single Featured Property -->';
         foreach ($pubs as $pub) {
             $display = $display.'<div class="col-12 col-md-6 col-xl-4">
-                <a href="" class="pub-link" title="Voir details">
+                <a href="'.site_url("DetailPublicationController/load_detail/${pub["id_publication"]}").'" class="pub-link" title="Voir details">
                     <div class="single-featured-property mb-5 wow fadeInUp" data-wow-delay="100ms">
                         <!-- Property Thumbnail -->
                         <div class="property-thumb">

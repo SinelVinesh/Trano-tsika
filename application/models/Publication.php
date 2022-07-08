@@ -18,6 +18,13 @@
             return $query->result_array();
         }
 
+        public function getPosition($id) {
+            return $this
+                ->db
+                ->query("select longitude lng , latitude lat from publication where id_publication=$id")
+                ->row_array();
+        }
+
         public function  get_detail_utilite($id)
 		{
 			return $this->get_all("v_detail_utilite","id_publication=$id");

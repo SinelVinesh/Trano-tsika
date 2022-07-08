@@ -7,7 +7,7 @@
         function __construct(){
             parent::__construct();
             session_start();
-            $_SESSION['id_client'] = 1001;
+//            $_SESSION['id_client'] = 1001;
         } 
 
         /**
