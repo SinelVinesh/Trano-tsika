@@ -1,7 +1,7 @@
 <?php
 
 function displayDate($date) {
-    $intervalle = date_diff(new DateTime($date), new DateTime());
+    $intervalle = date_diff(new DateTime($date, new DateTimeZone("Africa/Nairobi")), new DateTime("Africa/Nairobi"));
     $d = $intervalle->d;
     $base_str = "il y a %s %s(s)";
 
