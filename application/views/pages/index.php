@@ -46,7 +46,7 @@
         <!-- topbar -->
         <div class="topbar stick d-flex justify-content-between">
             <div class="logo">
-                <a title="" href="newsfeed.html"><img src="<?= base_url() ?>custom-assets/logo.png" alt=""></a>
+                <a title="" href="<?= site_url() ?>"><img src="<?= base_url() ?>custom-assets/logo.png" alt=""></a>
             </div>
 
             <div class="top-area mt-3 border-0">
@@ -72,65 +72,11 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#" title="Messages" class="menu-item" data-ripple="">Messages</a>
-                        <div class="dropdowns">
-                            <span>5 New Messages</span>
+                        <a href="#" title="Messages" class="menu-item" data-ripple="" id="show-discussions" >Messages</a>
+                        <div class="dropdowns" id="discussion-box" >
+                            <span><span class="messageNumber"></span> New Messages</span>
                             <ul class="drops-menu">
-                                <li>
-                                    <a class="discussion" discussion-id="1">
-                                        <img src="assets/images/resources/thumb-1.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>sarah Loren</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <!--                                <span class="tag green">New</span>-->
-                                </li>
-                                <li>
-                                    <a class="discussion" discussion-id="2">
-                                        <img src="assets/images/resources/thumb-2.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Jhon doe</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <!--                                <span class="tag red">Reply</span>-->
-                                </li>
-                                <li>
-                                    <a class="discussion" discussion-id="3">
-                                        <img src="assets/images/resources/thumb-3.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Andrew</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <!--                                <span class="tag blue">Unseen</span>-->
-                                </li>
-                                <li>
-                                    <a class="discussion" discussion-id="4">
-                                        <img src="assets/images/resources/thumb-4.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Tom cruse</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <span class="tag">New</span>
-                                </li>
-                                <li>
-                                    <a class="discussion" discussion-id="5">
-                                        <img src="assets/images/resources/thumb-5.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Amy</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <span class="tag">New</span>
-                                </li>
+
                             </ul>
                             <a href="messages.html" title="" class="more-mesg">view more</a>
                         </div>
@@ -353,42 +299,7 @@
                     <h6>Andoharanofotsy Room </h6>
                     <div class="chat-list">
                         <ul id="onemessage">
-                            <li class="me">
-                                <div class="chat-thumb"><img src="assets/images/resources/chatlist1.jpg" alt=""></div>
-                                <div class="notification-event">
-                                    <span class="chat-message-item">
-                                        Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks
-                                    </span>
-                                    <span class="notification-date"><time datetime="2004-07-24T18:18" class="entry-date updated">Yesterday at 8:10pm</time></span>
-                                </div>
-                            </li>
-                            <li class="you">
-                                <div class="chat-thumb"><img src="assets/images/resources/chatlist2.jpg" alt=""></div>
-                                <div class="notification-event">
-                                    <span class="chat-message-item">
-                                        Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks
-                                    </span>
-                                    <span class="notification-date"><time datetime="2004-07-24T18:18" class="entry-date updated">Yesterday at 8:10pm</time></span>
-                                </div>
-                            </li>
-                            <li class="me">
-                                <div class="chat-thumb"><img src="assets/images/resources/chatlist1.jpg" alt=""></div>
-                                <div class="notification-event">
-                                    <span class="chat-message-item">
-                                        Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks
-                                    </span>
-                                    <span class="notification-date"><time datetime="2004-07-24T18:18" class="entry-date updated">Yesterday at 8:10pm</time></span>
-                                </div>
-                            </li>
-                            <li class="you">
-                                <div class="chat-thumb"><img src="assets/images/resources/chatlist2.jpg" alt=""></div>
-                                <div class="notification-event">
-                                    <span class="chat-message-item">
-                                        Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks
-                                    </span>
-                                    <span class="notification-date"><time datetime="2004-07-24T18:18" class="entry-date updated">Yesterday at 8:10pm</time></span>
-                                </div>
-                            </li>
+
                         </ul>
                         <form>
                             <div class="row pt-1">
@@ -768,6 +679,7 @@
             }
         };
     </script>
+
     <script>
         $("#show-notif").click(() => {
             let notifBox = $("#notif-box > .drops-menu");
@@ -779,9 +691,58 @@
                 notifBox.append(data);
                 $(".number").text(($("#notif-box > .drops-menu > li").length));
             });
-            notifBox.append()
         });
     </script>
+
+    <script>
+        let site_url = "<?= site_url() ?>";
+        let pubIdclient;
+        let idPublication;
+    </script>
+
+    <script>
+        $("#show-discussions").click(() => {
+
+            let discuBox = $("#discussion-box > .drops-menu");
+            $(".messageNumber").empty();
+            discuBox.empty();
+
+            $.ajax({
+                url: "<?= site_url("LastMessageController") ?>"
+            }).done((data) => {
+                discuBox.append(data);
+                $(".messageNumber").text($("#discussion-box > .drops-menu > li").length);
+                
+                $(".discussion").on("click", (e) => {
+
+                    let target = $(e.target);
+
+                    while (target.attr("pub-id") == null && target.attr("another") == null ) {
+                        target = target.parent();
+                    }
+
+                    let pubId = target.attr("pub-id");
+                    let another = target.attr("another");
+
+                    pubIdclient = another;
+                    idPublication = pubId;
+
+                    $.ajax({
+                        url: `<?= site_url("MessageController/load_message?client1=".$_SESSION['id_client']."&client2=") ?>${another}&id_pub=${pubId}`
+                    }).done((data) => {
+                        console.log(data);
+                        let messagesBox = $("#onemessage");
+                        messagesBox.empty();
+                        messagesBox.append(data);
+                        $("#message").modal("show");
+                    });
+                });
+            });
+        });
+    </script>
+
+    <script src="<?= base_url() ?>custom-assets/js/sendMessage.js" ></script>
+
 </body>
 
 </html>

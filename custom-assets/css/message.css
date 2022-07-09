@@ -11,3 +11,19 @@
     /*position: absolute;*/
     width: 140%;
 }
+
+.you .infos, .me .infos {
+    display: flex;
+}
+.you .infos {
+    flex-direction: row-reverse;
+}
+.me .infos {
+    flex-direction: row;
+}
+.info-details .chat-message-item {
+    min-width: 100%;
+}
+#send-message {
+    cursor: pointer;
+}

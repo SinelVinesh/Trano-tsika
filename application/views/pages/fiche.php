@@ -315,26 +315,6 @@
     </div>
 
 
-<style>
-    /*.chat-message-item {*/
-    /*    width: 100%;*/
-    /*}*/
-    .you .infos, .me .infos {
-        display: flex;
-    }
-    .you .infos {
-        flex-direction: row-reverse;
-    }
-    .me .infos {
-        flex-direction: row;
-    }
-    .info-details .chat-message-item {
-        min-width: 100%;
-    }
-    #send-message {
-        cursor: pointer;
-    }
-</style>
 
 <!-- message box -->
 <div class="modal fade message-modal" id="message" tabindex="-1" role="dialog">
@@ -464,59 +444,15 @@
 <script src="<?= base_url() ?>custom-assets/js/modals.js"></script>
 <script src="<?= base_url() ?>custom-assets/js/image-preview.js"></script>
 <script src="<?= base_url() ?>custom-assets/js/message.js"></script>
+
 <script>
-    let sendMessage = () => {
-        let mText = $("#corpsmessage").val();
-        $.ajax({
-            type: "POST",
-            url: "<?= site_url() ?>/DetailPublicationController/envoyer/<?= $pub["id_client"] ?>/<?= $pub["id_publication"] ?>",
-            data: {
-                message_texte: mText
-            }
-        }).done((data) => {
-            $("#onemessage").append(`
-            <li class="you">
-                <div class="notification-event">
-                    <div class="infos" >
-                        <div class="info-details">
-                            <span class="chat-message-item">
-                                ${mText}
-                            </span>
-                            <span class="notification-date">
-                                <time datetime=""
-                                      class="entry-date updated">a l'instant
-                                </time>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </li>`
-            );
-            scrollEndMessage();
-        });
-
-        $("#corpsmessage").val("")
-    }
-
-    $("#send-message").click(() => {
-        sendMessage();
-    });
-
-    $("#corpsmessage").keyup((e) =>{
-        if (e.keyCode === 13) {
-            sendMessage();
-        }
-    });
-
-    $("#contact-owner").click(() => {
-        $("#onemessage").empty();
-        $.ajax({
-            url: "<?= site_url("DiscussionController/get/".$pub['id_publication']) ?>"
-        }).done((data) => {
-            $("#onemessage").append(data);
-        })
-    });
+    let site_url = "<?= site_url() ?>";
+    let pubIdclient = "<?= $pub["id_client"] ?>";
+    let idPublication = "<?= $pub["id_publication"] ?>";
 </script>
+
+<script src="<?= base_url() ?>custom-assets/js/sendMessage.js" ></script>
+
 </body>
 
 </html>
