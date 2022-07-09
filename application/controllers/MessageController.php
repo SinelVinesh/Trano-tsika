@@ -9,7 +9,12 @@
             $tab = $this->get_datas($inputs, "get");
             
             $data["messages"] = $this->Message->getMessages($tab["client1"],$tab["client2"],$tab["id_pub"]);
-            $data["publication"] = $this->Publication->get_pub($tab["id_pub"]);
+            $pub = $this->Publication->get_pub($tab["id_pub"]);
+
+            $data["titre"] = $pub["titre"];
+            $message = $data['messages'][0];
+            $user = $message["id_client_sender"] == $_SESSION["id_client"] ? "receiver" : "sender";
+            $data["user"] = $message["last_name_$user"]." ".$message["first_name_$user"];
 
             $this->load_view('pages/discussion',$data);
         }
