@@ -279,7 +279,12 @@
                         <div class="coment-area">
                             <h6>Comments <i class="fa fa-comments"></i></h6>
                             <ul class="we-comet" id="comment">
+
+                                <!-- helper that displays the comments -->
                                 <?= displayComments($pub['commentaires']) ?>
+
+                                <button class="btn-view btn-load-more mb-4" id="load-next-comment">Load More</button>
+
                                 <li class="post-comment">
                                     <div class="post-comt-box">
                                         <form method="post">
@@ -403,8 +408,12 @@
         }
     });
 
-    $("#load-next-comments").click(() => {
-
+    $("#load-next-comment").click(() => {
+        $.ajax({
+            url: "<?= site_url("DetailPublicationController/next_commentaire/".$pub['id_publication']) ?>"
+        }).done((data) => {
+            $("#load-next-comment").before(data);
+        })
     });
 
 </script>
