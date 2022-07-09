@@ -229,8 +229,7 @@
                         <div class="col">
                             <i class="fa-solid fa-user"></i>
                             by <?php echo $pub["first_name"] . " " . $pub["last_name"] ?>
-                            <button data-toggle="modal" class="btn btn-primary btn-color ml-2" data-target="#message"
-                                    discussion-id="1">Contact
+                            <button data-toggle="modal" class="btn btn-primary btn-color ml-2" data-target="#message" id="contact-owner">Contact
                                 <i class="fa fa-paper-plane">
                                 </i>
                             </button>
@@ -352,26 +351,7 @@
                 <h6><?= $pub["titre"] ?></h6>
                 <div class="chat-list">
                     <ul id="onemessage">
-                        <?php
-                        foreach ($pub["messages"] as $message) {
-                            $class = ($message["id_client_receiver"] == $_SESSION["id_client"]) ? "me" : "you"; ?>
-                            <li class="<?= $class ?>">
-                                <div class="notification-event">
-                                    <div class="infos" >
-                                        <div class="info-details">
-                                            <span class="chat-message-item">
-                                                <?= $message["message_texte"] ?>
-                                            </span>
-                                            <span class="notification-date">
-                                                <time datetime=""
-                                                      class="entry-date updated"><?= displayDate($message["date_envoye"]) ?>
-                                                </time>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        <?php } ?>
+
                     </ul>
                     <form>
                         <div class="row pt-1">
@@ -513,7 +493,7 @@
             );
             scrollEndMessage();
         });
-        
+
         $("#corpsmessage").val("")
     }
 
@@ -525,7 +505,16 @@
         if (e.keyCode === 13) {
             sendMessage();
         }
-    })
+    });
+
+    $("#contact-owner").click(() => {
+        $("#onemessage").empty();
+        $.ajax({
+            url: "<?= site_url("DiscussionController/get/".$pub['id_publication']) ?>"
+        }).done((data) => {
+            $("#onemessage").append(data);
+        })
+    });
 </script>
 </body>
 
