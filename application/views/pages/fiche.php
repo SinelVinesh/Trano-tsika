@@ -304,18 +304,39 @@
 </div>
 
 <!--  footer  -->
-<div class="bottombar">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <span class="copyright"><a target="_blank"
-                                           href="https://www.templateshub.net"> &copy; Trano-Tsika</a></span>
-                <i><img src="<?= base_url() ?>assets/images/credit-cards.png" alt=""></i>
+    <div class="bottombar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="copyright"><a target="_blank"
+                                               href="https://www.templateshub.net"> &copy; Trano-Tsika</a></span>
+                    <i><img src="<?= base_url() ?>assets/images/credit-cards.png" alt=""></i>
+                </div>
             </div>
         </div>
     </div>
-</div>
-</div>
+
+
+<style>
+    /*.chat-message-item {*/
+    /*    width: 100%;*/
+    /*}*/
+    .you .infos, .me .infos {
+        display: flex;
+    }
+    .you .infos {
+        flex-direction: row-reverse;
+    }
+    .me .infos {
+        flex-direction: row;
+    }
+    .info-details .chat-message-item {
+        min-width: 100%;
+    }
+    #send-message {
+        cursor: pointer;
+    }
+</style>
 
 <!-- message box -->
 <div class="modal fade message-modal" id="message" tabindex="-1" role="dialog">
@@ -335,32 +356,33 @@
                         foreach ($pub["messages"] as $message) {
                             $class = ($message["id_client_receiver"] == $_SESSION["id_client"]) ? "me" : "you"; ?>
                             <li class="<?= $class ?>">
-                                <div class="chat-thumb"><img
-                                            src="<?= base_url() ?>assets/images/resources/chatlist1.jpg" alt=""></div>
                                 <div class="notification-event">
-                                        <span class="chat-message-item">
-                                            <?= $message["message_texte"] ?>
-                                        </span>
-                                    <span class="notification-date">
-                                        <time datetime="<?= $message["date_envoye"] ?>"
-                                              class="entry-date updated"><?= $message["date_envoye"] ?></time></span>
+                                    <div class="infos" >
+                                        <div class="info-details">
+                                            <span class="chat-message-item">
+                                                <?= $message["message_texte"] ?>
+                                            </span>
+                                            <span class="notification-date">
+                                                <time datetime=""
+                                                      class="entry-date updated"><?= displayDate($message["date_envoye"]) ?>
+                                                </time>
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </li>
                         <?php } ?>
                     </ul>
-                    <form action="<?= base_url() ?>/DetailPublicationController/envoyer/<?= $pub["id_client"] ?>/<?= $pub["id_publication"] ?>"
-                          method="post">
+                    <form>
                         <div class="row pt-1">
                             <div class="col-10 text-box">
                                 <textarea name="message_texte" placeholder="your message ..."
                                           id="corpsmessage"></textarea>
                             </div>
-                            <div class="col-2 mt-2 pt-1 border-0">
+                            <div class="col-2 mt-2 pt-1 border-0" id="send-message">
                                 <i class="fa-solid fa-circle-arrow-right"></i>
                             </div>
                         </div>
-                        <input type="submit" value="Envoyer">
-                        <?= validation_errors() ?>
                     </form>
                 </div>
             </div>
@@ -371,6 +393,7 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
+
 
 <script>
     let commentArea = $("#text-area-comment");
@@ -460,7 +483,50 @@
 <script src="<?= base_url() ?>custom-assets/js/modals.js"></script>
 <script src="<?= base_url() ?>custom-assets/js/image-preview.js"></script>
 <script src="<?= base_url() ?>custom-assets/js/message.js"></script>
+<script>
+    let sendMessage = () => {
+        let mText = $("#corpsmessage").val();
+        $.ajax({
+            type: "POST",
+            url: "<?= site_url() ?>/DetailPublicationController/envoyer/<?= $pub["id_client"] ?>/<?= $pub["id_publication"] ?>",
+            data: {
+                message_texte: mText
+            }
+        }).done((data) => {
+            $("#onemessage").append(`
+            <li class="you">
+                <div class="notification-event">
+                    <div class="infos" >
+                        <div class="info-details">
+                            <span class="chat-message-item">
+                                ${mText}
+                            </span>
+                            <span class="notification-date">
+                                <time datetime=""
+                                      class="entry-date updated">a l'instant
+                                </time>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </li>`
+            );
+            scrollEndMessage();
+        });
+        
+        $("#corpsmessage").val("")
+    }
 
+    $("#send-message").click(() => {
+        sendMessage();
+    });
+
+    $("#corpsmessage").keyup((e) =>{
+        if (e.keyCode === 13) {
+            sendMessage();
+        }
+    })
+</script>
 </body>
 
 </html>
