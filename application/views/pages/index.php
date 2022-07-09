@@ -240,7 +240,7 @@
                             <input type="hidden" name="img-removed" id="img-removed">
                             <input type="hidden" name="lat" id="lat" value="">
                             <input type="hidden" name="lng" id="lng" value="">
-                            <input type="hidden" name="duration" id="duration" value="1">
+                            <input type="hidden" name="duration" id="duration" >
 
                             <div class="container-img">
                                 <div class="label-container">
@@ -258,7 +258,6 @@
                     <button class="btn btn-primary rounded-0" type="button" id="submit-make-post">Ajouter</button>
                 </div>
                 <!-- </form> -->
-
             </div>
         </div>
     </div>
@@ -427,8 +426,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="duration">Duration</label>
-                        <select id="duration" name="duration">
+                        <label for="display-duration">Duration</label>
+                        <select id="display-duration" name="duration">
                             <option selected>Pour combien de semaine?</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>

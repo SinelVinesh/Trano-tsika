@@ -15,3 +15,10 @@ $("#publish-boost").click(() => {
     $("#boost-advantage").modal("hide");
     $("#pay-boost").modal("show");
 });
+
+$("#post-boost").click(() => {
+    $("#pay-boost").modal("hide");
+    let duration = $("#display-duration").val();
+    $("#duration").val(duration);
+    $("#submit-post").trigger("click");
+});
