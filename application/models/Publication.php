@@ -78,7 +78,7 @@
             if($room_max!=""){
                 $condition = $condition." and nombre_piece <= ".$room_max;
             }
-            if(count($tags)!=0){
+            if($tags != null && count($tags)!=0){
                 $condition = $condition." and id_publication in (select id_publication from detail_tags where id_tag = ".$tags[0];
                 foreach($tags as $tag){
                     if($tag != $tags[0]){
@@ -87,7 +87,7 @@
                 }
                 $condition = $condition.")";
             }
-            if(count($tags_util)!=0){
+            if($tags_util != null && count($tags_util)!=0){
                 $condition = $condition."and id_publication in (select id_publication from detail_utilite where id_utilite = ".$tags_util[0];
                 foreach($$tags_util as $tag){
                     if($tag != $tags_util[0]){
@@ -102,7 +102,18 @@
         public function search($titre,$location,$prix_min,$prix_max,$room_min,$room_max,$tags,$tags_util){
             $condition=$this->Publication->createSearchCondition($titre,$location,$prix_min,$prix_max,$room_min,$room_max,$tags,$tags_util);
             $sql = "SELECT * FROM v_publication WHERE 1=1".$condition;  
+            // echo $sql;
             $query = $this->execute_query($sql);
+            return $query->result_array();
+        }
+
+        public function simpleSearch($criteria){
+            $tag = "id_publication in (select id_publication from v_detail_tags where nom_tag ilike '%$criteria%')";
+            $util = "id_publication in (select id_publication from v_detail_utilite where nom_utilite ilike '%$criteria%')";
+            $sql = "select * from v_publication where titre ilike '%$criteria%' or $tag or $util ";
+            // echo $sql;
+            $query = $this->execute_query($sql);
+
             return $query->result_array();
         }
     }

@@ -3,6 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class DetailPublicationController extends My_Controller {
 
+	public function next_commentaire($id_pub){
+		$this->load->model("Publication");
+		$limit = $_SESSION["limit_comment"];
+		$offset =  $_SESSION["offset"];
+		$data["commentaires"] = $this->Publication->get_limited_commentaire($id_pub,$limit,$offset);
+		$_SESSION["offset"] = $offset + $limit;
+		// echo json_decode($data["commentaires"]);
+		print_r($data);
+	}
+
 	public function load_detail($id_pub)
 	{
 		$this->load->model('Publication');
@@ -15,6 +25,8 @@ class DetailPublicationController extends My_Controller {
 		$pub["detail_tags"] = $this->Publication->get_detail_tags($id_pub);
 		$pub["detail_utils"] = $this->Publication->get_detail_utilite($id_pub);
 		$pub["photos"] = $this->Publication->get_photo($id_pub);
+		$_SESSION["limit_comment"] = 3;
+		$_SESSION["offset"] = 3;
 		$pub["commentaires"] = $this->Publication->get_limited_commentaire($id_pub,3,0);
 		$pub["messages"] = $this->Message->get_messages($_SESSION["id_client"], $id_pub);
         $pub["pos"] = $this->Publication->getPosition($id_pub);

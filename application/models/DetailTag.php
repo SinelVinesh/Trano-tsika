@@ -7,7 +7,7 @@
         }
 
         public function get_tags(){
-            $sql = "SELECT * FROM v_detail_tags";
+            $sql = "SELECT * FROM tag";
             $query =$this->execute_query($sql);
             return $query->result_array();
         }
