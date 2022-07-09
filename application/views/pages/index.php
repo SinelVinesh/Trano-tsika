@@ -334,7 +334,7 @@
                         $type = ($survey["question"]["multi_res"]) ? "checkbox" : "radio";
                         foreach ($survey["reponses"] as $res) { ?>
                             <div class="form-check">
-                                <input class="form-check-input check" type="checkbox" name="response" value="<?= $res["id_tag"] ?>">
+                                <input class="form-check-input check" type="<?= $type  ?>" name="response" value="<?= $res["id_tag"] ?>">
                                 <label class="form-check-label"><?= $res["intitule"] ?></label>
                             </div>
                         <?php } ?>
@@ -695,39 +695,39 @@
             $("#survey").modal("hide");
         });
         $(".next").click(function() {
-            var radiovalue ;
-            var radioValue = $(".check:checkbox:checked");
-            if (radioValue) {
-                // Send request
-                // alert(radioValue[0].value);
-                var vals = [];
-                for (let i = 0; i < radioValue.length; i++) {
-                    vals.push(radioValue[i].value)
-                }
-                // alert(vals);
-                $.ajax({
+            var values = [] ;
+            var markedCheckbox = document.getElementsByName('response');  
+            for (var checkbox of markedCheckbox) {  
+                if (checkbox.checked)  
+                    values.push(checkbox.value);  
+            }  
+
+            if(values.length > 0 ){
+                 $.ajax({
                     type: 'GET',
                     data: {
-                        id_tags: vals
+                        id_tags: values
                     },
                     url: "<?= site_url("SurveyController/response") ?>"
                 }).done((response) => {
-                    alert(response);
+                    alert('success');
+                    $(".form").empty();
+                    // surveyQuestion.empty();
+                    // surveyQuestion.append("Êtes-vous Tenant ou Leese?");
                 });
-
-
-                // Get & Set Data
-                // let surveyQuestion = $("#questionSurvey");
-                // surveyQuestion.empty();
-                // surveyQuestion.append("Êtes-vous Tenant ou Leese?");
-
-                // let form = $(".form");
-                // form.empty();
-                // form.append("<div class='form-check'><input class='form-check-input' type='radio' name='response' value='yes'><label class='form-check-label'>Next Yes</label></div>");
-                // form.append("<div class='form-check'><input class='form-check-input' type='radio' name='response' value='no'><label class='form-check-label'>Next No</label></div>");
-            } else {
-                alert("Please! Do your choice");
+                
             }
+
+            // Get & Set Data
+            // let surveyQuestion = $("#questionSurvey");
+            // surveyQuestion.empty();
+            // surveyQuestion.append("Êtes-vous Tenant ou Leese?");
+
+            // let form = $(".form");
+            // form.empty();
+            // form.append("<div class='form-check'><input class='form-check-input' type='radio' name='response' value='yes'><label class='form-check-label'>Next Yes</label></div>");
+            // form.append("<div class='form-check'><input class='form-check-input' type='radio' name='response' value='no'><label class='form-check-label'>Next No</label></div>");
+            
         });
     </script>
 
