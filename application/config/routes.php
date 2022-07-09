@@ -53,3 +53,6 @@ $route['default_controller'] = 'AcceuilController';
 $route['login']='LoginController/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+/*Personnal route */
+$route['pub/(:num)'] = 'DetailPublicationController/load_detail/$1';
