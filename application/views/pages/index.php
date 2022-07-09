@@ -292,13 +292,13 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="messageTitle">Client</h5>
+                    <h5 class="modal-title" id="user">Client</h5>
                     <a type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </a>
                 </div>
                 <div class="modal-body">
-                    <h6>Andoharanofotsy Room </h6>
+                    <h6><span id="titre-message">Andoharanofotsy Room</span></h6>
                     <div class="chat-list">
                         <ul id="onemessage">
 
@@ -772,6 +772,10 @@
                         let messagesBox = $("#onemessage");
                         messagesBox.empty();
                         messagesBox.append(data);
+
+                        $("#user").text($('#get-user').text());
+                        $("#titre-message").text($('#get-titre').text());
+
                         $("#message").modal("show");
                     });
                 });
