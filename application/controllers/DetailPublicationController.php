@@ -30,8 +30,50 @@ class DetailPublicationController extends My_Controller {
 		$pub["messages"] = $this->Message->get_messages($_SESSION["id_client"], $id_pub);
         $pub["pos"] = $this->Publication->getPosition($id_pub);
 		$data["pub"] = $pub;
+
+		$data["user_like"] = $this->user_like($id_pub);
 //         echo json_encode($pub);
 		$this->load->view('pages/fiche.php',$data);
+	}
+
+	public function user_like ($id_pub){
+		$this->load->model('Reaction');
+		$reaction = $this->Reaction->get_reaction($id_pub,$_SESSION["id_client"]);
+		return ($reaction) ? $reaction["id_reaction_item"] : 0;
+	}
+
+	public function like($id_pub){
+		$this->load->model('Reaction');
+		$this->load->model('Publication');
+		$react = $this->Reaction->get_reaction($id_pub,$_SESSION["id_client"]);
+		if(!empty($react)){
+			$this->Reaction->remove_reaction($react["id_reaction"]);
+			if($react["id_reaction_item"]==1){
+				$pub = $this->Publication->get_pub($id_pub);
+				echo $pub["nblike"]."/".$pub["nbunlike"];
+				return;
+			}
+		}
+		$this->Reaction->insert_like($id_pub,$_SESSION["id_client"]);	
+		$pub = $this->Publication->get_pub($id_pub);
+		echo $pub["nblike"]."/".$pub["nbunlike"];
+	}
+
+	public function dislike($id_pub){
+		$this->load->model('Reaction');
+		$this->load->model('Publication');
+		$react = $this->Reaction->get_reaction($id_pub,$_SESSION["id_client"]);
+		if(!empty($react)){
+			$this->Reaction->remove_reaction($react["id_reaction"]);
+			if($react["id_reaction_item"]==2){
+				$pub = $this->Publication->get_pub($id_pub);
+				echo $pub["nblike"]."/".$pub["nbunlike"];
+				return;
+			}
+		}
+		$this->Reaction->insert_dislike($id_pub,$_SESSION["id_client"]);
+		$pub = $this->Publication->get_pub($id_pub);
+		echo $pub["nblike"]."/".$pub["nbunlike"];
 	}
 
 	public function comment($id_pub)

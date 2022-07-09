@@ -43,31 +43,6 @@
            $this->load->view("pages/index.php",$data);
         }
 
-        public function like_pub($id_pub){
-            $this->load->model('Reaction');
-            $react = $this->Reaction->get_reaction($id_pub,$_SESSION["id_client"]);
-            if(!empty($react)){
-                if($react["id_reaction_item"]!=1){
-                    $this->Reaction->remove_reaction($react["id_reaction"]);
-                }else{
-                    return;
-                }
-            }
-            $this->Reaction->insert_like($id_pub,$_SESSION["id_client"]);
-        }
-
-        public function dislike_pub($id_pub){
-            $this->load->model('Reaction');
-            $react = $this->Reaction->get_reaction($id_pub,$_SESSION["id_client"]);
-            if(!empty($react)){
-                if($react["id_reaction_item"]!=2){
-                    $this->Reaction->remove_reaction($react["id_reaction"]);
-                }else{
-                    return;
-                }
-            }
-            $this->Reaction->insert_dislike($id_pub,$_SESSION["id_client"]);
-        }
 
         public function comment_pub(){
             $this->load->model('Commentaire');

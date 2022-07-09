@@ -701,33 +701,6 @@
             }   
 
         });
-        // $(".ignorer").click(function() {
-        //     $("#survey").modal("hide");
-        // });
-        // $(".next").click(function() {
-        //     var values = [] ;
-        //     var markedCheckbox = document.getElementsByName('response');  
-        //     for (var checkbox of markedCheckbox) {  
-        //         if (checkbox.checked)  
-        //             values.push(checkbox.value);  
-        //     }  
-
-        //     if(values.length > 0 ){
-        //         // alert(values);
-        //         var id_question = $("#survey_question").val();
-        //          $.ajax({
-        //             type: 'POST',
-        //             data: {
-        //                 id_tags: values, id_question: id_question
-        //             },
-        //             url: "<?= site_url("SurveyController/response") ?>"
-        //         }).done((response) => {
-        //             $(".form").empty();
-        //             $(".form").append(response);                    
-        //         });
-                
-        //     }            
-        // });
     </script>
 
     <script>
