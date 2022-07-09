@@ -100,18 +100,34 @@
             return $condition;
         }
 
-        public function search($titre,$location,$prix_min,$prix_max,$room_min,$room_max,$tags,$tags_util){
+        public function search($titre,$location,$prix_min,$prix_max,$room_min,$room_max,$tags,$tags_util,$limit,$offset){
             $condition=$this->Publication->createSearchCondition($titre,$location,$prix_min,$prix_max,$room_min,$room_max,$tags,$tags_util);
-            $sql = "SELECT * FROM v_publication WHERE 1=1".$condition;  
+            $sql = "SELECT * FROM v_publication WHERE 1=1".$condition." limit $limit offset $offset ";  
             // echo $sql;
             $query = $this->execute_query($sql);
             return $query->result_array();
         }
 
-        public function simpleSearch($criteria){
+        public function count_search($titre,$location,$prix_min,$prix_max,$room_min,$room_max,$tags,$tags_util){
+            $condition=$this->Publication->createSearchCondition($titre,$location,$prix_min,$prix_max,$room_min,$room_max,$tags,$tags_util);
+            $sql = "SELECT count(id_publication) len FROM v_publication WHERE 1=1".$condition;
+            $query = $this->execute_query($sql)->row_array();
+            return $query["len"];
+        }
+
+        public function count_simple_search($criteria){
             $tag = "id_publication in (select id_publication from v_detail_tags where nom_tag ilike '%$criteria%')";
             $util = "id_publication in (select id_publication from v_detail_utilite where nom_utilite ilike '%$criteria%')";
-            $sql = "select * from v_publication where titre ilike '%$criteria%' or $tag or $util ";
+            $sql = "select count(id_publication) len from v_publication where titre ilike '%$criteria%' or $tag or $util ";
+            $query = $this->execute_query($sql)->row_array();
+            return $query["len"];
+
+        }
+
+        public function simpleSearch($criteria,$limit,$offset){
+            $tag = "id_publication in (select id_publication from v_detail_tags where nom_tag ilike '%$criteria%')";
+            $util = "id_publication in (select id_publication from v_detail_utilite where nom_utilite ilike '%$criteria%')";
+            $sql = "select * from v_publication where titre ilike '%$criteria%' or $tag or $util limit $limit offset $offset";
             // echo $sql;
             $query = $this->execute_query($sql);
 

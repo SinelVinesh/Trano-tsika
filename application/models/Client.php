@@ -37,6 +37,11 @@
             return $lasts;
         }
 
+        public function insert_tag_client($id_client,$id_tag){
+            echo "insert into tag_client values (default,$id_client,$id_tag)";
+            // $this->db->query("insert into tag_client values (default,$id_client,$id_tag)");
+        }
+
         public function insert($first_name,$last_name,$date_birth,$phone,$email,$password)
         {
             $sql = "insert into Client(first_name,last_name,date_naissance,phone_number,email,password) values('".$first_name."','".$last_name."','".$date_birth."','".$phone."','".$email."',md5('".$password."'));";

@@ -1,26 +1,3 @@
-$(document).ready(function() {
-    $(".ignorer").click(function() {
-        $("#survey").modal("hide");
-    });
-    $(".next").click(function() {
-        var radioValue = $("input[name='response']:checked").val();
-        if (radioValue) {
-            // Send request
-            // Get & Set Data
-            let surveyQuestion = $("#questionSurvey");
-            surveyQuestion.empty();
-            surveyQuestion.append("Êtes-vous Tenant ou Leese?");
-
-            let form = $(".form");
-            form.empty();
-            form.append("<div class='form-check'><input class='form-check-input' type='radio' name='response' value='yes'><label class='form-check-label'>Next Yes</label></div>");
-            form.append("<div class='form-check'><input class='form-check-input' type='radio' name='response' value='no'><label class='form-check-label'>Next No</label></div>");
-        } else {
-            alert("Please! Do your choice");
-        }
-    });
-});
-
 toastr.options = {
     timeOut: 0,
     extendedTimeOut: 0,

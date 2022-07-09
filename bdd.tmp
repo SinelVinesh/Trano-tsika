@@ -1,0 +1,25 @@
+ALTER TABLE question
+ADD COLUMN multi_res boolean NOT NULL;
+
+CREATE VIEW public.v_question_non_replied AS
+ SELECT id_question,
+    intitule,multi_res
+   FROM (public.question
+     JOIN public.reponse_client ON ((id_question = reponse_client.id_question)))
+  WHERE (NOT (id_question IN ( SELECT reponse_client_1.id_question
+           FROM public.reponse_client reponse_client_1)));
+
+INSERT INTO question values (default,'Are you a boy or a girl ?',false);
+INSERT INTO question values (default, 'Tell me your hobbies ',true );
+
+INSERT INTO response_client (default,1, )
+
+INSERT INTO reponse values (default, 1, 'Boy', 1);
+INSERT INTO reponse values (default, 1, 'Girl', 2);
+
+INSERT INTO reponse values (default, 2, 'Guitar', 3);
+INSERT INTO reponse values (default, 2, 'Piano',  4);
+
+INSERT INTO reponse_client values (default, 1, 1);
+
+SELECT * from question where id_question not in (select id_question from reponse_client where id_client = 1);

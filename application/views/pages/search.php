@@ -257,7 +257,7 @@
         <div class="container" id="pub-container" >
             <div class="row">
                 <div class="col-md-6">
-                    <h4>Resultat(s) <?php if($pubs != null) {echo count($pubs); } ?> </h4>
+                    <h4>Resultat(s) <?= $len  ?> </h4>
                 </div>
             </div>
             <?php
@@ -266,7 +266,7 @@
                 }
             ?>
         </div>
-        
+        <button class="btn-view btn-load-more mb-4" id="load-next">Load More</button>
     </div>
 
     <!--  footer  -->
@@ -370,6 +370,14 @@
     </script>
 
     <script>
+        $("#load-next").click(() => {
+            $.ajax({
+                url: "<?= site_url("SearchController/nextResult") ?>"
+            }).done((data) => {
+                $("#pub-container").append(data);
+            });
+        });
+
         $("#show-notif").click(() => {
             let notifBox = $("#notif-box > .drops-menu");
             $(".number").empty();
