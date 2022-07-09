@@ -6,25 +6,26 @@
             $this->load->model("Reponse");
 
             $survey["question"] = $this->Question->next_question($_SESSION["id_client"]);
+            if(!$survey["question"]){
+                return null;   
+            }
             $survey["reponses"] = $this->Reponse->reponse_for($survey["question"]["id_question"]);
-
-            $data["survey"] = $survey;
-            print_r($survey);
-            // $this->load->view("survey",$data);
+            return $survey;
         }
 
         public function response(){
-            $tags = $this->input->get("id_tags");
-            $this->load->model("Client");
-            // print_r($tags);
-            // $tags[0] = 1;
-
-            foreach ($tags as $tag ) {
-                $this->Client->insert_tag_client($_SESSION["id_client"],$tag);
-                    // return http_response_code(400);
+            $tags = $this->input->post("id_tags");
+            $id_quest = $this->input->post("id_question");
+         
+            if($tags != null){
+                $this->load->model("Client");
+                $this->load->model("ReponseClient");
+                $this->ReponseClient->insert($_SESSION["id_client"],$id_quest);
+                foreach ($tags as $tag ) {
+                    $this->Client->insert_tag_client($_SESSION["id_client"],$tag);
+                }
             }
-            return http_response_code(200);
-            // print_r($this->input->get("id_tags"));
+            echo displayNextQuestion($this->next_survey());
         }
     }
 ?>

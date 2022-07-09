@@ -13,8 +13,13 @@
             $this->load->model("Reponse");
 
             $survey["question"] = $this->Question->next_question($_SESSION["id_client"]);
-            $survey["reponses"] = $this->Reponse->reponse_for($survey["question"]["id_question"]);
-
+            if($survey["question"]){
+                $survey["reponses"] = $this->Reponse->reponse_for($survey["question"]["id_question"]);  
+            }
+            else{
+                $survey = null;
+            }
+            
             $data["survey"] = $survey;
             $data["locations"] = $this->Location->get_locations();
             $data["tags"] = $this->DetailTag->get_tags();
