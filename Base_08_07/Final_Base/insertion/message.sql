@@ -1,0 +1,3 @@
+INSERT INTO Message (id_publication,id_client_sender,id_client_receiver,message_texte) values (1,1001,1002,'MLjfde gsg gjelgjerg gjelgjegn ');
+INSERT INTO Message (id_publication,id_client_sender,id_client_receiver,message_texte) values (1,1002,1001,'jdjaldn vdzvnzef jklfej');
+INSERT INTO Message (id_publication,id_client_sender,id_client_receiver,message_texte) values (1,1001,1002,'jezlfjzlekfjlzekf fezifez feizlfjze  zehjfzef fzlfnez flzkfmN SDFIERUH LEKRG GKEf feznfe fzkejfeé');
