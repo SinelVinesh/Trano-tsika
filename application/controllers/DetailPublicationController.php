@@ -9,8 +9,7 @@ class DetailPublicationController extends My_Controller {
 		$offset =  $_SESSION["offset"];
 		$data["commentaires"] = $this->Publication->get_limited_commentaire($id_pub,$limit,$offset);
 		$_SESSION["offset"] = $offset + $limit;
-		// echo json_decode($data["commentaires"]);
-		print_r($data);
+		echo displayComments($data['commentaires']);
 	}
 
 	public function load_detail($id_pub)

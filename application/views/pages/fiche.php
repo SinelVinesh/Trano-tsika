@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
     <title>Trano'tsik</title>
     <link rel="icon" href="<?= base_url() ?>assets/images/fav.png" type="image/png" sizes="16x16">
 
@@ -14,9 +14,13 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/color.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/responsive.css">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
 
@@ -31,212 +35,216 @@
 
 <body>
 
-    <div class="theme-layout">
-        <!-- topbar -->
-        <div class="topbar stick d-flex justify-content-between">
-            <div class="logo">
-                <a title="" href="newsfeed.html"><img src="<?= base_url() ?>/custom-assets/logo.png" alt=""></a>
-            </div>
-
-            <div class="top-area mt-3 border-0">
-                <ul class="setting-area">
-                    <li>
-                        <a href="#" title="Notification" data-ripple="" class="menu-item">
-                            Notifications
-                        </a>
-                        <div class="dropdowns">
-                            <span>4 New Notifications</span>
-                            <ul class="drops-menu">
-                                <li>
-                                    <a href="notifications.html" title="">
-                                        <img src="<?= base_url() ?>assets/images/resources/thumb-1.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>sarah Loren</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <span class="tag green">New</span>
-                                </li>
-                                <li>
-                                    <a href="notifications.html" title="">
-                                        <img src="<?= base_url() ?>assets/images/resources/thumb-2.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Jhon doe</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <span class="tag red">Reply</span>
-                                </li>
-                                <li>
-                                    <a href="notifications.html" title="">
-                                        <img src="<?= base_url() ?>assets/images/resources/thumb-3.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Andrew</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <span class="tag blue">Unseen</span>
-                                </li>
-                                <li>
-                                    <a href="notifications.html" title="">
-                                        <img src="<?= base_url() ?>assets/images/resources/thumb-4.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Tom cruse</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <span class="tag">New</span>
-                                </li>
-                                <li>
-                                    <a href="notifications.html" title="">
-                                        <img src="<?= base_url() ?>assets/images/resources/thumb-5.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Amy</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <span class="tag">New</span>
-                                </li>
-                            </ul>
-                            <a href="notifications.html" title="" class="more-mesg">view more</a>
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#" title="Messages" class="menu-item" data-ripple="">Messages</a>
-                        <div class="dropdowns">
-                            <span>5 New Messages</span>
-                            <ul class="drops-menu">
-                                <li>
-                                    <a class="discussion" discussion-id="1">
-                                        <img src="<?= base_url() ?>assets/images/resources/thumb-1.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>sarah Loren</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <!--                                <span class="tag green">New</span>-->
-                                </li>
-                                <li>
-                                    <a class="discussion" discussion-id="2">
-                                        <img src="<?= base_url() ?>assets/images/resources/thumb-2.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Jhon doe</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <!--                                <span class="tag red">Reply</span>-->
-                                </li>
-                                <li>
-                                    <a class="discussion" discussion-id="3">
-                                        <img src="<?= base_url() ?>assets/images/resources/thumb-3.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Andrew</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <!--                                <span class="tag blue">Unseen</span>-->
-                                </li>
-                                <li>
-                                    <a class="discussion" discussion-id="4">
-                                        <img src="<?= base_url() ?>assets/images/resources/thumb-4.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Tom cruse</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <span class="tag">New</span>
-                                </li>
-                                <li>
-                                    <a class="discussion" discussion-id="5">
-                                        <img src="<?= base_url() ?>assets/images/resources/thumb-5.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Amy</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <span class="tag">New</span>
-                                </li>
-                            </ul>
-                            <a href="messages.html" title="" class="more-mesg">view more</a>
-                        </div>
-                    </li>
-                </ul>
-
-                <div class="user-img mr-0">
-                    <a href="" class="btn btn-light bg-white border-0" style="font-size: 14px;">AH Tsinjo</a>
-                </div>
-
-                <ul class="setting-area ml-0">
-                    <li>
-                        <a href="#" title="Messages" class="btn btn-secondary rounded-circle" style="color: whitesmoke; font-size: 14px;" data-ripple=""><i class="fa-solid fa-caret-down"></i></a>
-                        <div class="dropdowns">
-                            <span>Option(s)</span>
-                            <ul class="drops-menu">
-                                <li><a href="">Log out</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+<div class="theme-layout">
+    <!-- topbar -->
+    <div class="topbar stick d-flex justify-content-between">
+        <div class="logo">
+            <a title="" href="newsfeed.html"><img src="<?= base_url() ?>/custom-assets/logo.png" alt=""></a>
         </div>
 
-        <!--  main content  -->
-        <div class="container">
-            <div class="fiche m-4">
-                <div class="fiche-info">
-                    <div class="titre">
-                        <h1><?= $pub["titre"] ?></h1>
+        <div class="top-area mt-3 border-0">
+            <ul class="setting-area">
+                <li>
+                    <a href="#" title="Notification" data-ripple="" class="menu-item">
+                        Notifications
+                    </a>
+                    <div class="dropdowns">
+                        <span>4 New Notifications</span>
+                        <ul class="drops-menu">
+                            <li>
+                                <a href="notifications.html" title="">
+                                    <img src="<?= base_url() ?>assets/images/resources/thumb-1.jpg" alt="">
+                                    <div class="mesg-meta">
+                                        <h6>sarah Loren</h6>
+                                        <span>Hi, how r u dear ...?</span>
+                                        <i>2 min ago</i>
+                                    </div>
+                                </a>
+                                <span class="tag green">New</span>
+                            </li>
+                            <li>
+                                <a href="notifications.html" title="">
+                                    <img src="<?= base_url() ?>assets/images/resources/thumb-2.jpg" alt="">
+                                    <div class="mesg-meta">
+                                        <h6>Jhon doe</h6>
+                                        <span>Hi, how r u dear ...?</span>
+                                        <i>2 min ago</i>
+                                    </div>
+                                </a>
+                                <span class="tag red">Reply</span>
+                            </li>
+                            <li>
+                                <a href="notifications.html" title="">
+                                    <img src="<?= base_url() ?>assets/images/resources/thumb-3.jpg" alt="">
+                                    <div class="mesg-meta">
+                                        <h6>Andrew</h6>
+                                        <span>Hi, how r u dear ...?</span>
+                                        <i>2 min ago</i>
+                                    </div>
+                                </a>
+                                <span class="tag blue">Unseen</span>
+                            </li>
+                            <li>
+                                <a href="notifications.html" title="">
+                                    <img src="<?= base_url() ?>assets/images/resources/thumb-4.jpg" alt="">
+                                    <div class="mesg-meta">
+                                        <h6>Tom cruse</h6>
+                                        <span>Hi, how r u dear ...?</span>
+                                        <i>2 min ago</i>
+                                    </div>
+                                </a>
+                                <span class="tag">New</span>
+                            </li>
+                            <li>
+                                <a href="notifications.html" title="">
+                                    <img src="<?= base_url() ?>assets/images/resources/thumb-5.jpg" alt="">
+                                    <div class="mesg-meta">
+                                        <h6>Amy</h6>
+                                        <span>Hi, how r u dear ...?</span>
+                                        <i>2 min ago</i>
+                                    </div>
+                                </a>
+                                <span class="tag">New</span>
+                            </li>
+                        </ul>
+                        <a href="notifications.html" title="" class="more-mesg">view more</a>
                     </div>
-                    <div class="utilities-list">
-                        <div class="row mt-4">
-                            <div class="col-md-3 mb-2">
-                                <i class="fa-solid fa-location-dot"></i> Andoharanofotsy
-                            </div>
-                            <?php foreach ($pub["detail_utils"] as $util) { ?>
-                                <div class="col-md-2 mb-2">
-                                    <i class="fa-solid fa-check"></i> <?= $util["nom_utilite"] ?>
-                                </div>
-                            <?php } ?>
-                            <div class="col-md-3 mb-2">
-                                <i class="fa-solid fa-money-bill-1"></i> <?= number_format($pub["prix"]) ?> ar/mois
-                            </div>
-                        </div>
+                </li>
+                <li>
+                    <a href="#" title="Messages" class="menu-item" data-ripple="">Messages</a>
+                    <div class="dropdowns">
+                        <span>5 New Messages</span>
+                        <ul class="drops-menu">
+                            <li>
+                                <a class="discussion" discussion-id="1">
+                                    <img src="<?= base_url() ?>assets/images/resources/thumb-1.jpg" alt="">
+                                    <div class="mesg-meta">
+                                        <h6>sarah Loren</h6>
+                                        <span>Hi, how r u dear ...?</span>
+                                        <i>2 min ago</i>
+                                    </div>
+                                </a>
+                                <!--                                <span class="tag green">New</span>-->
+                            </li>
+                            <li>
+                                <a class="discussion" discussion-id="2">
+                                    <img src="<?= base_url() ?>assets/images/resources/thumb-2.jpg" alt="">
+                                    <div class="mesg-meta">
+                                        <h6>Jhon doe</h6>
+                                        <span>Hi, how r u dear ...?</span>
+                                        <i>2 min ago</i>
+                                    </div>
+                                </a>
+                                <!--                                <span class="tag red">Reply</span>-->
+                            </li>
+                            <li>
+                                <a class="discussion" discussion-id="3">
+                                    <img src="<?= base_url() ?>assets/images/resources/thumb-3.jpg" alt="">
+                                    <div class="mesg-meta">
+                                        <h6>Andrew</h6>
+                                        <span>Hi, how r u dear ...?</span>
+                                        <i>2 min ago</i>
+                                    </div>
+                                </a>
+                                <!--                                <span class="tag blue">Unseen</span>-->
+                            </li>
+                            <li>
+                                <a class="discussion" discussion-id="4">
+                                    <img src="<?= base_url() ?>assets/images/resources/thumb-4.jpg" alt="">
+                                    <div class="mesg-meta">
+                                        <h6>Tom cruse</h6>
+                                        <span>Hi, how r u dear ...?</span>
+                                        <i>2 min ago</i>
+                                    </div>
+                                </a>
+                                <span class="tag">New</span>
+                            </li>
+                            <li>
+                                <a class="discussion" discussion-id="5">
+                                    <img src="<?= base_url() ?>assets/images/resources/thumb-5.jpg" alt="">
+                                    <div class="mesg-meta">
+                                        <h6>Amy</h6>
+                                        <span>Hi, how r u dear ...?</span>
+                                        <i>2 min ago</i>
+                                    </div>
+                                </a>
+                                <span class="tag">New</span>
+                            </li>
+                        </ul>
+                        <a href="messages.html" title="" class="more-mesg">view more</a>
+                    </div>
+                </li>
+            </ul>
 
-                        <div class="row mt-3">
-                            <div class="col">
-                                <div class="post-description p-3">
-                                    <?= $pub["description"] ?>
-                                </div>
-                            </div>
-                        </div>
+            <div class="user-img mr-0">
+                <a href="" class="btn btn-light bg-white border-0" style="font-size: 14px;">AH Tsinjo</a>
+            </div>
 
-                        <div class="row mt-3">
-                            <div class="col">
-                                <i class="fa-solid fa-user"></i> by <?php echo $pub["first_name"] . " " . $pub["last_name"]  ?>
-                                <button data-toggle="modal" class="btn btn-primary btn-color ml-2" data-target="#message" discussion-id="1">Contact
-                                    <i class="fa fa-paper-plane">
-                                    </i>
-                                </button>
-                            </div>
-                        </div>
+            <ul class="setting-area ml-0">
+                <li>
+                    <a href="#" title="Messages" class="btn btn-secondary rounded-circle"
+                       style="color: whitesmoke; font-size: 14px;" data-ripple=""><i class="fa-solid fa-caret-down"></i></a>
+                    <div class="dropdowns">
+                        <span>Option(s)</span>
+                        <ul class="drops-menu">
+                            <li><a href="">Log out</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-                        <div class="row mt-3 tags">
-                            <div class="col">
-                                <?php foreach ($pub["detail_tags"] as $tag) { ?>
-                                    <span class="p-2 mr-2 tag"><i class="fa-solid fa-tags"></i> <?= $tag["nom_tag"] ?></span>
-                                <?php } ?>
+    <!--  main content  -->
+    <div class="container">
+        <div class="fiche m-4">
+            <div class="fiche-info">
+                <div class="titre">
+                    <h1><?= $pub["titre"] ?></h1>
+                </div>
+                <div class="utilities-list">
+                    <div class="row mt-4">
+                        <div class="col-md-3 mb-2">
+                            <i class="fa-solid fa-location-dot"></i> Andoharanofotsy
+                        </div>
+                        <?php foreach ($pub["detail_utils"] as $util) { ?>
+                            <div class="col-md-2 mb-2">
+                                <i class="fa-solid fa-check"></i> <?= $util["nom_utilite"] ?>
+                            </div>
+                        <?php } ?>
+                        <div class="col-md-3 mb-2">
+                            <i class="fa-solid fa-money-bill-1"></i> <?= number_format($pub["prix"]) ?> ar/mois
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <div class="post-description p-3">
+                                <?= $pub["description"] ?>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <i class="fa-solid fa-user"></i>
+                            by <?php echo $pub["first_name"] . " " . $pub["last_name"] ?>
+                            <button data-toggle="modal" class="btn btn-primary btn-color ml-2" data-target="#message"
+                                    discussion-id="1">Contact
+                                <i class="fa fa-paper-plane">
+                                </i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3 tags">
+                    <div class="col">
+                        <?php foreach ($pub["detail_tags"] as $tag) { ?>
+                            <span class="p-2 mr-2 tag"><i class="fa-solid fa-tags"></i> <?= $tag["nom_tag"] ?></span>
+                        <?php } ?>
+                    </div>
+                </div>
 
                         <div class="row mt-3">
                             <div class="col-md-6 images-list">
@@ -251,132 +259,121 @@
                                             </div>
                                         </div>
                                     </div>
-                                <?php } ?>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="post-map">
-                                    <div class="nearby-map">
-                                        <div id="map-canvas"></div>
-                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row mt-3 border-0">
-                            <div class="col-12">
-                                <div class="coment-area">
-
-                                    <h6>Comments <i class="fa fa-comments"></i></h6>
-
-                                    <ul class="we-comet" id="comment">
-
-                                        <?php foreach ($pub["commentaires"] as $commentaire) { ?>
-                                            <li>
-                                                <div class="we-comment">
-                                                    <div class="coment-head">
-                                                        <h5>
-<!--                                                            <a href="time-line.html" title="">-->
-                                                                <?= $commentaire["first_name"] . " " . $commentaire["last_name"] ?>
-<!--                                                            </a>-->
-                                                        </h5>
-                                                        <span><?= displayDate($commentaire["date_commentaire"]) ?></span>
-                                                        <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
-                                                    </div>
-                                                    <p><?= $commentaire["texte_commentaire"] ?></p>
-                                                </div>
-                                            </li>
-
-                                        <?php } ?>
-
-                                        <button class="btn-view btn-load-more mb-4" id="load-next-comments">Load More</button>
-
-                                        <li class="post-comment">
-                                            <div class="post-comt-box">
-                                                <form>
-                                                    <div class="post-comt-box">
-                                                        <textarea placeholder="Post your comment" name="commentaire" id="text-area-comment"></textarea>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </li>
-                                    </ul>
-
-                                </div>
-                            </div>
-                        </div>
-
+                        <?php } ?>
                     </div>
 
+                    <div class="col-md-6">
+                        <div class="post-map">
+                            <div class="nearby-map">
+                                <div id="map-canvas"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3 border-0">
+                    <div class="col-12">
+                        <div class="coment-area">
+                            <h6>Comments <i class="fa fa-comments"></i></h6>
+                            <ul class="we-comet" id="comment">
+
+                                <!-- helper that displays the comments -->
+                                <?= displayComments($pub['commentaires']) ?>
+
+                                <button class="btn-view btn-load-more mb-4" id="load-next-comment">Load More</button>
+
+                                <li class="post-comment">
+                                    <div class="post-comt-box">
+                                        <form method="post">
+                                            <textarea placeholder="Post your comment" id="text-area-comment" ></textarea>
+                                            <button type="submit"></button>
+                                        </form>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!--  footer  -->
-        <div class="bottombar">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <span class="copyright"><a target="_blank" href="https://www.templateshub.net"> &copy; Trano-Tsika</a></span>
-                        <i><img src="<?= base_url() ?>assets/images/credit-cards.png" alt=""></i>
-                    </div>
-                </div>
+        </div>
+    </div>
+</div>
+
+<!--  footer  -->
+<div class="bottombar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <span class="copyright"><a target="_blank"
+                                           href="https://www.templateshub.net"> &copy; Trano-Tsika</a></span>
+                <i><img src="<?= base_url() ?>assets/images/credit-cards.png" alt=""></i>
             </div>
         </div>
     </div>
+</div>
+</div>
 
-    <!-- message box -->
-    <div class="modal fade message-modal" id="message" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="messageTitle">Client</h5>
-                    <a type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </a>
-                </div>
-                <div class="modal-body">
-                    <h6><?= $pub["titre"] ?></h6>
-                    <div class="chat-list">
-                        <ul id="onemessage">
-                            <?php
-                            foreach ($pub["messages"] as $message) {
-                                $class = ($message["id_client_receiver"] == $_SESSION["id_client"]) ? "me" : "you"; ?>
-                                <li class="<?= $class ?>">
-                                    <div class="chat-thumb"><img src="<?= base_url() ?>assets/images/resources/chatlist1.jpg" alt=""></div>
-                                    <div class="notification-event">
+<!-- message box -->
+<div class="modal fade message-modal" id="message" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="messageTitle">Client</h5>
+                <a type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </a>
+            </div>
+            <div class="modal-body">
+                <h6><?= $pub["titre"] ?></h6>
+                <div class="chat-list">
+                    <ul id="onemessage">
+                        <?php
+                        foreach ($pub["messages"] as $message) {
+                            $class = ($message["id_client_receiver"] == $_SESSION["id_client"]) ? "me" : "you"; ?>
+                            <li class="<?= $class ?>">
+                                <div class="chat-thumb"><img
+                                            src="<?= base_url() ?>assets/images/resources/chatlist1.jpg" alt=""></div>
+                                <div class="notification-event">
                                         <span class="chat-message-item">
                                             <?= $message["message_texte"] ?>
                                         </span>
-                                        <span class="notification-date">
-                                        <time datetime="<?= $message["date_envoye"] ?>" class="entry-date updated"><?= $message["date_envoye"] ?></time></span>
-                                    </div>
-                                </li>
-                            <?php } ?>
-                        </ul>
-                        <form action="<?= site_url() ?>/DetailPublicationController/envoyer/<?= $pub["id_client"] ?>/<?= $pub["id_publication"] ?>" method="post" >
-                            <div class="row pt-1">
-                                <div class="col-10 text-box">
-                                    <textarea name="message_texte" placeholder="your message ..." id="corpsmessage"></textarea>
+                                    <span class="notification-date">
+                                        <time datetime="<?= $message["date_envoye"] ?>"
+                                              class="entry-date updated"><?= $message["date_envoye"] ?></time></span>
                                 </div>
-                                <div class="col-2 mt-2 pt-1 border-0">
-                                    <i class="fa-solid fa-circle-arrow-right"></i>
-                                </div>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                    <form action="<?= site_url() ?>/DetailPublicationController/envoyer/<?= $pub["id_client"] ?>/<?= $pub["id_publication"] ?>"
+                          method="post">
+                        <div class="row pt-1">
+                            <div class="col-10 text-box">
+                                <textarea name="message_texte" placeholder="your message ..."
+                                          id="corpsmessage"></textarea>
                             </div>
-                            <input type="submit" value="Envoyer">
-                            <?= validation_errors() ?>
-                        </form>
-                    </div>
+                            <div class="col-2 mt-2 pt-1 border-0">
+                                <i class="fa-solid fa-circle-arrow-right"></i>
+                            </div>
+                        </div>
+                        <input type="submit" value="Envoyer">
+                        <?= validation_errors() ?>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
 
-    <script>
-        let commentArea = $("#text-area-comment");
-        let commentTemplate = (text) => `
+<script>
+    let commentArea = $("#text-area-comment");
+    let commentTemplate = (text) => `
             <li>
                 <div class="we-comment">
                     <div class="coment-head">
@@ -392,67 +389,76 @@
                 </div>
             </li>`;
 
-        commentArea.keyup((e) => {
-            if(e.keyCode === 13) {
-                let curVal = commentArea.val();
-                $("#comment li:last").before(commentTemplate(curVal));
-                console.log(curVal);
-                $.ajax({
-                    type: "POST",
-                    url: "<?= site_url() ?>/DetailPublicationController/comment/<?= $pub["id_publication"] ?>",
-                    data: {
-                        commentaire: curVal
-                    }
-                }).done((data) => {
-                    console.log(data);
-                });
-                commentArea.val('');
-            }
-        });
-
-        $("#load-next-comments").click(() => {
-
-        });
-
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-    <script src="<?= base_url() ?>assets/js/main.min.js"></script>
-    <script src="<?= base_url() ?>assets/js/script.js"></script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDD7GRQJx0_fNz6eeUSJjf7Yw5_6s0OEaA&libraries=geometry,places"></script>
-
-    <script>
-
-        var map;
-        function initialize() {
-            let pubPos = new google.maps.LatLng(<?= $pub['pos']['lat'] ?>, <?= $pub['pos']['lng'] ?> );
-
-            var mapOptions = {
-                zoom: 12,
-                center: pubPos
-            };
-
-
-            map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-
-            new google.maps.Marker({
-                position: pubPos,
-                map: map
+    commentArea.keyup((e) => {
+        if (e.keyCode === 13) {
+            let curVal = commentArea.val();
+            $("#comment li:last").before(commentTemplate(curVal));
+            console.log(curVal);
+            $.ajax({
+                type: "POST",
+                url: "<?= site_url() ?>/DetailPublicationController/comment/<?= $pub["id_publication"] ?>",
+                data: {
+                    commentaire: curVal
+                }
+            }).done((data) => {
+                console.log(data);
             });
-
-            let marker = new google.maps.Marker
-
+            commentArea.val('');
         }
+    });
 
-        google.maps.event.addDomListener(window, 'load', initialize);
+    $("#load-next-comment").click(() => {
+        $.ajax({
+            url: "<?= site_url("DetailPublicationController/next_commentaire/".$pub['id_publication']) ?>"
+        }).done((data) => {
+            $("#load-next-comment").before(data);
+        })
+    });
 
-    </script>
-<!--    <script src="--><?//= base_url() ?><!--custom-assets/js/map.js"></script>-->
-    <script src="<?= base_url() ?>custom-assets/js/modals.js"></script>
-    <script src="<?= base_url() ?>custom-assets/js/image-preview.js"></script>
-    <script src="<?= base_url() ?>custom-assets/js/message.js"></script>
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+<script src="<?= base_url() ?>assets/js/main.min.js"></script>
+<script src="<?= base_url() ?>assets/js/script.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDD7GRQJx0_fNz6eeUSJjf7Yw5_6s0OEaA&libraries=geometry,places"></script>
+
+<script>
+
+    var map;
+
+    function initialize() {
+        let pubPos = new google.maps.LatLng(<?= $pub['pos']['lat'] ?>, <?= $pub['pos']['lng'] ?>);
+
+        var mapOptions = {
+            zoom: 12,
+            center: pubPos
+        };
+
+
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+        new google.maps.Marker({
+            position: pubPos,
+            map: map
+        });
+
+        let marker = new google.maps.Marker
+
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
+<script src="<?= base_url() ?>custom-assets/js/map.js"></script>
+<script src="<?= base_url() ?>custom-assets/js/modals.js"></script>
+<script src="<?= base_url() ?>custom-assets/js/image-preview.js"></script>
+<script src="<?= base_url() ?>custom-assets/js/message.js"></script>
 
 </body>
 

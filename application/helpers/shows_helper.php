@@ -46,3 +46,28 @@
 
         return $display.'</div>';
     }
+
+    function displayComments($coms) {
+        $display = '';
+
+        foreach ($coms as $com) {
+                $display = $display.'
+                <li>
+                    <div class="we-comment">
+                        <div class="coment-head">
+                            <h5>
+            <!--                                                            <a href="time-line.html" title="">-->
+                                     '.$com["first_name"] . " " . $com["last_name"].'
+            <!--                                                            </a>-->
+                            </h5>
+                            <span>'.displayDate($com["date_commentaire"]).'</span>
+                            <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+                        </div>
+                        <p>'.$com["texte_commentaire"].'</p>
+                    </div>
+                </li>
+                ';
+        }
+        
+        return $display;
+    }
