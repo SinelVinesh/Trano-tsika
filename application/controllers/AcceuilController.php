@@ -5,6 +5,12 @@
         $this->load->model('Publication');
         $limit = 6;
         $offset = 0;
+        $this->load->model("Location");
+        $this->load->model("DetailTag");
+        $this->load->model("DetailUtilite");
+        $data["locations"] = $this->Location->get_locations();
+        $data["tags"] = $this->DetailTag->get_tags();
+        $data["utils"] = $this->DetailUtilite->get_utilities();
 
         $pubs = $this->Publication->get_next_pub($limit,$offset);
 
