@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,7 +41,7 @@
 </head>
 
 <body>
-<?= validation_errors() ?>
+    <?= validation_errors() ?>
 
     <div class="theme-layout">
         <!-- topbar -->
@@ -266,23 +267,23 @@
                             </div>
 
                             <div class="utilities col-md-12">
-                                    <label>Ajoutez des <a><u class="underline-custom">#tag</u></a> autant que possible pour
-                                        ameliorez votre publication</label>
-                                    <div class="utilities-checks">
-                                        <div class="row p-0 m-0">
-                                            <?php for ($i = 0; $i < count($tags); $i++) { ?>
-                                                <div class="col-md-3 p-0 m-0">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="tags[]" value="<?= $tags[$i]["id_tag"]  ?>">
-                                                        <label class="form-check-label" for="<?= $tags[$i]["nom_tag"] ?>">
-                                                            <?= $tags[$i]["nom_tag"] ?>
-                                                        </label>
-                                                    </div>
+                                <label>Ajoutez des <a><u class="underline-custom">#tag</u></a> autant que possible pour
+                                    ameliorez votre publication</label>
+                                <div class="utilities-checks">
+                                    <div class="row p-0 m-0">
+                                        <?php for ($i = 0; $i < count($tags); $i++) { ?>
+                                            <div class="col-md-3 p-0 m-0">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="tags[]" value="<?= $tags[$i]["id_tag"]  ?>">
+                                                    <label class="form-check-label" for="<?= $tags[$i]["nom_tag"] ?>">
+                                                        <?= $tags[$i]["nom_tag"] ?>
+                                                    </label>
                                                 </div>
-                                            <?php } ?>
-                                        </div>
+                                            </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
+                            </div>
 
                             <div class="form-group">
                                 <label for="price">Prix par mois<span class="mandatory">*</span></label>
@@ -301,15 +302,15 @@
                                 <div class="images"></div>
                             </div>
                             <button type="submit" id="submit-post" class="d-none">post</button>
-                        <!-- </form> -->
+                        </form>
                     </div>
                 </div>
 
                 <div class="modal-footer d-flex justify-content-between">
                     <button class="btn btn-light rounded-0" type="button" data-dismiss="modal">Close</button>
-                    <button class="btn btn-primary rounded-0" type="submit" >Fake button</button>
+                    <button class="btn btn-primary rounded-0" type="button" id="submit-make-post">Ajouter</button>
                 </div>
-            </form>
+                <!-- </form> -->
 
             </div>
         </div>
@@ -411,33 +412,28 @@
         <div class="modal-dialog modal-dialog-centered survey-modal" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6 id="questionSurvey">Are you walawala be Lorem Ipsum?</h6>
+                    <h6 id="questionSurvey"><?= $survey["question"]["intitule"] ?></h6>
                     <a type="button" class="closeSurvey" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </a>
                 </div>
-                <form>
-                    <div class="modal-body">
-                        <div class="form">
+                <div class="modal-body">
+                    <div class="form">
+                        <?php
+                        $type = ($survey["question"]["multi_res"]) ? "checkbox" : "radio";
+                        foreach ($survey["reponses"] as $res) { ?>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="response" value="yes">
-                                <label class="form-check-label">Yes</label>
+                                <input class="form-check-input check" type="checkbox" name="response" value="<?= $res["id_tag"] ?>">
+                                <label class="form-check-label"><?= $res["intitule"] ?></label>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="response" value="no">
-                                <label class="form-check-label">No</label>
-                            </div>
-                        </div>
+                        <?php } ?>
                     </div>
-
-                    <div class="modal-footer d-flex justify-content-between">
-
-                        <button class="btn btn-outline-secondary rounded-0 next" type="submit"><span><i>Valider</i></span>
-                        </button>
-                        <button class="btn btn-primary rounded-0 ignorer" type="submit"><span>Ignorer</span></button>
-
-                    </div>
-                </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <button class="btn btn-outline-secondary rounded-0 next"><span><i>Valider</i></span>
+                    </button>
+                    <button class="btn btn-primary rounded-0 ignorer"><span>Ignorer</span></button>
+                </div>
             </div>
         </div>
     </div>
@@ -678,7 +674,7 @@
                                     <label>Ajoutez des <a><u class="underline-custom">#tag</u></a> autant que possible pour
                                         ameliorez votre publication</label>
                                     <div class="utilities-checks">
-                                    <div class="row p-0 m-0">
+                                        <div class="row p-0 m-0">
                                             <?php for ($i = 0; $i < count($tags); $i++) { ?>
                                                 <div class="col-md-3 p-0 m-0">
                                                     <div class="form-check">
@@ -780,6 +776,47 @@
                 $(".number").text(($("#notif-box > .drops-menu > li").length));
             });
             notifBox.append()
+        });
+    </script>
+    <!-- survey js -->
+    <script>
+        $(".ignorer").click(function() {
+            $("#survey").modal("hide");
+        });
+        $(".next").click(function() {
+            var radiovalue ;
+            var radioValue = $(".check:checkbox:checked");
+            if (radioValue) {
+                // Send request
+                // alert(radioValue[0].value);
+                var vals = [];
+                for (let i = 0; i < radioValue.length; i++) {
+                    vals.push(radioValue[i].value)
+                }
+                // alert(vals);
+                $.ajax({
+                    type: 'GET',
+                    data: {
+                        id_tags: vals
+                    },
+                    url: "<?= site_url("SurveyController/response") ?>"
+                }).done((response) => {
+                    alert(response);
+                });
+
+
+                // Get & Set Data
+                // let surveyQuestion = $("#questionSurvey");
+                // surveyQuestion.empty();
+                // surveyQuestion.append("Êtes-vous Tenant ou Leese?");
+
+                // let form = $(".form");
+                // form.empty();
+                // form.append("<div class='form-check'><input class='form-check-input' type='radio' name='response' value='yes'><label class='form-check-label'>Next Yes</label></div>");
+                // form.append("<div class='form-check'><input class='form-check-input' type='radio' name='response' value='no'><label class='form-check-label'>Next No</label></div>");
+            } else {
+                alert("Please! Do your choice");
+            }
         });
     </script>
 </body>
