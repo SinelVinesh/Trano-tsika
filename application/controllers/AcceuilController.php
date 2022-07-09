@@ -2,17 +2,17 @@
 
     class AcceuilController extends MY_Controller{
         public function index(){
-        $this->load->model('Publication');
-        $limit = 6;
-        $offset = 0;
-        $this->load->model("Location");
-        $this->load->model("DetailTag");
-        $this->load->model("DetailUtilite");
-        $data["locations"] = $this->Location->get_locations();
-        $data["tags"] = $this->DetailTag->get_tags();
-        $data["utils"] = $this->DetailUtilite->get_utilities();
+            $this->load->model('Publication');
+            $limit = 6;
+            $offset = 0;
+            $this->load->model("Location");
+            $this->load->model("DetailTag");
+            $this->load->model("DetailUtilite");
+            $data["locations"] = $this->Location->get_locations();
+            $data["tags"] = $this->DetailTag->get_tags();
+            $data["utils"] = $this->DetailUtilite->get_utilities();
 
-        $pubs = $this->Publication->get_next_pub($limit,$offset);
+            $pubs = $this->Publication->get_next_pub($limit,$offset);
 
            foreach($pubs as $pub){
                 // $pub["commentaires"] =$this->Publication->get_commentaire($pub["id_publication"],3);
@@ -62,4 +62,3 @@
             $this->Commentaire->insert($inputs["id_pub"],$inputs["id_client"],$inputs["comment"]);
         }
     }
-?>

@@ -241,8 +241,8 @@
                         <div class="row mt-3">
                             <div class="col-md-6 images-list">
                                 <?php foreach ($pub["photos"] as $photo) { ?>
-                                    <img src="<?= base_url() ?>files/imgs/<?= $photo["lien_photo"] ?>" alt="" data-toggle="modal" data-target="#modal1">
-                                    <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="modalPhotoTitle" aria-hidden="true">
+                                    <img src="<?= base_url() ?>files/imgs/<?= $photo["lien_photo"] ?>" alt="" data-toggle="modal" data-target="#modal<?= $photo["id_photo"] ?>">
+                                    <div class="modal fade" id="modal<?= $photo["id_photo"] ?>" tabindex="-1" role="dialog" aria-labelledby="modalPhotoTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-body">
@@ -354,7 +354,7 @@
                                 </li>
                             <?php } ?>
                         </ul>
-                        <form action="<?= base_url() ?>/DetailPublicationController/envoyer/<?= $pub["id_client"] ?>/<?= $pub["id_publication"] ?>" method="post" >
+                        <form action="<?= site_url() ?>/DetailPublicationController/envoyer/<?= $pub["id_client"] ?>/<?= $pub["id_publication"] ?>" method="post" >
                             <div class="row pt-1">
                                 <div class="col-10 text-box">
                                     <textarea name="message_texte" placeholder="your message ..." id="corpsmessage"></textarea>

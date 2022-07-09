@@ -4,8 +4,9 @@
         public function uploadImage($dossier,$noms){
             $count=count($noms);
             for($i=0;$i<$count;$i++){
-                // $_FILES['image']['name'] = $noms[$i];
-                $_FILES['image']['name'] = $_FILES['images']['name'][$i];
+                $_FILES['image']['name'] = $noms[$i];
+                echo $_FILES['image']['name'] ;
+                // $_FILES['image']['name'] = $_FILES['images']['name'][$i];
                 $_FILES['image']['type'] = $_FILES['images']['type'][$i];
                 $_FILES['image']['tmp_name'] = $_FILES['images']['tmp_name'][$i];
                 $_FILES['image']['error'] = $_FILES['images']['error'][$i];
@@ -14,9 +15,10 @@
                 $config['upload_path'] = $dossier; 
                 $config['allowed_types'] = 'jpg|jpeg|png|gif';
                 $config['max_size'] = '5000';
-                $config['file_name'] = $_FILES['images']['name'][$i];
                 $this->load->library('upload',$config);      
                 $this->upload->do_upload('image');
+
+                // move_uploaded_file($_FILES["image"]["tmp_name"],"files/imgs/".$_FILES['image']['name']);
             }
         }
 
@@ -56,7 +58,7 @@
                 // $this->Publication->insert($id_pub,1,$datas["location"],$datas["titre"],$datas["description"],$datas["price"],$datas["lat"],$datas["lng"],$datas["room"],/*$datas["surface"]*/0);
                 $this->Publication->insert($id_pub,$_SESSION["id_client"],$datas["location"],$datas["titre"],$datas["description"],$datas["price"],$lat,$lng,$datas["room"],$datas["surface"]);
                 
-                $dossier="/";
+                $dossier="files/imgs/";
                 //insertion des photos dans la bdd
                 for($i=0;$i<$count;$i++){
                     $id_img=$this->Photo->get_next_val_serial("Photo","id_photo");
@@ -64,7 +66,7 @@
                     $extension=end($type);
                     $lien=$id_img.".".$extension;
                     $this->Photo->insert($id_img,$lien,$id_pub);
-                    $noms[]=$id_img.".".$extension;
+                    $noms[]=$lien;
                 }
 
                 //insertion detail tag
@@ -79,7 +81,7 @@
                 $this->db->trans_complete();
                 $this->uploadImage($dossier,$noms);
             }
-            // redirect("AcceuilController");
+            redirect("AcceuilController");
         } 
     }
 ?>
