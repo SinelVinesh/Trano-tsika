@@ -1,12 +1,17 @@
 <?php 
 
 class LastMessageController extends MY_Controller {
+
 	public function index(){
-		$this->load->model('Client');
+		$this->load->model('Message');
 		$data = array();
-		$data['last_messages'] = $this->Client->get_last_messages($_SESSION["id_client"]);
-		echo json_encode($data);
-//		$this->load->view('last_message',$data);
+		$data['discussions'] = $this->Message->getDiscussionOf($_SESSION["id_client"]);
+
+//		$this->output->set_content_type("application/json");
+//		echo json_encode($data);
+
+		$this->load->view('pages/discussions',$data);
 	}
+
 }
- ?>
+
