@@ -37,8 +37,9 @@
             $this->load->model('Photo');
             $this->load->model('DetailUtilite');
             $this->load->model('DetailTag');
+            $this->load->model('Boost');
 
-            $inputs = ["titre","location","room","description","images","lat","lng","price","surface"];
+            $inputs = ["titre","location","room","description","images","lat","lng","price","surface","duration","account"];
             //autoload session + form_validation
             $datas = $this->get_datas($inputs,"post");
             $tagsUtil=$this->input->post('tagsUtil[]');
@@ -78,6 +79,14 @@
                 foreach ($tagsUtil as $util) {
                     $this->DetailUtilite->insert($util,$id_pub);
                 }
+
+                if($datas["duration"]!=""){
+                    $date_debut=date('Y-m-d h:i:sa');
+                    $d=strtotime("+".$datas["duration"]." weeks");
+                    $date_fin=date('Y-m-d',$d);
+                    $this->Boost->insert($id_pub,$date_debut,$date_fin);
+                }
+
                 $this->db->trans_complete();
                 $this->uploadImage($dossier,$noms);
             }

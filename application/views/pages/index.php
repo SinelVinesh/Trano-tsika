@@ -240,6 +240,7 @@
                             <input type="hidden" name="img-removed" id="img-removed">
                             <input type="hidden" name="lat" id="lat" value="">
                             <input type="hidden" name="lng" id="lng" value="">
+                            <input type="hidden" name="duration" id="duration" value="1">
 
                             <div class="container-img">
                                 <div class="label-container">
