@@ -652,34 +652,25 @@
                                 <div class="form-group col-md-12">
                                     <label for="location">Location</label>
                                     <select name="location">
-                                        <option selected>Choisir une ville</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option value="">Choisir une ville</option>
+                                        <?php foreach ($locations as $location) { ?>
+                                            <option value="<?= $location["id_localisation"] ?>"><?= $location["nom_lieu"] ?></option>
+                                        <?php } ?>
                                     </select>
                                 </div>
 
                                 <div class="utilities col-md-12">
                                     <label>Veuillez selectionnez les proprietes de la maison</label>
                                     <div class="utilities-checks">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox">
-                                            <label class="form-check-label" for="courant">
-                                                Courant
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox">
-                                            <label class="form-check-label" for="Eau">
-                                                Eau
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox">
-                                            <label class="form-check-label" for="Meuble">
-                                                Meuble
-                                            </label>
-                                        </div>
+                                        <?php foreach ($utils as $util) { ?>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="tagsUtil[]" value="<?= $util["id_utilite"] ?>">
+                                                <label class="form-check-label" for="<?= $util["nom_utilite"] ?>">
+                                                    <?= $util["nom_utilite"] ?>
+                                                </label>
+                                            </div>
+                                        <?php } ?>
+
                                     </div>
                                 </div>
 
@@ -687,47 +678,17 @@
                                     <label>Ajoutez des <a><u class="underline-custom">#tag</u></a> autant que possible pour
                                         ameliorez votre publication</label>
                                     <div class="utilities-checks">
-                                        <div class="row p-0 m-0">
-                                            <div class="col-md-3 p-0 m-0">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="">
-                                                    <label class="form-check-label" for="Villa">
-                                                        Villa
-                                                    </label>
+                                    <div class="row p-0 m-0">
+                                            <?php for ($i = 0; $i < count($tags); $i++) { ?>
+                                                <div class="col-md-3 p-0 m-0">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="tags[]" value="<?= $tags[$i]["id_tag"]  ?>">
+                                                        <label class="form-check-label" for="<?= $tags[$i]["nom_tag"] ?>">
+                                                            <?= $tags[$i]["nom_tag"] ?>
+                                                        </label>
+                                                    </div>
                                                 </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="">
-                                                    <label class="form-check-label" for="Yard">
-                                                        Yard
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="">
-                                                    <label class="form-check-label" for="For_students">
-                                                        For students
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3 p-0 m-0">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="">
-                                                    <label class="form-check-label" for="Foreground">
-                                                        Foreground
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="">
-                                                    <label class="form-check-label" for="Restroom_indoor">
-                                                        Restroom indoor
-                                                    </label>
-                                                </div>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="">
-                                                    <label class="form-check-label" for="Garage">
-                                                        Garage
-                                                    </label>
-                                                </div>
-                                            </div>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
