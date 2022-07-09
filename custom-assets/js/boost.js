@@ -8,7 +8,6 @@ $("#submit-make-post").click(() => {
 });
 
 $("#publish-free").click(() => {
-    console.log("taY");
     $("#submit-post").trigger("click");
 });
 

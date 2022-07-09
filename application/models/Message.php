@@ -39,6 +39,7 @@ class Message extends MY_Model
             join publication p on t.id_publication = p.id_publication;
         ";
 
+
         // last messages for each discussion
         $lastMessage = "
             select *

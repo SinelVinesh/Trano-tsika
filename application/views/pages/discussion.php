@@ -1,3 +1,7 @@
+
+<span id="get-titre" style="display: none;" ><?= $titre ?? "" ?></span>
+<span id="get-user" style="display: none;" ><?= $user ?? "" ?></span>
+
 <?php
 foreach ($messages as $message) {
     $class = ($message["id_client_receiver"] == $_SESSION["id_client"]) ? "me" : "you"; ?>
@@ -18,3 +22,4 @@ foreach ($messages as $message) {
         </div>
     </li>
 <?php } ?>
+
