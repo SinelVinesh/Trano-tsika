@@ -228,7 +228,7 @@
                     <div class="row mt-3">
                         <div class="col">
                             <i class="fa-solid fa-user"></i>
-                            by <?php echo $pub["first_name"] . " " . $pub["last_name"] ?>
+                            by <?= $pub["first_name"] . " " . $pub["last_name"] ?>
                             <button data-toggle="modal" class="btn btn-primary btn-color ml-2" data-target="#message" id="contact-owner">Contact
                                 <i class="fa fa-paper-plane">
                                 </i>
@@ -321,7 +321,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="messageTitle">Client</h5>
+                <h5 class="modal-title" id="messageTitle"><?= $pub["first_name"] . " " . $pub["last_name"] ?></h5>
                 <a type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </a>
