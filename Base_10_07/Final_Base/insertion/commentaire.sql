@@ -1,0 +1,1 @@
+insert into Commentaire (id_publication, id_client, texte_commentaire) values (1,1002,'tena liana ah azafady');
