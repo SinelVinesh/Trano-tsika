@@ -1,0 +1,1 @@
+INSERT INTO Parametre (designation,valeur) values ('boost','20000');
