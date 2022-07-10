@@ -7,7 +7,7 @@
         foreach ($pubs as $pub) {
             $id = $pub["id_publication"];
             $display = $display.'<div class="col-12 col-md-6 col-xl-4">
-                <a href="'.site_url("DetailPublicationController/load_detail/$id").'" class="pub-link" title="Voir details">
+                <a href="'.base_url("pub/$id").'" class="pub-link" title="Voir details">
                     <div class="single-featured-property mb-5 wow fadeInUp" data-wow-delay="100ms">
                         <!-- Property Thumbnail -->
                         <div class="property-thumb">
@@ -71,3 +71,45 @@
         
         return $display;
     }
+
+    function displayNextQuestion($survey) {
+        if($survey == null){
+            return "";
+        }
+        $type =($survey["question"]["multi_res"]) ? "checkbox" : "radio";
+        $id_question = $survey["question"]["id_question"];
+        $question_intitule = $survey["question"]["intitule"];
+        $reponse_type = ($type == "checkbox") ? "( Reponse multicriteres )" : "" ;
+        $reponse = '';
+        foreach ($survey["reponses"] as $res) { 
+            $id_tag = $res["id_tag"];
+            $intitule = $res["intitule"]; 
+            $tmp = '
+            <div class="form-check">
+                <input class="form-check-input check" type="'.$type.'" name="response" value="'.$id_tag.'">
+                <label class="form-check-label">'.$intitule.'</label>
+            </div>';
+            $reponse .= $tmp;
+        }
+        
+        $display = '
+        <div class="modal-header">
+            <h6 id="questionSurvey">'.$question_intitule.' '.$reponse_type.' </h6>
+            <a type="button" class="closeSurvey" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </a>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" id="survey_question" value="'.$id_question.'">'.$reponse;     
+        $display .= '
+        </div>
+        <div class="modal-footer d-flex justify-content-between">
+            <button class="btn btn-outline-secondary rounded-0 next"><span><i>Valider</i></span>
+            </button>
+            <button class="btn btn-primary rounded-0 ignorer"><span>Ignorer</span></button>
+        </div>';
+        return $display;
+    }
+
+
+

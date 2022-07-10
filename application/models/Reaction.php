@@ -18,7 +18,7 @@
             $query = $this->db->query("select * from reaction where id_publication = $id_publication and id_client= $id_client");
             return $query->row_array();
         }
-
+        
         public function remove_reaction($id_reaction){
             $this->db->query("delete from reaction where id_reaction = $id_reaction");
         }

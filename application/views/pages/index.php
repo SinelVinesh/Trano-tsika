@@ -320,30 +320,8 @@
     <!-- modal survey -->
     <div class="modal fade" id="survey" tabindex="-1" role="dialog" aria-labelledby="surveyTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered survey-modal" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h6 id="questionSurvey"><?= $survey["question"]["intitule"] ?></h6>
-                    <a type="button" class="closeSurvey" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </a>
-                </div>
-                <div class="modal-body">
-                    <div class="form">
-                        <?php
-                        $type = ($survey["question"]["multi_res"]) ? "checkbox" : "radio";
-                        foreach ($survey["reponses"] as $res) { ?>
-                            <div class="form-check">
-                                <input class="form-check-input check" type="<?= $type  ?>" name="response" value="<?= $res["id_tag"] ?>">
-                                <label class="form-check-label"><?= $res["intitule"] ?></label>
-                            </div>
-                        <?php } ?>
-                    </div>
-                </div>
-                <div class="modal-footer d-flex justify-content-between">
-                    <button class="btn btn-outline-secondary rounded-0 next"><span><i>Valider</i></span>
-                    </button>
-                    <button class="btn btn-primary rounded-0 ignorer"><span>Ignorer</span></button>
-                </div>
+            <div class="modal-content form">
+                <?= displayNextQuestion($survey) ?>
             </div>
         </div>
     </div>
@@ -629,7 +607,10 @@
     <script src="<?= base_url() ?>custom-assets/js/message.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="<?= base_url() ?>custom-assets/js/survey.js"></script>
+    <?php 
+        if($survey != null){ ?>
+            <script src="<?= base_url() ?>custom-assets/js/survey.js"></script>         
+    <?php } ?>
     <script src="<?= base_url() ?>custom-assets/js/boost.js"></script>
 
     <script>
@@ -695,10 +676,11 @@
     </script>
     <!-- survey js -->
     <script>
-        $(".ignorer").click(function() {
+        $('#survey').on('click', '.ignorer',function() {
             $("#survey").modal("hide");
+
         });
-        $(".next").click(function() {
+        $('#survey').on('click', '.next',function() {
             var values = [] ;
             var markedCheckbox = document.getElementsByName('response');  
             for (var checkbox of markedCheckbox) {  
@@ -707,31 +689,21 @@
             }  
 
             if(values.length > 0 ){
+                // alert(values);
+                var id_question = $("#survey_question").val();
                  $.ajax({
-                    type: 'GET',
+                    type: 'POST',
                     data: {
-                        id_tags: values
+                        id_tags: values, id_question: id_question
                     },
                     url: "<?= site_url("SurveyController/response") ?>"
                 }).done((response) => {
-                    alert('success');
                     $(".form").empty();
-                    // surveyQuestion.empty();
-                    // surveyQuestion.append("Êtes-vous Tenant ou Leese?");
+                    $(".form").append(response);                    
                 });
                 
-            }
+            }   
 
-            // Get & Set Data
-            // let surveyQuestion = $("#questionSurvey");
-            // surveyQuestion.empty();
-            // surveyQuestion.append("Êtes-vous Tenant ou Leese?");
-
-            // let form = $(".form");
-            // form.empty();
-            // form.append("<div class='form-check'><input class='form-check-input' type='radio' name='response' value='yes'><label class='form-check-label'>Next Yes</label></div>");
-            // form.append("<div class='form-check'><input class='form-check-input' type='radio' name='response' value='no'><label class='form-check-label'>Next No</label></div>");
-            
         });
     </script>
 
