@@ -38,6 +38,15 @@ class DetailPublicationController extends MY_Controller {
 		$pub["messages"] = $this->Message->get_messages($_SESSION["id_client"], $id_pub);
         $pub["pos"] = $this->Publication->getPosition($id_pub);
 
+        $this->load->model("Location");
+        $this->load->model("DetailTag");
+        $this->load->model("DetailUtilite");
+
+        $data["locations"] = $this->Location->get_locations();
+        $data["tags"] = $this->DetailTag->get_tags();
+        $data["utils"] = $this->DetailUtilite->get_utilities();
+
+
         $survey["question"] = $this->Question->next_question($_SESSION["id_client"]);
         if($survey["question"]){
             $survey["reponses"] = $this->Reponse->reponse_for($survey["question"]["id_question"]);
