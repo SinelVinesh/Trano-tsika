@@ -12,7 +12,7 @@
         }
 
         public function log(){
-            if ($_SESSION["id_client"] != null ) {
+            if (isset($_SESSION["id_client"])) {
                 redirect("AcceuilController");
                 return;
             }
