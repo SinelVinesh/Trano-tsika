@@ -1,7 +1,11 @@
 <?php 
 
 class LastMessageController extends MY_Controller {
-
+    public function __construct()
+    {
+        parent::__construct();
+        $this->testAuthentication();
+    }
 	public function index(){
 		$this->load->model('Message');
 		$data = array();

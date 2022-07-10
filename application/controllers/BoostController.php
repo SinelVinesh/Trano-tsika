@@ -1,5 +1,10 @@
 <?php
-    class BoostController extends MY_Controller{
+    class BoostController extends MY_Controller {
+        public function __construct()
+        {
+            parent::__construct();
+            $this->testAuthentication();
+        }
         public function pay_boost($id_pub,$duration){
             $this->load->model('Boost');
             $inputs=["account_number,duration"];

@@ -1,6 +1,11 @@
 <?php 
 
 class LastNotificationController extends MY_Controller {
+	public function __construct()
+	{
+		parent::__construct();
+		$this->testAuthentication();
+	}
 	public function index(){
 		$this->load->model('Client');
 		$data = array();

@@ -1,6 +1,10 @@
 <?php 
     class SearchController extends MY_Controller {
-
+        public function __construct()
+        {
+            parent::__construct();
+            $this->testAuthentication();
+        }
         public function index($pubs=null,$len=0) {
             $this->load->model("Location");
             $this->load->model("DetailTag");

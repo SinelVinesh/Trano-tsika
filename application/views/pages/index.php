@@ -85,7 +85,7 @@
                 </ul>
 
                 <div class="user-img mr-0">
-                    <a href="" class="btn btn-light bg-white border-0" style="font-size: 14px;">AH Tsinjo</a>
+                    <a class="btn btn-light bg-white border-0" style="font-size: 14px;"><?= $_SESSION["first_name"]." ".$_SESSION["last_name"] ?></a>
                 </div>
 
                 <ul class="setting-area ml-0">
@@ -94,7 +94,7 @@
                         <div class="dropdowns">
                             <span>Option(s)</span>
                             <ul class="drops-menu">
-                                <li><a href="">Log out</a></li>
+                                <li><a href="<?= site_url("LoginController/LogOut") ?>">Log out</a></li>
                             </ul>
                         </div>
                     </li>
@@ -261,7 +261,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- locate your home -->
     <div class="modal fade p-0" role="dialog" tabindex="-1" id="link-map">
@@ -515,17 +514,21 @@
     <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header search-container">
-                    <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
-                    <input type="search" name="search" class="search-title" placeholder="Enter something ...">
-                    <button type="button" class="btn btn-light add-bg rounded-circle" data-dismiss="modal" aria-label="Close">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
+                <form action="<?= site_url() ?>/SearchController/simpleSearch"  method="get" >
+                    <div class="modal-header search-container">
+                        <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
+                        <input type="search" name="criteria" class="search-title" id="search-criteria" placeholder="Enter something ...">
+                        <button type="button" class="btn btn-light add-bg rounded-circle" data-dismiss="modal" aria-label="Close">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                        <input type="submit" value="Search" id="go-search" class="d-none" >
+                    </div>
+                </form>
+
                 <div class="modal-body">
                     <span class="multi-text">Multicriteria <i class="fa-solid fa-caret-down" id="caret-down"></i> <i class="fa-solid fa-caret-up" id="caret-left"></i></span>
                     <div class="search-box">
-                        <form action="./" method="post">
+                        <form action="<?= site_url() ?>/SearchController/searchMulti" method="post">
                             <div class="row">
                                 <div class="form-group col-md-12">
                                     <label for="titre">Titre</label>
@@ -601,6 +604,7 @@
                                 </div>
 
                             </div>
+                            <input type="submit" value="Search" class="btn btn-primary rounded-0">
                         </form>
                     </div>
                 </div>
@@ -783,6 +787,16 @@
     </script>
 
     <script src="<?= base_url() ?>custom-assets/js/sendMessage.js" ></script>
+
+    <script>
+       $("#search-criteria").keyup((e) => {
+           if(e.keyCode === 13) {
+               let value = $("#search-criteria").val();
+               // $("#search-criteria").val(value.substring(0, value.length-2));
+               $("#go-search").trigger("click");
+           }
+       });
+    </script>
 
 </body>
 

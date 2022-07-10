@@ -47,12 +47,6 @@
             </div>
 
             <div class="top-area mt-3 border-0">
-                <div class="top-search" id="search">
-                    <form>
-                        <input type="text" placeholder="Search your house">
-                        <button data-ripple disabled><i class="ti-search"></i></button>
-                    </form>
-                </div>
 
                 <ul class="setting-area">
                     <li>
@@ -155,11 +149,14 @@
         <!--  main content  -->
         <div class="container">
             <div class="modal-content mt-4 mb-3">
-                <form action="<?= site_url() ?>/SearchController/simpleSearch"  method="get" > 
-                <div class="modal-header search-container">
+                <form action="<?= site_url() ?>/SearchController/simpleSearch"  method="get" >
+                    <div class="modal-header search-container">
                         <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
-                        <input type="search" name="criteria" class="search-title" id="textarea-search" placeholder="Enter something ...">
-                        <input type="submit" value="Search">
+                        <input type="search" name="criteria" class="search-title" id="search-criteria" placeholder="Enter something ...">
+                        <button type="button" class="btn btn-light add-bg rounded-circle" data-dismiss="modal" aria-label="Close">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                        <input type="submit" value="Search" id="go-search" class="d-none" >
                     </div>
                 </form>
 
@@ -168,7 +165,6 @@
                     <div class="search-box">
                         <form action="<?= site_url() ?>/SearchController/searchMulti" method="post">
                             <div class="row">
-
                                 <div class="form-group col-md-12">
                                     <label for="titre">Titre</label>
                                     <input type="text" name="titre" placeholder="Entrez le titre que vous rechercher">
@@ -178,10 +174,10 @@
                                     <label for="price">Prix par mois</label>
                                     <div class="form-group row m-0 p-0">
                                         <div class="col-md-6 pl-0">
-                                            <input type="number" name="prix_min" min="0" step="0.01" placeholder="Minimum">
+                                            <input type="number" name="prix[min]" min="0" step="0.01" placeholder="Minimum">
                                         </div>
                                         <div class="col-md-6 pl-0">
-                                            <input type="number" name="prix_max" min="0" step="0.01" placeholder="Maximum">
+                                            <input type="number" name="prix[max]" min="0" step="0.01" placeholder="Maximum">
                                         </div>
                                     </div>
                                 </div>
@@ -190,10 +186,10 @@
                                     <label for="price">Nombre de chambre</label>
                                     <div class="form-group row m-0 p-0">
                                         <div class="col-md-6 pl-0">
-                                            <input type="number" name="room_min" min="0" placeholder="Minimum">
+                                            <input type="number" name="chambre[min]" min="0" placeholder="Minimum">
                                         </div>
                                         <div class="col-md-6 pl-0">
-                                            <input type="number" name="room_max" min="0" placeholder="Maximum">
+                                            <input type="number" name="chambre[max]" min="0" placeholder="Maximum">
                                         </div>
                                     </div>
                                 </div>
@@ -243,7 +239,7 @@
                                 </div>
 
                             </div>
-                            <input type="submit" value="Search">
+                            <input type="submit" value="Search" class="btn btn-primary rounded-0">
                         </form>
                     </div>
                 </div>

@@ -1,6 +1,10 @@
 <?php
-    class AjoutPublicationController extends MY_Controller{
-
+    class AjoutPublicationController extends MY_Controller {
+        public function __construct()
+        {
+            parent::__construct();
+            $this->testAuthentication();
+        }
         public function uploadImage($dossier,$noms){
             $count=count($noms);
             for($i=0;$i<$count;$i++){

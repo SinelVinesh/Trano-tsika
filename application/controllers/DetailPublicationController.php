@@ -1,8 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class DetailPublicationController extends My_Controller {
-
+class DetailPublicationController extends MY_Controller {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->testAuthentication();
+    }
 	public function next_commentaire($id_pub){
 		$this->load->model("Publication");
 		$limit = $_SESSION["limit_comment"];

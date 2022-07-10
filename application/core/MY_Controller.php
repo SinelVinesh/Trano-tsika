@@ -7,7 +7,6 @@
         function __construct(){
             parent::__construct();
             session_start();
-//            $_SESSION['id_client'] = 1001;
         } 
 
         /**
@@ -33,6 +32,7 @@
          * 
          * Get all submitted data in a dictionnary
          */
+
         public function get_datas($input_names,$method){
             $datas = [];
 
@@ -50,6 +50,13 @@
                 throw new Exception("Method unknown");
             }
             return $datas;
+        }
+
+
+        public function testAuthentication () {
+            if($_SESSION['id_client'] == null) {
+                redirect(site_url("LoginController"));
+            }
         }
          
     }

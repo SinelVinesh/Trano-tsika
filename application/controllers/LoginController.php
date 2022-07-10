@@ -22,8 +22,7 @@
                     $_SESSION["id_client"] = $client["id_client"];
                     $_SESSION["first_name"] = $client["first_name"];
                     $_SESSION["last_name"] = $client["last_name"];
-                    // redirect(''); 
-                    echo ("success");
+                    redirect(site_url("AcceuilController"));
                 }else{
                     $data["error"] = "Verifier votre email ou mot de passe";
                     $this->load_view('pages/log.php',$data); 
@@ -31,7 +30,14 @@
             }else{
                 $this->load_view('pages/log.php',$data);  
             }
-              
-        } 
+
+        }
+
+        public function LogOut() {
+            session_destroy();
+            session_start();
+            redirect("LoginController");
+        }
+
     }
 ?>

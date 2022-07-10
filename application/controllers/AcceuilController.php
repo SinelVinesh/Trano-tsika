@@ -1,6 +1,13 @@
 <?php
 
-    class AcceuilController extends MY_Controller{
+    class AcceuilController extends MY_Controller {
+
+        public function __construct()
+        {
+            parent::__construct();
+            $this->testAuthentication();
+        }
+
         public function index(){
             $this->load->model('Publication');
             $limit = 6;
