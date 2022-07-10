@@ -1,10 +1,12 @@
 <?php
     class MessageController extends MY_Controller {
+
         public function __construct()
         {
             parent::__construct();
             $this->testAuthentication();
         }
+
         public function load_message(){
             $this->load->model('Message');
             $this->load->model('Publication');
