@@ -9,6 +9,21 @@
             $this->load->model("Location");
             $this->load->model("DetailTag");
             $this->load->model("DetailUtilite");
+            $this->load->model('Question');
+            $this->load->model('Reponse');
+
+            $survey["question"] = $this->Question->next_question($_SESSION["id_client"]);
+            if($survey["question"]){
+                $survey["reponses"] = $this->Reponse->reponse_for($survey["question"]["id_question"]);
+            }
+
+            else{
+                $survey = null;
+            }
+
+            $data["survey"] = $survey;
+
+
             $data["locations"] = $this->Location->get_locations();
             $data["tags"] = $this->DetailTag->get_tags();
             $data["utils"] = $this->DetailUtilite->get_utilities();

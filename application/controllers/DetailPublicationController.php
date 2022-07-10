@@ -2,11 +2,13 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class DetailPublicationController extends MY_Controller {
+
     public function __construct()
     {
         parent::__construct();
         $this->testAuthentication();
     }
+
 	public function next_commentaire($id_pub){
 		$this->load->model("Publication");
 		$limit = $_SESSION["limit_comment"];
@@ -20,6 +22,8 @@ class DetailPublicationController extends MY_Controller {
 	{
 		$this->load->model('Publication');
 		$this->load->model('Message');
+		$this->load->model('Question');
+		$this->load->model('Reponse');
 		$pub = array();
 
 		$pub = $this->Publication->get_pub($id_pub);
@@ -33,6 +37,17 @@ class DetailPublicationController extends MY_Controller {
 		$pub["commentaires"] = $this->Publication->get_limited_commentaire($id_pub,3,0);
 		$pub["messages"] = $this->Message->get_messages($_SESSION["id_client"], $id_pub);
         $pub["pos"] = $this->Publication->getPosition($id_pub);
+
+        $survey["question"] = $this->Question->next_question($_SESSION["id_client"]);
+        if($survey["question"]){
+            $survey["reponses"] = $this->Reponse->reponse_for($survey["question"]["id_question"]);
+        }
+        else{
+            $survey = null;
+        }
+
+        $data["survey"] = $survey;
+
 		$data["pub"] = $pub;
 
 		$data["user_like"] = $this->user_like($id_pub);

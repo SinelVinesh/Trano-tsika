@@ -26,8 +26,10 @@
 
     <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/survey.css">
-    <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/boost.css">
+    <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/style-post-message.css">
+    <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/search.css">
 
     <style>
         .theme-layout {
@@ -43,7 +45,7 @@
         <!-- topbar -->
         <div class="topbar stick d-flex justify-content-between">
             <div class="logo">
-                <a title="" href="newsfeed.html"><img src="<?= base_url() ?>custom-assets/logo.png" alt=""></a>
+                <a title="home" href="<?= site_url() ?>"><img src="<?= base_url() ?>custom-assets/logo.png" alt=""></a>
             </div>
 
             <div class="top-area mt-3 border-0">
@@ -59,77 +61,23 @@
                             <ul class="drops-menu">
                             </ul>
                             <!-- notications -->
-                            <a href="notifications.html" title="" class="more-mesg">view more</a>
+<!--                            <a href="notifications.html" title="" class="more-mesg">view more</a>-->
                         </div>
                     </li>
                     <li>
-                        <a href="#" title="Messages" class="menu-item" data-ripple="">Messages</a>
-                        <div class="dropdowns">
-                            <span>5 New Messages</span>
+                        <a href="#" title="Messages" class="menu-item" data-ripple="" id="show-discussions" >Messages</a>
+                        <div class="dropdowns" id="discussion-box" >
+                            <span><span class="messageNumber"></span> New Messages</span>
                             <ul class="drops-menu">
-                                <li>
-                                    <a class="discussion" discussion-id="1">
-                                        <img src="assets/images/resources/thumb-1.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>sarah Loren</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <!--                                <span class="tag green">New</span>-->
-                                </li>
-                                <li>
-                                    <a class="discussion" discussion-id="2">
-                                        <img src="assets/images/resources/thumb-2.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Jhon doe</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <!--                                <span class="tag red">Reply</span>-->
-                                </li>
-                                <li>
-                                    <a class="discussion" discussion-id="3">
-                                        <img src="assets/images/resources/thumb-3.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Andrew</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <!--                                <span class="tag blue">Unseen</span>-->
-                                </li>
-                                <li>
-                                    <a class="discussion" discussion-id="4">
-                                        <img src="assets/images/resources/thumb-4.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Tom cruse</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <span class="tag">New</span>
-                                </li>
-                                <li>
-                                    <a class="discussion" discussion-id="5">
-                                        <img src="assets/images/resources/thumb-5.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Amy</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <span class="tag">New</span>
-                                </li>
+
                             </ul>
-                            <a href="messages.html" title="" class="more-mesg">view more</a>
+                            <!--                            <a href="messages.html" title="" class="more-mesg">view more</a>-->
                         </div>
                     </li>
                 </ul>
 
                 <div class="user-img mr-0">
-                    <a href="" class="btn btn-light bg-white border-0" style="font-size: 14px;">AH Tsinjo</a>
+                    <a class="btn btn-light bg-white border-0" style="font-size: 14px;"><?= $_SESSION["first_name"]." ".$_SESSION["last_name"] ?></a>
                 </div>
 
                 <ul class="setting-area ml-0">
@@ -138,13 +86,19 @@
                         <div class="dropdowns">
                             <span>Option(s)</span>
                             <ul class="drops-menu">
-                                <li><a href="">Log out</a></li>
+                                <li id="go-out" ><a>Log out</a></li>
                             </ul>
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
+
+
+        <form action="<?= site_url("LoginController/LogOut") ?>" method="get" class="d-none">
+            <button type="submit" id="logOut">out</button>
+        </form>
+
 
         <!--  main content  -->
         <div class="container">
@@ -244,10 +198,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- posts -->
-            <!-- helper which diplays the posts -->
-            
         </div>
 
         <div class="container" id="pub-container" >
@@ -277,48 +227,6 @@
         </div>
     </div>
 
-    <style>
-        input.search-title {
-            width: 100%;
-            height: 40px;
-            border: 1px black solid;
-            padding: 10px 10px 10px 34px;
-            border-radius: 25px;
-            margin-right: 10px;
-            background-color: rgba(107, 99, 99, 0.06);
-        }
-
-        input.search-title:focus,
-        input.search-title:hover {
-            /* outline: 1px blue solid; */
-            /*border: 0;*/
-            box-shadow: 0px 1px 10px -5px rgb(151 113 81);
-        }
-
-        #search-icon {
-            margin: 13px 0 0 13px;
-            position: absolute;
-        }
-
-        .search-container {
-            position: relative;
-        }
-
-        .add-bg {
-            background-color: rgba(128, 122, 122, 0.19);
-        }
-
-        .search-box,
-        #caret-left {
-            display: none;
-        }
-
-        .multi-text:hover {
-            cursor: pointer;
-            box-shadow: 0px 10px 6px -8px rgb(151 113 81);
-        }
-    </style>
-
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -326,44 +234,49 @@
 
     <script src="<?= base_url() ?>assets/js/main.min.js"></script>
     <script src="<?= base_url() ?>assets/js/script.js"></script>
-    <script src="<?= base_url() ?>assets/js/map-init.js"></script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDD7GRQJx0_fNz6eeUSJjf7Yw5_6s0OEaA&libraries=geometry,places"></script>
 
-    <script src="<?= base_url() ?>custom-assets/js/map.js"></script>
     <script src="<?= base_url() ?>custom-assets/js/modals.js"></script>
-    <script src="<?= base_url() ?>custom-assets/js/image-preview.js"></script>
     <script src="<?= base_url() ?>custom-assets/js/message.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="<?= base_url() ?>custom-assets/js/survey.js"></script>
-    <script src="<?= base_url() ?>custom-assets/js/boost.js"></script>
 
     <script>
-        $("#search").click(() => {
-            $("#textarea-search").focus();
-        });
-
-        let shown = false;
-
-        $(".multi-text").click(() => {
-            if (!shown) {
-                $("#caret-down").hide();
-                $("#caret-left").show();
-                $(".search-box").show();
-                shown = true;
-            } else {
-                $("#caret-down").show();
-                $("#caret-left").hide();
-                $(".search-box").hide();
-                shown = false;
-            }
-        });
-
-        $("#show-post-modal").click(() => {
-            $("#make-post").modal("show");
-        });
+        let surveyResponseUrl = "<?= site_url("SurveyController/response") ?>";
     </script>
+
+    <!-- survey js // need survey ResponseUrl -->
+    <?php if($survey != null) { ?>
+        <script src="<?= base_url() ?>custom-assets/js/survey.js"></script>
+    <?php } ?>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="<?= base_url() ?>custom-assets/js/survey.js"></script>
+    <script src="<?= base_url() ?>custom-assets/js/search.js"></script>
+
+    <script>
+        let urlNotif = "<?= site_url("LastNotificationController") ?>";
+    </script>
+
+    <!--  need the url notif to be set  -->
+    <script src="<?= base_url() ?>custom-assets/js/notif.js"></script>
+
+
+
+    <script>
+        let site_url = "<?= site_url() ?>";
+        let pubIdclient;
+        let idPublication;
+        let lastMessageUrl = "<?= site_url("LastMessageController") ?>";
+        let loadingUrlBase = "<?= site_url("MessageController/load_message?client1=".$_SESSION['id_client']."&client2=") ?>";
+    </script>
+
+    <!--  need site_url, pubIdClient, idPublication, lastMesageUrl, loadingUrlBase -->
+    <script src="<?= base_url() ?>custom-assets/js/message-from-notif.js" ></script>
+    <script src="<?= base_url() ?>custom-assets/js/logOut.js"></script>
+    <script src="<?= base_url() ?>custom-assets/js/sendMessage.js" ></script>
+
 
     <script>
         $("#load-next").click(() => {
@@ -373,24 +286,8 @@
                 $("#pub-container").append(data);
             });
         });
-
-        $("#show-notif").click(() => {
-            let notifBox = $("#notif-box > .drops-menu");
-            $(".number").empty();
-            notifBox.empty();
-            $.ajax({
-                url: "<?= site_url("LastNotificationController") ?>"
-            }).done((data) => {
-                notifBox.append(data);
-                $(".number").text(($("#notif-box > .drops-menu > li").length));
-            });
-            notifBox.append()
-        });
     </script>
 
-    <script>
-
-    </script>
 </body>
 
 </html>

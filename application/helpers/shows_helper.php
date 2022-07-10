@@ -74,7 +74,18 @@
 
     function displayNextQuestion($survey) {
         if($survey == null){
-            return "";
+            return '<div class="modal-header">
+            <h6 id="questionSurvey"> Survey done!! </h6>
+            <a type="button" class="closeSurvey" data-dismiss="modal" aria-label="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </a>
+        </div>
+        <div class="modal-body">
+            <h1>On vous remercie d\'avoir repondu</h1>
+        </div>
+        <div class="modal-footer d-flex justify-content-between">
+            <button class="btn btn-outline-secondary rounded-0 ignorer"><span>Ignorer</span></button>
+        </div>';
         }
         $type =($survey["question"]["multi_res"]) ? "checkbox" : "radio";
         $id_question = $survey["question"]["id_question"];
@@ -96,7 +107,7 @@
         <div class="modal-header">
             <h6 id="questionSurvey">'.$question_intitule.' '.$reponse_type.' </h6>
             <a type="button" class="closeSurvey" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                <i class="fa-solid fa-xmark"></i>
             </a>
         </div>
         <div class="modal-body">
@@ -104,9 +115,9 @@
         $display .= '
         </div>
         <div class="modal-footer d-flex justify-content-between">
-            <button class="btn btn-outline-secondary rounded-0 next"><span><i>Valider</i></span>
+            <button class="btn btn-primary rounded-0  next"><span><i>Valider</i></span>
             </button>
-            <button class="btn btn-primary rounded-0 ignorer"><span>Ignorer</span></button>
+            <button class="btn btn-outline-secondary rounded-0 ignorer"><span>Ignorer</span></button>
         </div>';
         return $display;
     }

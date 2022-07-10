@@ -1,10 +1,12 @@
 <?php
     class SurveyController extends MY_Controller {
+
         public function __construct()
         {
             parent::__construct();
             $this->testAuthentication();
         }
+
         public function next_survey(){
             $this->load->model("Question");
             $this->load->model("Reponse");

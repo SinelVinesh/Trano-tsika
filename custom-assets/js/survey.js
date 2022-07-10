@@ -23,3 +23,31 @@ let goSurvey = () => {
 }
 
 toastr.info(text);
+
+
+$('#survey').on('click', '.ignorer', function () {
+    $("#survey").modal("hide");
+});
+
+$('#survey').on('click', '.next', function () {
+    var values = [];
+    var markedCheckbox = document.getElementsByName('response');
+    for (var checkbox of markedCheckbox) {
+        if (checkbox.checked)
+            values.push(checkbox.value);
+    }
+
+    if (values.length > 0) {
+        var id_question = $("#survey_question").val();
+        $.ajax({
+            type: 'POST',
+            data: {
+                id_tags: values, id_question: id_question
+            },
+            url: surveyResponseUrl
+        }).done((response) => {
+            $(".form").empty();
+            $(".form").append(response);
+        });
+    }
+});

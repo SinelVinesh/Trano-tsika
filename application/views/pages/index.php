@@ -1,3 +1,5 @@
+<?= validation_errors() ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,31 +25,23 @@
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/message.css">
 
     <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/survey.css">
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/boost.css">
-
-    <style>
-        .mandatory {
-            color: red;
-            /*font-size: 20px;*/
-        }
-
-        .mesg-meta>span {
-            white-space: unset;
-        }
-    </style>
+    <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/style-post-message.css">
+    <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/search.css">
 
 </head>
 
 <body>
-    <?= validation_errors() ?>
 
     <div class="theme-layout">
         <!-- topbar -->
         <div class="topbar stick d-flex justify-content-between">
             <div class="logo">
-                <a title="" href="<?= site_url() ?>"><img src="<?= base_url() ?>custom-assets/logo.png" alt=""></a>
+                <a title="home" href="<?= site_url() ?>"><img src="<?= base_url() ?>custom-assets/logo.png" alt=""></a>
             </div>
 
             <div class="top-area mt-3 border-0">
@@ -69,7 +63,7 @@
                             <ul class="drops-menu">
                             </ul>
                             <!-- notications -->
-                            <a href="notifications.html" title="" class="more-mesg">view more</a>
+<!--                            <a href="notifications.html" title="" class="more-mesg">view more</a>-->
                         </div>
                     </li>
                     <li>
@@ -79,7 +73,7 @@
                             <ul class="drops-menu">
 
                             </ul>
-                            <a href="messages.html" title="" class="more-mesg">view more</a>
+<!--                            <a href="messages.html" title="" class="more-mesg">view more</a>-->
                         </div>
                     </li>
                 </ul>
@@ -94,13 +88,17 @@
                         <div class="dropdowns">
                             <span>Option(s)</span>
                             <ul class="drops-menu">
-                                <li><a href="<?= site_url("LoginController/LogOut") ?>">Log out</a></li>
+                                <li id="go-out" ><a>Log out</a></li>
                             </ul>
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
+
+        <form action="<?= site_url("LoginController/LogOut") ?>" method="get" class="d-none">
+            <button type="submit" id="logOut">out</button>
+        </form>
 
         <!--  main content  -->
         <div class="container" id="pub-container">
@@ -153,7 +151,7 @@
                 <div class="modal-header">
                     <h4>Publier votre maison a louer</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -269,7 +267,7 @@
                 <div class="modal-header">
                     <h4>Localiser votre maison</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
                     </button>
                 </div>
 
@@ -414,7 +412,7 @@
                 <div class="modal-header">
                     <h5>Please enter your information in order to confirm the boost</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                        <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
                     </button>
                 </div>
 
@@ -443,50 +441,6 @@
             </div>
         </div>
     </div>
-
-
-    <style>
-        input.search-title {
-            width: 100%;
-            height: 40px;
-            border: 1px black solid;
-            padding: 10px 10px 10px 34px;
-            border-radius: 25px;
-            margin-right: 10px;
-            background-color: rgba(107, 99, 99, 0.06);
-        }
-
-        input.search-title:focus,
-        input.search-title:hover {
-            /* outline: 1px blue solid; */
-            /*border: 0;*/
-            box-shadow: 0px 1px 10px -5px rgb(151 113 81);
-        }
-
-        #search-icon {
-            margin: 13px 0 0 13px;
-            position: absolute;
-        }
-
-        .search-container {
-            position: relative;
-        }
-
-        .add-bg {
-            background-color: rgba(128, 122, 122, 0.19);
-        }
-
-        .search-box,
-        #caret-left {
-            display: none;
-        }
-
-        .multi-text:hover {
-            cursor: pointer;
-            box-shadow: 0px 10px 6px -8px rgb(151 113 81);
-        }
-    </style>
-
 
     <!-- search modal -->
     <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
@@ -590,57 +544,42 @@
         </div>
     </div>
 
-
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
     <script src="<?= base_url() ?>assets/js/main.min.js"></script>
     <script src="<?= base_url() ?>assets/js/script.js"></script>
-    <script src="<?= base_url() ?>assets/js/map-init.js"></script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDD7GRQJx0_fNz6eeUSJjf7Yw5_6s0OEaA&libraries=geometry,places"></script>
 
+    <script src="<?= base_url() ?>custom-assets/js/logOut.js"></script>
     <script src="<?= base_url() ?>custom-assets/js/map.js"></script>
     <script src="<?= base_url() ?>custom-assets/js/modals.js"></script>
     <script src="<?= base_url() ?>custom-assets/js/image-preview.js"></script>
     <script src="<?= base_url() ?>custom-assets/js/message.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <?php 
-        if($survey != null){ ?>
-            <script src="<?= base_url() ?>custom-assets/js/survey.js"></script>         
-    <?php } ?>
-    <script src="<?= base_url() ?>custom-assets/js/boost.js"></script>
 
     <script>
-        $("#search").click(() => {
-            $("#searchModal").modal("show");
-        });
+        let surveyResponseUrl = "<?= site_url("SurveyController/response") ?>";
+    </script>
 
-        // $("#searchModal").modal("show");
+    <!-- survey js // need survey ResponseUrl -->
+    <?php if($survey != null) { ?>
+            <script src="<?= base_url() ?>custom-assets/js/survey.js"></script>         
+    <?php } ?>
 
-        let shown = false;
+    <script src="<?= base_url() ?>custom-assets/js/boost.js"></script>
+    <script src="<?= base_url() ?>custom-assets/js/search.js"></script>
 
-        $(".multi-text").click(() => {
-            if (!shown) {
-                $("#caret-down").hide();
-                $("#caret-left").show();
-                $(".search-box").show();
-                shown = true;
-            } else {
-                $("#caret-down").show();
-                $("#caret-left").hide();
-                $(".search-box").hide();
-                shown = false;
-            }
-        });
-
+    <!--  show modal post  -->
+    <script>
         $("#show-post-modal").click(() => {
             $("#make-post").modal("show");
         });
     </script>
 
+    <!--  infinite scroll  -->
     <script>
         $("#load-next").click(() => {
             $.ajax({
@@ -662,113 +601,24 @@
     </script>
 
     <script>
-        $("#show-notif").click(() => {
-            let notifBox = $("#notif-box > .drops-menu");
-            $(".number").empty();
-            notifBox.empty();
-            $.ajax({
-                url: "<?= site_url("LastNotificationController") ?>"
-            }).done((data) => {
-                notifBox.append(data);
-                $(".number").text(($("#notif-box > .drops-menu > li").length));
-            });
-        });
+        let urlNotif = "<?= site_url("LastNotificationController") ?>";
     </script>
-    <!-- survey js -->
-    <script>
-        $('#survey').on('click', '.ignorer',function() {
-            $("#survey").modal("hide");
 
-        });
-        $('#survey').on('click', '.next',function() {
-            var values = [] ;
-            var markedCheckbox = document.getElementsByName('response');  
-            for (var checkbox of markedCheckbox) {  
-                if (checkbox.checked)  
-                    values.push(checkbox.value);  
-            }  
-
-            if(values.length > 0 ){
-                // alert(values);
-                var id_question = $("#survey_question").val();
-                 $.ajax({
-                    type: 'POST',
-                    data: {
-                        id_tags: values, id_question: id_question
-                    },
-                    url: "<?= site_url("SurveyController/response") ?>"
-                }).done((response) => {
-                    $(".form").empty();
-                    $(".form").append(response);                    
-                });
-                
-            }   
-
-        });
-    </script>
+    <!--  need the url notif to be set  -->
+    <script src="<?= base_url() ?>custom-assets/js/notif.js"></script>
 
     <script>
         let site_url = "<?= site_url() ?>";
         let pubIdclient;
         let idPublication;
+        let lastMessageUrl = "<?= site_url("LastMessageController") ?>";
+        let loadingUrlBase = "<?= site_url("MessageController/load_message?client1=".$_SESSION['id_client']."&client2=") ?>";
     </script>
 
-    <script>
-        $("#show-discussions").click(() => {
-
-            let discuBox = $("#discussion-box > .drops-menu");
-            $(".messageNumber").empty();
-            discuBox.empty();
-
-            $.ajax({
-                url: "<?= site_url("LastMessageController") ?>"
-            }).done((data) => {
-                discuBox.append(data);
-                $(".messageNumber").text($("#discussion-box > .drops-menu > li").length);
-                
-                $(".discussion").on("click", (e) => {
-
-                    let target = $(e.target);
-
-                    while (target.attr("pub-id") == null && target.attr("another") == null ) {
-                        target = target.parent();
-                    }
-
-                    let pubId = target.attr("pub-id");
-                    let another = target.attr("another");
-
-                    pubIdclient = another;
-                    idPublication = pubId;
-
-                    $.ajax({
-                        url: `<?= site_url("MessageController/load_message?client1=".$_SESSION['id_client']."&client2=") ?>${another}&id_pub=${pubId}`
-                    }).done((data) => {
-                        console.log(data);
-                        let messagesBox = $("#onemessage");
-                        messagesBox.empty();
-                        messagesBox.append(data);
-
-                        $("#user").text($('#get-user').text());
-                        $("#titre-message").text($('#get-titre').text());
-
-                        $("#message").modal("show");
-                    });
-                });
-            });
-        });
-    </script>
+    <!--  need site_url, pubIdClient, idPublication, lastMesageUrl, loadingUrlBase -->
+    <script src="<?= base_url() ?>custom-assets/js/message-from-notif.js" ></script>
 
     <script src="<?= base_url() ?>custom-assets/js/sendMessage.js" ></script>
-
-    <script>
-       $("#search-criteria").keyup((e) => {
-           if(e.keyCode === 13) {
-               let value = $("#search-criteria").val();
-               // $("#search-criteria").val(value.substring(0, value.length-2));
-               $("#go-search").trigger("click");
-           }
-       });
-    </script>
 
 </body>
 

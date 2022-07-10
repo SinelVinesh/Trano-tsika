@@ -2,10 +2,21 @@
     class LoginController extends MY_Controller{
 
         public function index(){
+
+            if (isset($_SESSION["id_client"])) {
+                redirect("AcceuilController");
+                return;
+            }
+
             $this->load_view('pages/log.php'); 
         }
 
         public function log(){
+            if ($_SESSION["id_client"] != null ) {
+                redirect("AcceuilController");
+                return;
+            }
+
             $inputs = ["email","password"];
             //autoload session + form_validation
             

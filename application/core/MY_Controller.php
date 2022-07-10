@@ -55,7 +55,7 @@
 
         public function testAuthentication () {
             if($_SESSION['id_client'] == null) {
-                redirect(site_url("LoginController"));
+                redirect(site_url("login"));
             }
         }
          

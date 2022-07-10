@@ -1,10 +1,12 @@
 <?php
     class AjoutPublicationController extends MY_Controller {
+
         public function __construct()
         {
             parent::__construct();
             $this->testAuthentication();
         }
+
         public function uploadImage($dossier,$noms){
             $count=count($noms);
             for($i=0;$i<$count;$i++){
@@ -44,6 +46,7 @@
             $this->load->model('Boost');
 
             $inputs = ["titre","location","room","description","images","lat","lng","price","surface","duration","account"];
+
             //autoload session + form_validation
             $datas = $this->get_datas($inputs,"post");
             $tagsUtil=$this->input->post('tagsUtil[]');
@@ -94,6 +97,7 @@
                 $this->db->trans_complete();
                 $this->uploadImage($dossier,$noms);
             }
+
             redirect("AcceuilController");
         } 
     }

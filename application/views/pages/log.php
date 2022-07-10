@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/responsive.css">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 	<link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
 
 	<style>
@@ -66,7 +68,7 @@
 
 </head>
 <body>
-<?= validation_errors() ?>
+
 <div class="theme-layout">
 	<div class="container-fluid p-0">
 		<div class="row merged">
@@ -78,7 +80,7 @@
 							Commencez a poster vos maison a louer ou chercher la bonne maison pour vous!!
 						</p>
 						<div class="friend-logo">
-							<span><img src="./logo-white.png" alt=""></span>
+							<span><img src="<?= base_url() ?>custom-assets/logo-white.png" alt=""></span>
 						</div>
 						<a href="#" title="" class="folow-me">Follow Us on <i class="fa-brands fa-twitter"></i></a>
 					</div>	
@@ -159,7 +161,7 @@
 
 							<div class="checkbox">
 							  <label>
-								<input type="checkbox" checked="checked"/><i class="check-box"></i>Accept Terms & Conditions?
+								<input type="checkbox" checked="checked" required/><i class="check-box"></i>Accept Terms & Conditions?
 							  </label>
 							</div>
 
@@ -177,17 +179,52 @@
 	</div>
 </div>
 
-<!-- a implementer  -->
-<?php if(isset($success)) { echo $success; } ?>
-<?php if(isset($error)) { echo $error; } ?>
-<?= validation_errors() ?>
+
+<div class="modal" id="reportModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Message</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h4 class="text-success">
+                    <?php if(isset($success)) { echo "Votre compte a ete creer, Veuillez vous connecter"; } ?>
+                </h4>
+                <h4 class="text-danger">
+                    <?php if(isset($error)) { echo $error; } ?>
+                    <?= validation_errors() ?>
+                </h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 <script>
+
+    <?php
+        if(isset($success) || isset($error) || validation_errors() != '') { ?>
+            $("#reportModal").modal("show");
+        <?php
+        }
+    ?>
+
 	function  goBack() {
 		$("#go-back").trigger("click");
 	}
 </script>
+
 <script src="<?= base_url() ?>assets/js/main.min.js"></script>
 <script src="<?= base_url() ?>assets/js/script.js"></script>
 

@@ -15,17 +15,21 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/responsive.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
 
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/style.css">
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/post-css.css">
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/map.css">
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/message.css">
 
+    <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/fiche.css">
+    <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/survey.css">
+    <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/style-post-message.css">
+    <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/search.css">
 
 </head>
 
@@ -35,145 +39,45 @@
         <!-- topbar -->
         <div class="topbar stick d-flex justify-content-between">
             <div class="logo">
-                <a title="" href="newsfeed.html"><img src="<?= base_url() ?>/custom-assets/logo.png" alt=""></a>
+                <a title="home" href="<?= site_url() ?>"><img src="<?= base_url() ?>/custom-assets/logo.png" alt=""></a>
             </div>
 
             <div class="top-area mt-3 border-0">
+                <div class="top-search" id="search">
+                    <form>
+                        <input type="text" placeholder="Search your house">
+                        <button data-ripple disabled><i class="ti-search"></i></button>
+                    </form>
+                </div>
+
                 <ul class="setting-area">
                     <li>
-                        <a href="#" title="Notification" data-ripple="" class="menu-item">
+                        <a href="#" title="Notification" data-ripple="" class="menu-item" id="show-notif">
                             Notifications
                         </a>
-                        <div class="dropdowns">
-                            <span>4 New Notifications</span>
+                        <div class="dropdowns" id="notif-box">
+                            <span><span class="number"></span> New Notifications</span>
+
                             <ul class="drops-menu">
-                                <li>
-                                    <a href="notifications.html" title="">
-                                        <img src="<?= base_url() ?>assets/images/resources/thumb-1.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>sarah Loren</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <span class="tag green">New</span>
-                                </li>
-                                <li>
-                                    <a href="notifications.html" title="">
-                                        <img src="<?= base_url() ?>assets/images/resources/thumb-2.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Jhon doe</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <span class="tag red">Reply</span>
-                                </li>
-                                <li>
-                                    <a href="notifications.html" title="">
-                                        <img src="<?= base_url() ?>assets/images/resources/thumb-3.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Andrew</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <span class="tag blue">Unseen</span>
-                                </li>
-                                <li>
-                                    <a href="notifications.html" title="">
-                                        <img src="<?= base_url() ?>assets/images/resources/thumb-4.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Tom cruse</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <span class="tag">New</span>
-                                </li>
-                                <li>
-                                    <a href="notifications.html" title="">
-                                        <img src="<?= base_url() ?>assets/images/resources/thumb-5.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Amy</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <span class="tag">New</span>
-                                </li>
                             </ul>
-                            <a href="notifications.html" title="" class="more-mesg">view more</a>
+                            <!-- notications -->
+<!--                            <a href="notifications.html" title="" class="more-mesg">view more</a>-->
                         </div>
                     </li>
                     <li>
-                        <a href="#" title="Messages" class="menu-item" data-ripple="">Messages</a>
-                        <div class="dropdowns">
-                            <span>5 New Messages</span>
+                        <a href="#" title="Messages" class="menu-item" data-ripple="" id="show-discussions" >Messages</a>
+                        <div class="dropdowns" id="discussion-box" >
+                            <span><span class="messageNumber"></span> New Messages</span>
                             <ul class="drops-menu">
-                                <li>
-                                    <a class="discussion" discussion-id="1">
-                                        <img src="<?= base_url() ?>assets/images/resources/thumb-1.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>sarah Loren</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <!--                                <span class="tag green">New</span>-->
-                                </li>
-                                <li>
-                                    <a class="discussion" discussion-id="2">
-                                        <img src="<?= base_url() ?>assets/images/resources/thumb-2.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Jhon doe</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <!--                                <span class="tag red">Reply</span>-->
-                                </li>
-                                <li>
-                                    <a class="discussion" discussion-id="3">
-                                        <img src="<?= base_url() ?>assets/images/resources/thumb-3.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Andrew</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <!--                                <span class="tag blue">Unseen</span>-->
-                                </li>
-                                <li>
-                                    <a class="discussion" discussion-id="4">
-                                        <img src="<?= base_url() ?>assets/images/resources/thumb-4.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Tom cruse</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <span class="tag">New</span>
-                                </li>
-                                <li>
-                                    <a class="discussion" discussion-id="5">
-                                        <img src="<?= base_url() ?>assets/images/resources/thumb-5.jpg" alt="">
-                                        <div class="mesg-meta">
-                                            <h6>Amy</h6>
-                                            <span>Hi, how r u dear ...?</span>
-                                            <i>2 min ago</i>
-                                        </div>
-                                    </a>
-                                    <span class="tag">New</span>
-                                </li>
+
                             </ul>
-                            <a href="messages.html" title="" class="more-mesg">view more</a>
+<!--                            <a href="messages.html" title="" class="more-mesg">view more</a>-->
                         </div>
                     </li>
                 </ul>
 
                 <div class="user-img mr-0">
-                    <a href="" class="btn btn-light bg-white border-0" style="font-size: 14px;">AH Tsinjo</a>
+                    <a class="btn btn-light bg-white border-0" style="font-size: 14px;"><?= $_SESSION["first_name"]." ".$_SESSION["last_name"] ?></a>
                 </div>
 
                 <ul class="setting-area ml-0">
@@ -182,13 +86,17 @@
                         <div class="dropdowns">
                             <span>Option(s)</span>
                             <ul class="drops-menu">
-                                <li><a href="">Log out</a></li>
+                                <li id="go-out" ><a>Log out</a></li>
                             </ul>
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
+
+        <form action="<?= site_url("LoginController/LogOut") ?>" method="get" class="d-none">
+            <button type="submit" id="logOut">out</button>
+        </form>
 
         <!--  main content  -->
         <div class="container">
@@ -266,7 +174,6 @@
 
                 </div>
 
-
             </div>
 
             <div class="row mt-3 border-0 ml-2">
@@ -319,8 +226,6 @@
         </div>
 
     </div>
-    </div>
-    </div>
 
     <!--  footer  -->
     <div class="bottombar">
@@ -333,8 +238,6 @@
             </div>
         </div>
     </div>
-
-
 
     <!-- message box -->
     <div class="modal fade message-modal" id="message" tabindex="-1" role="dialog">
@@ -369,9 +272,120 @@
         </div>
     </div>
 
+    <!-- modal survey -->
+    <div class="modal fade" id="survey" tabindex="-1" role="dialog" aria-labelledby="surveyTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered survey-modal" role="document">
+            <div class="modal-content form">
+                <?= displayNextQuestion($survey) ?>
+            </div>
+        </div>
+    </div>
+
+    <!-- search modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="<?= site_url() ?>/SearchController/simpleSearch"  method="get" >
+                    <div class="modal-header search-container">
+                        <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
+                        <input type="search" name="criteria" class="search-title" id="search-criteria" placeholder="Enter something ...">
+                        <button type="button" class="btn btn-light add-bg rounded-circle" data-dismiss="modal" aria-label="Close">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                        <input type="submit" value="Search" id="go-search" class="d-none" >
+                    </div>
+                </form>
+
+                <div class="modal-body">
+                    <span class="multi-text">Multicriteria <i class="fa-solid fa-caret-down" id="caret-down"></i> <i class="fa-solid fa-caret-up" id="caret-left"></i></span>
+                    <div class="search-box">
+                        <form action="<?= site_url() ?>/SearchController/searchMulti" method="post">
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label for="titre">Titre</label>
+                                    <input type="text" name="titre" placeholder="Entrez le titre que vous rechercher">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="price">Prix par mois</label>
+                                    <div class="form-group row m-0 p-0">
+                                        <div class="col-md-6 pl-0">
+                                            <input type="number" name="prix[min]" min="0" step="0.01" placeholder="Minimum">
+                                        </div>
+                                        <div class="col-md-6 pl-0">
+                                            <input type="number" name="prix[max]" min="0" step="0.01" placeholder="Maximum">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="price">Nombre de chambre</label>
+                                    <div class="form-group row m-0 p-0">
+                                        <div class="col-md-6 pl-0">
+                                            <input type="number" name="chambre[min]" min="0" placeholder="Minimum">
+                                        </div>
+                                        <div class="col-md-6 pl-0">
+                                            <input type="number" name="chambre[max]" min="0" placeholder="Maximum">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-12">
+                                    <label for="location">Location</label>
+                                    <select name="location">
+                                        <option value="">Choisir une ville</option>
+                                        <?php foreach ($locations as $location) { ?>
+                                            <option value="<?= $location["id_localisation"] ?>"><?= $location["nom_lieu"] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+
+                                <div class="utilities col-md-12">
+                                    <label>Veuillez selectionnez les proprietes de la maison</label>
+                                    <div class="utilities-checks">
+                                        <?php foreach ($utils as $util) { ?>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="tagsUtil[]" value="<?= $util["id_utilite"] ?>">
+                                                <label class="form-check-label" for="<?= $util["nom_utilite"] ?>">
+                                                    <?= $util["nom_utilite"] ?>
+                                                </label>
+                                            </div>
+                                        <?php } ?>
+
+                                    </div>
+                                </div>
+
+                                <div class="utilities col-md-12">
+                                    <label>Ajoutez des <a><u class="underline-custom">#tag</u></a> autant que possible pour
+                                        ameliorez votre publication</label>
+                                    <div class="utilities-checks">
+                                        <div class="row p-0 m-0">
+                                            <?php for ($i = 0; $i < count($tags); $i++) { ?>
+                                                <div class="col-md-3 p-0 m-0">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="tags[]" value="<?= $tags[$i]["id_tag"]  ?>">
+                                                        <label class="form-check-label" for="<?= $tags[$i]["nom_tag"] ?>">
+                                                            <?= $tags[$i]["nom_tag"] ?>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <input type="submit" value="Search" class="btn btn-primary rounded-0">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
-
+    <!--  post comment  -->
     <script>
         let commentArea = $("#text-area-comment");
         let commentTemplate = (text) => `
@@ -416,6 +430,7 @@
             })
         });
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
@@ -430,9 +445,26 @@
         function initialize() {
             let pubPos = new google.maps.LatLng(<?= $pub['pos']['lat'] ?>, <?= $pub['pos']['lng'] ?>);
 
+            let myStyles = [{
+                "featureType": "poi.business",
+                "stylers": [{
+                    "visibility": "off"
+                }]
+            },
+                {
+                    "featureType": "poi.park",
+                    "elementType": "labels.text",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                }
+            ];
+
             var mapOptions = {
                 zoom: 12,
-                center: pubPos
+                center: pubPos,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                    styles: myStyles
             };
 
 
@@ -444,21 +476,45 @@
             });
 
             let marker = new google.maps.Marker
-
         }
 
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
-    <script src="<?= base_url() ?>custom-assets/js/map.js"></script>
+
     <script src="<?= base_url() ?>custom-assets/js/modals.js"></script>
-    <script src="<?= base_url() ?>custom-assets/js/image-preview.js"></script>
     <script src="<?= base_url() ?>custom-assets/js/message.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        let surveyResponseUrl = "<?= site_url("SurveyController/response") ?>";
+    </script>
+
+    <!-- survey js // need survey ResponseUrl -->
+    <?php if($survey != null) { ?>
+        <script src="<?= base_url() ?>custom-assets/js/survey.js"></script>
+    <?php } ?>
+
+    <script src="<?= base_url() ?>custom-assets/js/search.js"></script>
+    <script src="<?= base_url() ?>custom-assets/js/logOut.js"></script>
+    <script>
+        let urlNotif = "<?= site_url("LastNotificationController") ?>";
+    </script>
+
+    <!--  need the url notif to be set  -->
+    <script src="<?= base_url() ?>custom-assets/js/notif.js"></script>
 
     <script>
         let site_url = "<?= site_url() ?>";
-        let pubIdclient = "<?= $pub["id_client"] ?>";
-        let idPublication = "<?= $pub["id_publication"] ?>";
+        let pubIdclient;
+        let idPublication;
+        let lastMessageUrl = "<?= site_url("LastMessageController") ?>";
+        let loadingUrlBase = "<?= site_url("MessageController/load_message?client1=".$_SESSION['id_client']."&client2=") ?>";
     </script>
+    <!--  need site_url, pubIdClient, idPublication, lastMesageUrl, loadingUrlBase -->
+    <script src="<?= base_url() ?>custom-assets/js/message-from-notif.js" ></script>
+
+    <script src="<?= base_url() ?>custom-assets/js/sendMessage.js"></script>
 
     <!-- like dislike -->
     <script>
@@ -484,8 +540,6 @@
             });
         });
     </script>
-
-    <script src="<?= base_url() ?>custom-assets/js/sendMessage.js"></script>
 
 </body>
 

@@ -88,3 +88,8 @@ a.pub-link {
     cursor: pointer;
     transition: unset;
 }
+
+
+#go-out {
+    cursor: pointer;
+}
