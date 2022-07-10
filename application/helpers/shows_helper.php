@@ -7,7 +7,7 @@
         foreach ($pubs as $pub) {
             $id = $pub["id_publication"];
             $display = $display.'<div class="col-12 col-md-6 col-xl-4">
-                <a href="'.base_url("pub/$id").'" class="pub-link" title="Voir details">
+                <a href="'.site_url("pub/$id").'" class="pub-link" title="Voir details">
                     <div class="single-featured-property mb-5 wow fadeInUp" data-wow-delay="100ms">
                         <!-- Property Thumbnail -->
                         <div class="property-thumb">

@@ -253,44 +253,47 @@
                                         </div>
                                     </div>
                                 </div>
+                            <?php } ?>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="post-map">
+                                <div class="nearby-map">
+                                    <div id="map-canvas"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                <?php } ?>
+
                 </div>
 
-                <div class="col-md-6">
-                    <div class="post-map">
-                        <div class="nearby-map">
-                            <div id="map-canvas"></div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
 
-            <?php if ($user_like == 1) {  ?>
-                <button class="btn btn-info btn-xs like-button"  id="Like">
-                    Like <i class="fa fa-thumbs-up"> </i> <span id="likecount"><?= $pub["nblike"] ?></span>
-                </button>
-                <button class="btn btn-info btn-xs like-button" id="Dislike">
-                    Dislike <i class="fa fa-thumbs-o-down"> </i><span id="dislikecount"> <?= $pub["nbunlike"] ?></span>
-                </button>
-            <?php } else if ($user_like == 2) { ?>
-                <button class="btn btn-info btn-xs like-button" id="Like">
-                    Like <i class="fa fa-thumbs-o-up"> </i> <span id="likecount"><?= $pub["nblike"] ?></span>
-                </button>
-                <button class="btn btn-info btn-xs like-button" id="Dislike">
-                    Dislike <i class="fa fa-thumbs-o-down"> </i><span id="dislikecount"><?= $pub["nbunlike"] ?></span>
-                </button>
-            <?php } else { ?>
-                <button class="btn btn-info btn-xs like-button" id="Like">
-                    Like <i class="fa fa-thumbs-o-up"> </i> <span id="likecount"><?= $pub["nblike"] ?></span>
-                </button>
-                <button class="btn btn-info btn-xs like-button" id="Dislike">
-                    Dislike <i class="fa fa-thumbs-o-down"> </i><span id="dislikecount"><?= $pub["nbunlike"] ?></span>
-                </button>
-            <?php } ?>
-
-            <div class="row mt-3 border-0">
+            <div class="row mt-3 border-0 ml-2">
+                <div class="col-12">
+                    <?php if ($user_like == 1) {  ?>
+                        <button class="btn btn-info btn-xs like-button"  id="Like">
+                            Like <i class="fa fa-thumbs-up"> </i> <span id="likecount"><?= $pub["nblike"] ?></span>
+                        </button>
+                        <button class="btn btn-info btn-xs like-button" id="Dislike">
+                            Dislike <i class="fa fa-thumbs-o-down"> </i><span id="dislikecount"> <?= $pub["nbunlike"] ?></span>
+                        </button>
+                    <?php } else if ($user_like == 2) { ?>
+                        <button class="btn btn-info btn-xs like-button" id="Like">
+                            Like <i class="fa fa-thumbs-o-up"> </i> <span id="likecount"><?= $pub["nblike"] ?></span>
+                        </button>
+                        <button class="btn btn-info btn-xs like-button" id="Dislike">
+                            Dislike <i class="fa fa-thumbs-o-down"> </i><span id="dislikecount"><?= $pub["nbunlike"] ?></span>
+                        </button>
+                    <?php } else { ?>
+                        <button class="btn btn-info btn-xs like-button" id="Like">
+                            Like <i class="fa fa-thumbs-o-up"> </i> <span id="likecount"><?= $pub["nblike"] ?></span>
+                        </button>
+                        <button class="btn btn-info btn-xs like-button" id="Dislike">
+                            Dislike <i class="fa fa-thumbs-o-down"> </i><span id="dislikecount"><?= $pub["nbunlike"] ?></span>
+                        </button>
+                    <?php } ?>
+                </div>
                 <div class="col-12">
                     <div class="coment-area">
                         <h6>Comments <i class="fa fa-comments"></i></h6>

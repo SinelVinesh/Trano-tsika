@@ -144,7 +144,7 @@
             </div>
         </div>
     </div>
-    </div>
+
 
     <!-- modal post house -->
     <div class="modal fade p-0" role="dialog" tabindex="-1" id="make-post">
