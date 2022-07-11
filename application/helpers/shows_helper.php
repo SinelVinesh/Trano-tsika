@@ -105,8 +105,8 @@
         $question_intitule = $survey["question"]["intitule"];
         $reponse_type = ($type == "checkbox") ? "( Reponse multicriteres )" : "" ;
         $reponse = '';
-        foreach ($survey["reponses"] as $res) { 
-            $id_tag = $res["id_tag"];
+        foreach ($survey["reponses"] as $res) {  
+            $id_tag = ($res["id_tag"]==null) ? -1 : $res["id_tag"] ;
             $intitule = $res["intitule"]; 
             $tmp = '
             <div class="form-check">

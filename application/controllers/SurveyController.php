@@ -28,6 +28,7 @@
                 $this->load->model("ReponseClient");
                 $this->ReponseClient->insert($_SESSION["id_client"],$id_quest);
                 foreach ($tags as $tag ) {
+                    if($tag == -1) continue;
                     $this->Client->insert_tag_client($_SESSION["id_client"],$tag);
                 }
             }

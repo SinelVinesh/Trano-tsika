@@ -61,23 +61,23 @@
                             <ul class="drops-menu">
                             </ul>
                             <!-- notications -->
-<!--                            <a href="notifications.html" title="" class="more-mesg">view more</a>-->
+                            <!--                            <a href="notifications.html" title="" class="more-mesg">view more</a>-->
                         </div>
                     </li>
                     <li>
-                        <a href="#" title="Messages" class="menu-item" data-ripple="" id="show-discussions" >Messages</a>
-                        <div class="dropdowns" id="discussion-box" >
+                        <a href="#" title="Messages" class="menu-item" data-ripple="" id="show-discussions">Messages</a>
+                        <div class="dropdowns" id="discussion-box">
                             <span><span class="messageNumber"></span> New Messages</span>
                             <ul class="drops-menu">
 
                             </ul>
-<!--                            <a href="messages.html" title="" class="more-mesg">view more</a>-->
+                            <!--                            <a href="messages.html" title="" class="more-mesg">view more</a>-->
                         </div>
                     </li>
                 </ul>
 
                 <div class="user-img mr-0">
-                    <a class="btn btn-light bg-white border-0" style="font-size: 14px;"><?= $_SESSION["first_name"]." ".$_SESSION["last_name"] ?></a>
+                    <a class="btn btn-light bg-white border-0" style="font-size: 14px;"><?= $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?></a>
                 </div>
 
                 <ul class="setting-area ml-0">
@@ -86,7 +86,7 @@
                         <div class="dropdowns">
                             <span>Option(s)</span>
                             <ul class="drops-menu">
-                                <li id="go-out" ><a>Log out</a></li>
+                                <li id="go-out"><a>Log out</a></li>
                             </ul>
                         </div>
                     </li>
@@ -99,13 +99,13 @@
         </form>
 
         <div class="row pl-1 pr-1">
-                <div class="col-12">
-                    <a href="<?= $publicite['lien'] ?>"  title="Visiter">
-                        <img src="<?=base_url()?>files/pubs/<?= $publicite['image'] ?>" alt="">
-                    </a>
-                </div>
-                </div>
-            
+            <div class="col-12">
+                <a href="<?= $publicite['lien'] ?>" title="Visiter">
+                    <img src="<?= base_url() ?>files/pubs/<?= $publicite['image'] ?>" alt="">
+                </a>
+            </div>
+        </div>
+
         <!--  main content  -->
         <div class="container">
             <div class="fiche m-4">
@@ -187,7 +187,7 @@
             <div class="row mt-3 border-0 ml-2">
                 <div class="col-12">
                     <?php if ($user_like == 1) {  ?>
-                        <button class="btn btn-info btn-xs like-button"  id="Like">
+                        <button class="btn btn-info btn-xs like-button" id="Like">
                             Like <i class="fa fa-thumbs-up"> </i> <span id="likecount"><?= $pub["nblike"] ?></span>
                         </button>
                         <button class="btn btn-info btn-xs like-button" id="Dislike">
@@ -293,14 +293,14 @@
     <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form action="<?= site_url() ?>/SearchController/simpleSearch"  method="get" >
+                <form action="<?= site_url() ?>/SearchController/simpleSearch" method="get">
                     <div class="modal-header search-container">
                         <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
                         <input type="search" name="criteria" class="search-title" id="search-criteria" placeholder="Enter something ...">
                         <button type="button" class="btn btn-light add-bg rounded-circle" data-dismiss="modal" aria-label="Close">
                             <i class="fa-solid fa-xmark"></i>
                         </button>
-                        <input type="submit" value="Search" id="go-search" class="d-none" >
+                        <input type="submit" value="Search" id="go-search" class="d-none">
                     </div>
                 </form>
 
@@ -454,11 +454,11 @@
             let pubPos = new google.maps.LatLng(<?= $pub['pos']['lat'] ?>, <?= $pub['pos']['lng'] ?>);
 
             let myStyles = [{
-                "featureType": "poi.business",
-                "stylers": [{
-                    "visibility": "off"
-                }]
-            },
+                    "featureType": "poi.business",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                },
                 {
                     "featureType": "poi.park",
                     "elementType": "labels.text",
@@ -472,7 +472,7 @@
                 zoom: 12,
                 center: pubPos,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
-                    styles: myStyles
+                styles: myStyles
             };
 
 
@@ -499,7 +499,7 @@
     </script>
 
     <!-- survey js // need survey ResponseUrl -->
-    <?php if($survey != null) { ?>
+    <?php if ($survey != null) { ?>
         <script src="<?= base_url() ?>custom-assets/js/survey.js"></script>
     <?php } ?>
 
@@ -517,18 +517,16 @@
         let pubIdclient;
         let idPublication;
         let lastMessageUrl = "<?= site_url("LastMessageController") ?>";
-        let loadingUrlBase = "<?= site_url("MessageController/load_message?client1=".$_SESSION['id_client']."&client2=") ?>";
+        let loadingUrlBase = "<?= site_url("MessageController/load_message?client1=" . $_SESSION['id_client'] . "&client2=") ?>";
     </script>
     <!--  need site_url, pubIdClient, idPublication, lastMesageUrl, loadingUrlBase -->
-    <script src="<?= base_url() ?>custom-assets/js/message-from-notif.js" ></script>
+    <script src="<?= base_url() ?>custom-assets/js/message-from-notif.js"></script>
 
     <script>
-
         $("#contact-owner").click(() => {
             pubIdclient = "<?= $pub["id_client"] ?>";
             idPublication = "<?= $pub["id_publication"] ?>";
         });
-
     </script>
 
     <script src="<?= base_url() ?>custom-assets/js/sendMessage.js"></script>
