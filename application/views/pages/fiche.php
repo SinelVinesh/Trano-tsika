@@ -362,7 +362,6 @@
                                                 </label>
                                             </div>
                                         <?php } ?>
-
                                     </div>
                                 </div>
 
@@ -408,7 +407,11 @@
         commentArea.keyup((e) => {
             if (e.keyCode === 13) {
                 let curVal = commentArea.val();
-                $("#comment li:first").before(commentTemplate(curVal));
+                let firstLi = $("#comment li:first");
+                if (firstLi.attr("class")==="post-comment") {
+                    firstLi = $("#comment button");
+                }
+                firstLi.before(commentTemplate(curVal));
                 console.log(curVal);
                 $.ajax({
                     type: "POST",
