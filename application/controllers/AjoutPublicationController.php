@@ -28,6 +28,16 @@
             }
         }
 
+        public function check_imageCount($count){
+            if($count==0){
+                $this->form_validation->set_message('check_imageCount', 'Vous devez choisir au moins 1 image');
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+
         public function set_rules(){
             $this->form_validation->set_rules('titre','Titre','required');
             $this->form_validation->set_rules('location','Location','required');
@@ -36,9 +46,9 @@
             $this->form_validation->set_rules('price','price','required');
             $this->form_validation->set_rules('surface','Surface','required');
         }
-
+        
         public function ajout_publication(){
-
+            
             $this->load->model('Publication');
             $this->load->model('Photo');
             $this->load->model('DetailUtilite');
@@ -51,9 +61,9 @@
             $datas = $this->get_datas($inputs,"post");
             $tagsUtil=$this->input->post('tagsUtil[]');
             $tags=$this->input->post('tags[]');
-
-            $this->set_rules();
             $count = count($_FILES['images']['name']);
+            $this->set_rules();
+            $this->form_validation->set_rules($count, 'Count', 'callback_check_imageCount');
             print_r($_FILES['images']['name']);
             
             if ($this->form_validation->run()){
