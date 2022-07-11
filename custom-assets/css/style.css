@@ -1,6 +1,7 @@
 .modal{
     background-color: rgba(0, 0, 0, 0.5);
 }
+
 .modal-backdrop{
     position: relative;
 }
@@ -93,7 +94,6 @@ a.pub-link {
 #go-out {
     cursor: pointer;
 }
-
 
 .publicite {
     height: 150px;
