@@ -215,6 +215,15 @@
         <button class="btn-view btn-load-more mb-4" id="load-next">Load More</button>
     </div>
 
+    <!-- modal survey -->
+    <div class="modal fade" id="survey" tabindex="-1" role="dialog" aria-labelledby="surveyTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered survey-modal" role="document">
+            <div class="modal-content form">
+                <?= displayNextQuestion($survey) ?>
+            </div>
+        </div>
+    </div>
+
     <!--  footer  -->
     <div class="bottombar">
         <div class="container">
@@ -252,7 +261,6 @@
     <?php } ?>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="<?= base_url() ?>custom-assets/js/survey.js"></script>
     <script src="<?= base_url() ?>custom-assets/js/search.js"></script>
 
     <script>

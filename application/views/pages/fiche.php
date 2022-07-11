@@ -401,12 +401,9 @@
                 <div class="we-comment">
                     <div class="coment-head">
                         <h5>
-                            <a href="time-line.html" title="">
                                 <?= $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?>
-                            </a>
                         </h5>
                         <span>a l'instant</span>
-                        <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
                     </div>
                     <p>${text}</p>
                 </div>
@@ -415,7 +412,7 @@
         commentArea.keyup((e) => {
             if (e.keyCode === 13) {
                 let curVal = commentArea.val();
-                $("#comment li:last").before(commentTemplate(curVal));
+                $("#comment li:first").before(commentTemplate(curVal));
                 console.log(curVal);
                 $.ajax({
                     type: "POST",
