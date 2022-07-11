@@ -44,6 +44,7 @@
             $this->form_validation->set_rules('room','Rooms','required');
             $this->form_validation->set_rules('description','Description','required');
             $this->form_validation->set_rules('price','price','required');
+            $this->form_validation->set_rules('surface','Surface','required');
         }
         
         public function ajout_publication(){
