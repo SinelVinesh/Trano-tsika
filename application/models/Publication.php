@@ -100,9 +100,9 @@
             return $condition;
         }
 
-        public function search($titre,$location,$prix_min,$prix_max,$room_min,$room_max,$tags,$tags_util,$limit,$offset){
+        public function search($titre,$location,$prix_min,$prix_max,$room_min,$room_max,$tags,$tags_util,$limit,$offset,$id_client){
             $condition=$this->Publication->createSearchCondition($titre,$location,$prix_min,$prix_max,$room_min,$room_max,$tags,$tags_util);
-            $sql = "SELECT * FROM v_publication WHERE 1=1".$condition." limit $limit offset $offset ";  
+            $sql = "SELECT * FROM getpublicationspoint($id_client) WHERE 1=1".$condition." limit $limit offset $offset ";  
             // echo $sql;
             $query = $this->execute_query($sql);
             return $query->result_array();
@@ -121,13 +121,12 @@
             $sql = "select count(id_publication) len from v_publication where titre ilike '%$criteria%' or $tag or $util ";
             $query = $this->execute_query($sql)->row_array();
             return $query["len"];
-
         }
 
-        public function simpleSearch($criteria,$limit,$offset){
+        public function simpleSearch($criteria,$limit,$offset,$id_client){
             $tag = "id_publication in (select id_publication from v_detail_tags where nom_tag ilike '%$criteria%')";
             $util = "id_publication in (select id_publication from v_detail_utilite where nom_utilite ilike '%$criteria%')";
-            $sql = "select * from v_publication where titre ilike '%$criteria%' or $tag or $util limit $limit offset $offset";
+            $sql = "select * from getpublicationspoint($id_client) where titre ilike '%$criteria%' or $tag or $util limit $limit offset $offset";
             // echo $sql;
             $query = $this->execute_query($sql);
 
