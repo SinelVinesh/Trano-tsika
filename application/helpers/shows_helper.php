@@ -74,7 +74,7 @@
             <!--                                                            </a>-->
                             </h5>
                             <span>'.displayDate($com["date_commentaire"]).'</span>
-                            <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+            <!--                <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a> -->
                         </div>
                         <p>'.$com["texte_commentaire"].'</p>
                     </div>
