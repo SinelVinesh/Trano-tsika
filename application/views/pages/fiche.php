@@ -102,7 +102,7 @@
 
         <!--  main content  -->
         <div class="container">
-
+            <?= validation_errors()?>
             <div class="row publicite m-4">
                 <div class="col-12">
                     <a href="<?= $publicite['lien'] ?>" title="Visiter">
@@ -148,6 +148,10 @@
                                     <i class="fa fa-paper-plane">
                                     </i>
                                 </button>
+                                <?php } else if(!$pub["isBoosted"]) {?>
+                                    <button data-toggle="modal" class="btn btn-success" data-target="#pay-boost" id="boost button">
+                                        Booster la publication
+                                    </button>
                                 <?php }?>
                             </div>
                         </div>
@@ -388,6 +392,42 @@
         </div>
     </div>
 
+    <!-- boost payment -->
+    <div class="modal fade p-0" role="dialog" tabindex="-1" id="pay-boost">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-0">
+                <div class="modal-header">
+                    <h5>Please enter your information in order to confirm the boost</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
+                    </button>
+                </div>
+                <form action="<?= site_url("BoostController/pay_boost/".$pub["id_publication"])?>" method="post">
+                    <div class="modal-body">
+                        <div class="form-group mt-0">
+                            <label for="account">Carte bancaire</label>
+                            <input type="text" name="account" id="account" min="1" placeholder="Votre carte bancaire">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="display-duration">Duration</label>
+                            <select id="display-duration" name="duration">
+                                <option selected>Pour combien de semaine?</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button class="btn btn-light rounded-0" type="button" data-dismiss="modal">Go back</button>
+                        <button class="btn btn-success rounded-0" id="post-boost">Post & Boost</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
     <!--  post comment  -->
