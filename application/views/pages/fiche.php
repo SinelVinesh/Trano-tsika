@@ -511,6 +511,7 @@
         let lastMessageUrl = "<?= site_url("LastMessageController") ?>";
         let loadingUrlBase = "<?= site_url("MessageController/load_message?client1=".$_SESSION['id_client']."&client2=") ?>";
     </script>
+
     <!--  need site_url, pubIdClient, idPublication, lastMesageUrl, loadingUrlBase -->
     <script src="<?= base_url() ?>custom-assets/js/message-from-notif.js" ></script>
 
