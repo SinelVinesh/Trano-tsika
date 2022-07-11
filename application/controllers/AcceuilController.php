@@ -20,6 +20,7 @@ class AcceuilController extends MY_Controller
 
         $this->load->model("Question");
         $this->load->model("Reponse");
+        $this->load->model("Publicite");
 
         $survey["question"] = $this->Question->next_question($_SESSION["id_client"]);
         if ($survey["question"]) {
@@ -33,18 +34,19 @@ class AcceuilController extends MY_Controller
         $data["tags"] = $this->DetailTag->get_tags();
         $data["utils"] = $this->DetailUtilite->get_utilities();
 
-        $pubs = $this->Publication->get_next_pub($limit, $offset);
+        $pubs = $this->Publication->get_next_pub($limit, $offset,$_SESSION["id_client"]);
 
         for ($i = 0; $i < count($pubs); $i++) {
             $photos = $this->Publication->get_photo($pubs[$i]["id_publication"]);
             $pubs[$i]["photo"] = $photos[0];
         }
 
+        $data["publicite"] = $this->Publicite->rand_pub();
+
         $_SESSION["offset"] = $offset + $limit;
         $_SESSION["limit"] = $limit;
 
         $data["pubs"] = $pubs;
-
         $this->load->view("pages/index.php", $data);
     }
 

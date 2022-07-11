@@ -208,7 +208,7 @@
             </div>
             <?php
                 if($pubs != null){
-                    echo (displayPubs($pubs)); 
+                    echo (displayPubs($pubs,$publicite)); 
                 }
             ?>
         </div>

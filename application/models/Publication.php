@@ -13,7 +13,7 @@
         }
 
         public function get_next_pub($limit,$offset,$id_client){
-            $sql="SELECT * from v_publication limit %s offset %s ";
+            $sql="SELECT * from getpublicationspoint($id_client) limit %s offset %s ";
             $sql=sprintf($sql,$this->db->escape($limit),$this->db->escape($offset));
             $query=$this->db->query($sql);
             return $query->result_array();

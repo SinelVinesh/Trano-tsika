@@ -1,9 +1,22 @@
 <?php
 
-    function displayPubs($pubs): string
+    function displayPubs($pubs,$ad): string
     {
         $display = '<div class="row pl-1 pr-1">
         <!-- Single Featured Property -->';
+
+        $publicite = '';
+        if($ad!= null){
+            $publicite = '<div class="row pl-1 pr-1">
+                <div class="col-12">
+                    <a href="'.$ad["lien"].'"  title="Visiter">
+                        <img src="'.base_url().'files/pubs/'.$ad["image"].'" alt="">
+                    </a>
+                </div>
+                </div>
+            ';
+        }
+
         foreach ($pubs as $pub) {
             $id = $pub["id_publication"];
             $display = $display.'<div class="col-12 col-md-6 col-xl-4">
@@ -23,7 +36,7 @@
                         <!-- Property Content -->
                         <div class="property-content">
                             <h5>'.$pub["titre"].'</h5>
-                            <p class="location"><i class="fa-solid fa-location-dot"></i> Andoharanofotsy</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i>'.$pub["nom_lieu"].'</p>
                             <p>'.$pub["description"].'</p>
 
                             <div class="property-meta-data d-flex align-items-end justify-content-between">
@@ -44,7 +57,7 @@
             </div>';
         }
 
-        return $display.'</div>';
+        return $publicite.$display.'</div>';
     }
 
     function displayComments($coms) {

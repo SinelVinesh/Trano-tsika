@@ -11,24 +11,29 @@
             $this->load->model("DetailUtilite");
             $this->load->model('Question');
             $this->load->model('Reponse');
+            $this->load->model('Publicite');
 
             $survey["question"] = $this->Question->next_question($_SESSION["id_client"]);
             if($survey["question"]){
                 $survey["reponses"] = $this->Reponse->reponse_for($survey["question"]["id_question"]);
             }
-
             else{
                 $survey = null;
             }
 
+            for ($i = 0; $i < count($pubs); $i++) {
+                $photos = $this->Publication->get_photo($pubs[$i]["id_publication"]);
+                $pubs[$i]["photo"] = $photos[0];
+            }
+
             $data["survey"] = $survey;
-
-
             $data["locations"] = $this->Location->get_locations();
             $data["tags"] = $this->DetailTag->get_tags();
             $data["utils"] = $this->DetailUtilite->get_utilities();
             $data["pubs"] = $pubs;
             $data["len"] = $len;
+            $data["publicite"] = $this->Publicite->rand_pub();
+
             $this->load->view("pages/search.php",$data);
         }
 
@@ -54,6 +59,7 @@
 
         public function nextResult(){ 
             $this->load->model('Publication');
+            $this->load->model('Publicite');
             $pubs = array();
 
             if($_SESSION["option"] == 1){
@@ -63,8 +69,13 @@
             }else{
                 $pubs = $this->Publication->simpleSearch($_SESSION["criteria"],$_SESSION["limit"],$_SESSION["offset_search"]);
             }            
+            for ($i = 0; $i < count($pubs); $i++) {
+                $photos = $this->Publication->get_photo($pubs[$i]["id_publication"]);
+                $pubs[$i]["photo"] = $photos[0];
+            }
+            $publicite =  ($_SESSION["offset_search"] % 12 == 0) ? $this->Publicite->rand_pub() : null;
             $_SESSION["offset_search"] = $_SESSION["offset_search"] + $_SESSION["limit"];
-            echo displayPubs($pubs);
+            echo displayPubs($pubs,$publicite);
         }
 
         public function simpleSearch(){

@@ -126,7 +126,7 @@
 
             <!-- posts -->
             <!-- helper which diplays the posts -->
-            <?= displayPubs($pubs); ?>
+            <?= displayPubs($pubs,$publicite); ?>
         </div>
         <button class="btn-view btn-load-more mb-4" id="load-next">Load More</button>
     </div>
