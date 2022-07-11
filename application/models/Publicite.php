@@ -7,8 +7,8 @@
         }
 
         public function rand_pub(){
-            $nb = rand(0,$this->count_all());
-            $query = $this->db->query("select * from publicite where id_publicite = $nb ")->row_array();
+//            $nb = rand(0,$this->count_all());
+            $query = $this->db->query("select * from publicite order by random() limit 1")->row_array();
             return $query;
         }
     }

@@ -46,6 +46,7 @@ class DetailPublicationController extends MY_Controller {
         $data["locations"] = $this->Location->get_locations();
         $data["tags"] = $this->DetailTag->get_tags();
         $data["utils"] = $this->DetailUtilite->get_utilities();
+
 		$data["publicite"] = $this->Publicite->rand_pub();
 
 
