@@ -207,6 +207,7 @@
                                 </select>
                             </div>
 
+
                             <div class="utilities">
                                 <label>Liez votre maison avec google map <a data-target="#link-map" data-toggle="modal"><u class="link-map">Link to google map</u></a></label>
                             </div>

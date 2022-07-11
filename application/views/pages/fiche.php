@@ -100,17 +100,18 @@
             <button type="submit" id="logOut">out</button>
         </form>
 
-        <div class="row pl-1 pr-1">
-            <div class="col-12">
-                <a href="<?= $publicite['lien'] ?>" title="Visiter">
-                    <img src="<?= base_url() ?>files/pubs/<?= $publicite['image'] ?>" alt="">
-                </a>
-            </div>
-        </div>
-
         <!--  main content  -->
         <div class="container">
-            <div class="fiche m-4">
+
+            <div class="row publicite m-4">
+                <div class="col-12">
+                    <a href="<?= $publicite['lien'] ?>" title="Visiter">
+                        <img src="<?= base_url() ?>files/pubs/<?= $publicite['image'] ?>" alt="">
+                    </a>
+                </div>
+            </div>
+
+            <div class="fiche m-4 mt-0">
                 <div class="fiche-info">
                     <div class="titre">
                         <h1><?= $pub["titre"] ?></h1>
@@ -254,13 +255,13 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="messageTitle"><?= $pub["first_name"] . " " . $pub["last_name"] ?></h5>
+                    <h5 class="modal-title" id="user"></h5>
                     <a type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </a>
                 </div>
                 <div class="modal-body">
-                    <h6><?= $pub["titre"] ?></h6>
+                    <h6><span id="titre-message"></span></h6>
                     <div class="chat-list">
                         <ul id="onemessage">
 
@@ -515,10 +516,17 @@
     <script src="<?= base_url() ?>custom-assets/js/message-from-notif.js"></script>
 
     <script>
+
         $("#contact-owner").click(() => {
             pubIdclient = "<?= $pub["id_client"] ?>";
             idPublication = "<?= $pub["id_publication"] ?>";
+            let pubTitle = "<?= $pub["titre"] ?>";
+            let owner = "<?= $pub["first_name"] . " " . $pub["last_name"] ?>";
+
+            $("#titre-message").text(pubTitle);
+            $("#user").text(owner);
         });
+
     </script>
 
     <script src="<?= base_url() ?>custom-assets/js/sendMessage.js"></script>
@@ -536,6 +544,7 @@
                 $("#dislikecount").text(counters[1]);
             });
         });
+
         $("#Dislike").click(function() {
             <?php $url = site_url("DetailPublicationController/dislike/") . "/" . $pub["id_publication"]; ?>
             $.ajax({
@@ -551,12 +560,14 @@
 
     <!-- select2 -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     <script>
         $(function() {
             $("#quartiers").select2({dropdownAutoWidth : true, dropdownParent: "#searchModal"});
             $("#tags").select2({dropdownAutoWidth : true, dropdownParent: "#searchModal"});
         })
     </script>
+
 </body>
 
 </html>

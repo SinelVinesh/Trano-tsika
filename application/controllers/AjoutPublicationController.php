@@ -39,7 +39,7 @@
         }
 
         public function set_rules(){
-            $this->form_validation->set_rules('titre','Titre','required');
+            $this->form_validation->set_rules('titre','Titre','required|id_unique[publication.titre]');
             $this->form_validation->set_rules('location','Location','required');
             $this->form_validation->set_rules('room','Rooms','required');
             $this->form_validation->set_rules('description','Description','required');
