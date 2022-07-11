@@ -212,7 +212,7 @@
                                 <label>Liez votre maison avec google map <a data-target="#link-map" data-toggle="modal"><u class="link-map">Link to google map</u></a></label>
                             </div>
 
-                            <div class="utilities col-md-12">
+                            <div class="utilities">
                                 <label>Ajoutez des <a><u class="underline-custom">#tag</u></a> autant que possible pour
                                     ameliorez votre publication</label>
                                 <div class="utilities-checks">

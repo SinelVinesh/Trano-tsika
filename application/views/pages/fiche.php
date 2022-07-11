@@ -516,7 +516,7 @@
     <script src="<?= base_url() ?>custom-assets/js/message-from-notif.js"></script>
 
     <script>
-        
+
         $("#contact-owner").click(() => {
             pubIdclient = "<?= $pub["id_client"] ?>";
             idPublication = "<?= $pub["id_publication"] ?>";
