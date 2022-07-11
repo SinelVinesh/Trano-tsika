@@ -11,7 +11,7 @@
                     <div class="single-featured-property mb-5 wow fadeInUp" data-wow-delay="100ms">
                         <!-- Property Thumbnail -->
                         <div class="property-thumb">
-                            <img src="'.base_url().'assets/bg-img/feature1.jpg" alt="">
+                            <img src="'.base_url().'files/imgs/'.$pub["photo"]["lien_photo"].'" alt="">
 
                             <div class="tag">
                                 <span>A louer</span>
