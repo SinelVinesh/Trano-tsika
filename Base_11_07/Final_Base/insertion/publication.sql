@@ -499,3 +499,5 @@ INSERT INTO Publication(id_client,id_localisation,titre,description,prix,date_pu
 INSERT INTO Publication(id_client,id_localisation,titre,description,prix,date_publication,longitude,latitude,surface,nombre_piece) values(690,274,'Appartement gothique','Appartement pour un locataire qui aime les sensations et une vie de risque',86552000,'2022-05-05 21:15:27',47.487029124087194,-18.62900778830088,301,9); 
 INSERT INTO Publication(id_client,id_localisation,titre,description,prix,date_publication,longitude,latitude,surface,nombre_piece) values(942,197,'Week-end home','Maison de week-end : vivre dans un centre de vacances avec vue sur la mer',28545000,'2022-05-14 12:09:20',45.53097284635015,-18.726496288370836,121,4); 
 INSERT INTO Publication(id_client,id_localisation,titre,description,prix,date_publication,longitude,latitude,surface,nombre_piece) values(1003,106,'Trano tsara','Trano ahofa, tsara toerana, tongan''ny fiara, amin''ny vidiny mirary',600000,'2022-07-11 10:04:09',45.48943413312781,-18.02328395286091,455,7);
+
+update publication set prix = prix / 10 where prix > 10000000;
