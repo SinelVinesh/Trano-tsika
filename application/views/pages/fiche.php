@@ -143,10 +143,12 @@
                             <div class="col">
                                 <i class="fa-solid fa-user"></i>
                                 by <?= $pub["first_name"] . " " . $pub["last_name"] ?>
+                                <?php if($pub["id_client"] != $_SESSION["id_client"]) {?>
                                 <button data-toggle="modal" class="btn btn-primary btn-color ml-2" data-target="#message" id="contact-owner">Contact
                                     <i class="fa fa-paper-plane">
                                     </i>
                                 </button>
+                                <?php }?>
                             </div>
                         </div>
                     </div>
