@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/survey.css">
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/style-post-message.css">
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/search.css">
+    <!--    select2-->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 </head>
 
@@ -294,14 +296,14 @@
     <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form action="<?= site_url() ?>/SearchController/simpleSearch" method="get">
+                <form action="<?= site_url() ?>/SearchController/simpleSearch"  method="get" >
                     <div class="modal-header search-container">
                         <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
                         <input type="search" name="criteria" class="search-title" id="search-criteria" placeholder="Enter something ...">
                         <button type="button" class="btn btn-light add-bg rounded-circle" data-dismiss="modal" aria-label="Close">
                             <i class="fa-solid fa-xmark"></i>
                         </button>
-                        <input type="submit" value="Search" id="go-search" class="d-none">
+                        <input type="submit" value="Search" id="go-search" class="d-none" >
                     </div>
                 </form>
 
@@ -340,9 +342,9 @@
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <label for="location">Location</label>
-                                    <select name="location">
-                                        <option value="">Choisir une ville</option>
+                                    <label for="location">Localisation</label>
+                                    <select style="width: 100%" name="location" class="custom-select form-control" id="quartiers">
+                                        <option value="">Choisir un quartier</option>
                                         <?php foreach ($locations as $location) { ?>
                                             <option value="<?= $location["id_localisation"] ?>"><?= $location["nom_lieu"] ?></option>
                                         <?php } ?>
@@ -367,19 +369,12 @@
                                 <div class="utilities col-md-12">
                                     <label>Ajoutez des <a><u class="underline-custom">#tag</u></a> autant que possible pour
                                         ameliorez votre publication</label>
-                                    <div class="utilities-checks">
-                                        <div class="row p-0 m-0">
+                                    <div class="row p-0 m-0">
+                                        <select style="width: 100%" name="tags[]" id="tags" multiple="multiple">
                                             <?php for ($i = 0; $i < count($tags); $i++) { ?>
-                                                <div class="col-md-3 p-0 m-0">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="tags[]" value="<?= $tags[$i]["id_tag"]  ?>">
-                                                        <label class="form-check-label" for="<?= $tags[$i]["nom_tag"] ?>">
-                                                            <?= $tags[$i]["nom_tag"] ?>
-                                                        </label>
-                                                    </div>
-                                                </div>
+                                                <option value="<?= $tags[$i]["id_tag"] ?>"><?= $tags[$i]["nom_tag"] ?></option>
                                             <?php } ?>
-                                        </div>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -554,6 +549,15 @@
         });
     </script>
 
+
+    <!-- select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(function() {
+            $("#quartiers").select2({dropdownAutoWidth : true, dropdownParent: "#searchModal"});
+            $("#tags").select2({dropdownAutoWidth : true, dropdownParent: "#searchModal"});
+        })
+    </script>
 </body>
 
 </html>
