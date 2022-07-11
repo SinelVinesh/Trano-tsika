@@ -11,7 +11,7 @@
             $count=count($noms);
             for($i=0;$i<$count;$i++){
                 $_FILES['image']['name'] = $noms[$i];
-                echo $_FILES['image']['name'] ;
+                // echo $_FILES['image']['name'] ;
                 // $_FILES['image']['name'] = $_FILES['images']['name'][$i];
                 $_FILES['image']['type'] = $_FILES['images']['type'][$i];
                 $_FILES['image']['tmp_name'] = $_FILES['images']['tmp_name'][$i];
@@ -63,8 +63,10 @@
             $tags=$this->input->post('tags[]');
             $count = count($_FILES['images']['name']);
             $this->set_rules();
-            $this->form_validation->set_rules($count, 'Count', 'callback_check_imageCount');
-            print_r($_FILES['images']['name']);
+            if($_FILES['images']['name'][0]==""){
+                $this->form_validation->set_message('check_imageCount', 'Vous devez choisir au moins 1 image');
+                redirect("AcceuilController");
+            }
             
             if ($this->form_validation->run()){
                 $this->db->trans_start();
