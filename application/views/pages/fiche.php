@@ -408,9 +408,11 @@
             if (e.keyCode === 13) {
                 let curVal = commentArea.val();
                 let firstLi = $("#comment li:first");
+
                 if (firstLi.attr("class")==="post-comment") {
                     firstLi = $("#comment button");
                 }
+
                 firstLi.before(commentTemplate(curVal));
                 console.log(curVal);
                 $.ajax({

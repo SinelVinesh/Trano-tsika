@@ -39,7 +39,7 @@
         }
 
         public function set_rules(){
-            $this->form_validation->set_rules('titre','Titre','required|id_unique[publication.titre]');
+            $this->form_validation->set_rules('titre','Titre','required|is_unique[publication.titre]');
             $this->form_validation->set_rules('location','Location','required');
             $this->form_validation->set_rules('room','Rooms','required');
             $this->form_validation->set_rules('description','Description','required');
@@ -62,6 +62,7 @@
             $tags=$this->input->post('tags[]');
             $count = count($_FILES['images']['name']);
             $this->set_rules();
+
             if($_FILES['images']['name'][0]==""){
                 $this->form_validation->set_message('check_imageCount', 'Vous devez choisir au moins 1 image');
                 redirect("AcceuilController");
