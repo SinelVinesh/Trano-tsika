@@ -23,6 +23,7 @@ class DetailPublicationController extends MY_Controller {
 		$this->load->model('Publication');
 		$this->load->model('Message');
 		$this->load->model('Question');
+		$this->load->model('Publicite');
 		$this->load->model('Reponse');
 		$pub = array();
 
@@ -45,6 +46,7 @@ class DetailPublicationController extends MY_Controller {
         $data["locations"] = $this->Location->get_locations();
         $data["tags"] = $this->DetailTag->get_tags();
         $data["utils"] = $this->DetailUtilite->get_utilities();
+		$data["publicite"] = $this->Publicite->rand_pub();
 
 
         $survey["question"] = $this->Question->next_question($_SESSION["id_client"]);
@@ -56,11 +58,8 @@ class DetailPublicationController extends MY_Controller {
         }
 
         $data["survey"] = $survey;
-
 		$data["pub"] = $pub;
-
 		$data["user_like"] = $this->user_like($id_pub);
-//         echo json_encode($pub);
 		$this->load->view('pages/fiche.php',$data);
 	}
 

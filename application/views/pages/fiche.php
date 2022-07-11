@@ -98,6 +98,14 @@
             <button type="submit" id="logOut">out</button>
         </form>
 
+        <div class="row pl-1 pr-1">
+                <div class="col-12">
+                    <a href="<?= $publicite['lien'] ?>"  title="Visiter">
+                        <img src="<?=base_url()?>files/pubs/<?= $publicite['image'] ?>" alt="">
+                    </a>
+                </div>
+                </div>
+            
         <!--  main content  -->
         <div class="container">
             <div class="fiche m-4">
@@ -108,7 +116,7 @@
                     <div class="utilities-list">
                         <div class="row mt-4">
                             <div class="col-md-3 mb-2">
-                                <i class="fa-solid fa-location-dot"></i> Andoharanofotsy
+                                <i class="fa-solid fa-location-dot"></i> <?= $pub["nom_lieu"] ?>
                             </div>
                             <?php foreach ($pub["detail_utils"] as $util) { ?>
                                 <div class="col-md-2 mb-2">
