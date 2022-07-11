@@ -16,7 +16,7 @@
             $this->form_validation->set_rules('last_name','Last name','required');
             $this->form_validation->set_rules('date_birth','Date of birth','required');
             $this->form_validation->set_rules('phone','Phone Number','required|regex_match[/^\d*$/]|max_length[10]|min_length[10]');
-            $this->form_validation->set_rules('email','Email','required');
+            $this->form_validation->set_rules('email','Email','required|is_unique[client.email]');
             $this->form_validation->set_rules('password','Password','required');
             $this->form_validation->set_rules('re_password','Confirm password','required|callback_confirm_password');
         }
