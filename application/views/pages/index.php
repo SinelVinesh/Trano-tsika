@@ -158,17 +158,17 @@
                 </div>
                 <div class="modal-body">
                     <div class="container">
-                        <form action="<?= site_url('AjoutPublicationController/ajout_publication') ?>" method="post" enctype='multipart/form-data'>
+                        <form action="<?= site_url('AjoutPublicationController/ajout_publication') ?>" method="post" enctype='multipart/form-data' id="pub-form">
 
 
                             <div class="form-group">
                                 <label for="titre">Titre<span class="mandatory">*</span></label>
-                                <input type="text" name="titre" id="titre" placeholder="Entrez le titre votre publication">
+                                <input type="text" name="titre" id="titre" placeholder="Entrez le titre votre publication" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="titre">Description<span class="mandatory">*</span></label>
-                                <input type="text" name="description" id="description" placeholder="Veuillez decrire la maison">
+                                <input type="text" name="description" id="description" placeholder="Veuillez decrire la maison" required>
                             </div>
 
                             <div class="utilities">
@@ -187,56 +187,48 @@
 
                             <div class="row m-0 p-0">
                                 <div class="form-group col-md-6 m-0 pl-0">
-                                    <label for="titre">Chambre<span class="mandatory">*</span></label>
-                                    <input type="number" name="room" id="room" min="1" placeholder="Combien de chambre ?">
+                                    <label for="titre">Pièces<span class="mandatory">*</span></label>
+                                    <input type="number" name="room" id="room" min="1" placeholder="Combien de pièces ?" required>
                                 </div>
 
                                 <div class="form-group col-md-6 m-0 p-0">
-                                    <label for="titre">Surface</label>
-                                    <input type="number" name="surface" min="0" step="0.01" placeholder="Surface occupe par la maison (m2)">
+                                    <label for="titre">Surface<span class="mandatory">*</span></label>
+                                    <input type="number" name="surface" min="0" step="0.01" placeholder="Surface occupe par la maison (m2)" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="location">Location<span class="mandatory">*</span></label>
-                                <select id="location" name="location">
-                                    <option value="">Choisir une ville</option>
+                                <label for="location">Localisation</label>
+                                <select style="width: 100%" name="location" class="custom-select form-control" id="quartiers-publier">
+                                    <option value="">Choisir un quartier</option>
                                     <?php foreach ($locations as $location) { ?>
                                         <option value="<?= $location["id_localisation"] ?>"><?= $location["nom_lieu"] ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
 
-
                             <div class="utilities">
                                 <label>Liez votre maison avec google map <a data-target="#link-map" data-toggle="modal"><u class="link-map">Link to google map</u></a></label>
                             </div>
 
-                            <div class="utilities col-md-12">
+                            <div>
                                 <label>Ajoutez des <a><u class="underline-custom">#tag</u></a> autant que possible pour
                                     ameliorez votre publication</label>
-                                <div class="utilities-checks">
-                                    <div class="row p-0 m-0">
+                                <div class="row p-0 m-0">
+                                    <select style="width: 100%" name="tags[]" id="tags-publier" multiple="multiple">
                                         <?php for ($i = 0; $i < count($tags); $i++) { ?>
-                                            <div class="col-md-3 p-0 m-0">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="tags[]" value="<?= $tags[$i]["id_tag"]  ?>">
-                                                    <label class="form-check-label" for="<?= $tags[$i]["nom_tag"] ?>">
-                                                        <?= $tags[$i]["nom_tag"] ?>
-                                                    </label>
-                                                </div>
-                                            </div>
+                                            <option value="<?= $tags[$i]["id_tag"] ?>"><?= $tags[$i]["nom_tag"] ?></option>
                                         <?php } ?>
-                                    </div>
+                                    </select>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="price">Prix par mois<span class="mandatory">*</span></label>
-                                <input type="number" name="price" id="price" min="1" step="0.01" placeholder="Prix du location par mois?">
+                                <label for="price">Loyer<span class="mandatory">*</span></label>
+                                <input type="number" name="price" id="price" min="1" step="0.01" placeholder="Prix du location par mois?" required>
                             </div>
 
-                            <input type="file" name="images[]" class="custom-file-input" id="file-input" accept="image/*" onchange="preview()" multiple>
+                            <input type="file" name="images[]" class="custom-file-input" id="file-input" accept="image/*" onchange="preview()" multiple required>
                             <input type="hidden" name="img-removed" id="img-removed">
                             <input type="hidden" name="lat" id="lat" value="">
                             <input type="hidden" name="lng" id="lng" value="">
@@ -620,9 +612,15 @@
     <script>
         $(function() {
             $("#quartiers").select2({dropdownAutoWidth : true, dropdownParent: "#searchModal"});
+            $("#quartiers-publier").select2({dropdownAutoWidth : true});
             $("#tags").select2({dropdownAutoWidth : true, dropdownParent: "#searchModal"});
+            $("#tags-publier").select2({dropdownAutoWidth : true});
         })
     </script>
+
+    <!-- jQuery validate -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 </body>
 
 </html>
