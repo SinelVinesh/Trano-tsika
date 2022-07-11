@@ -7,7 +7,7 @@
 
         $publicite = '';
         if($ad!= null){
-            $publicite = '<div class="row pl-1 pr-1">
+            $publicite = '<div class="row publicite">
                 <div class="col-12">
                     <a href="'.$ad["lien"].'"  title="Visiter">
                         <img src="'.base_url().'files/pubs/'.$ad["image"].'" alt="">
@@ -37,7 +37,7 @@
                         <div class="property-content">
                             <h5>'.$pub["titre"].'</h5>
                             <p class="location"><i class="fa-solid fa-location-dot"></i>'.$pub["nom_lieu"].'</p>
-                            <p>'.$pub["description"].'</p>
+                            <p>'.substr($pub["description"],0,79).'</p>
 
                             <div class="property-meta-data d-flex align-items-end justify-content-between">
                                 <!--                            <a href="#" class="custom-btn">Plus de details</a>-->
@@ -100,6 +100,7 @@
             <button class="btn btn-outline-secondary rounded-0 ignorer"><span>Ignorer</span></button>
         </div>';
         }
+
         $type =($survey["question"]["multi_res"]) ? "checkbox" : "radio";
         $id_question = $survey["question"]["id_question"];
         $question_intitule = $survey["question"]["intitule"];
