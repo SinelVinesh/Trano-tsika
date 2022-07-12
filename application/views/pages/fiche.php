@@ -98,16 +98,16 @@
             <button type="submit" id="logOut">out</button>
         </form>
 
-        <div class="row pl-1 pr-1">
-            <div class="col-12">
-                <a href="<?= $publicite['lien'] ?>" title="Visiter">
-                    <img src="<?= base_url() ?>files/pubs/<?= $publicite['image'] ?>" alt="">
-                </a>
-            </div>
-        </div>
 
         <!--  main content  -->
-        <div class="container">
+        <div class="container mt-4">
+            <div class="row publicite">
+                <div class="col-12">
+                    <a href="<?= $publicite['lien'] ?>" title="Visiter">
+                        <img src="<?= base_url() ?>files/pubs/<?= $publicite['image'] ?>" alt="">
+                    </a>
+                </div>
+            </div>
             <div class="fiche m-4">
                 <div class="fiche-info">
                     <div class="titre">
