@@ -49,7 +49,7 @@
             <div class="top-area mt-3 border-0">
                 <div class="top-search" id="search">
                     <form>
-                        <input type="text" placeholder="Search your house">
+                        <input type="text" placeholder="Trouver une location">
                         <button data-ripple disabled><i class="ti-search"></i></button>
                     </form>
                 </div>
@@ -113,11 +113,11 @@
                             <img src="assets/images/resources/admin2.jpg" alt="">
                         </figure>
                         <div class="newpst-input">
-                            <textarea rows="1" placeholder="Post your house..." id="show-post-modal"></textarea>
+                            <textarea rows="1" placeholder="Trouver un locataire..." id="show-post-modal"></textarea>
                             <div class="attachments">
                                 <ul>
                                     <li>
-                                        <button class="btn btn-primary rounded-0" id="show-make-post"> Make a post</button>
+                                        <button class="btn btn-primary rounded-0" id="show-make-post">Poster une annonce</button>
                                     </li>
                                 </ul>
                             </div>
@@ -151,7 +151,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content rounded-0">
                 <div class="modal-header">
-                    <h4>Publier votre maison a louer</h4>
+                    <h4>Publier votre annonce</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
                     </button>
@@ -172,7 +172,7 @@
                             </div>
 
                             <div class="utilities">
-                                <label>Veuillez selectionnez les proprietes de la maison</label>
+                                <label>Veuillez selectionnez les équipements dont dispose de la maison</label>
                                 <div class="utilities-checks">
                                     <?php foreach ($utils as $util) { ?>
                                         <div class="form-check">
@@ -197,7 +197,7 @@
                                 </div>
                             </div>
 
-                            <div class="row form-group">
+                            <div class="row form-group ml-0">
                                 <label for="location">Localisation</label>
                                 <select style="width: 100%" name="location" class="custom-select form-control" id="quartiers-publier">
                                     <option value="">Choisir un quartier</option>
@@ -325,7 +325,7 @@
         <div class="modal-dialog modal-dialog-centered modal-boost-advantage" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="searchModalLongTitle">Try boosting your house</h5>
+                    <h5 class="modal-title" id="searchModalLongTitle">Voulez-vous booster votre publication ?</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -357,7 +357,7 @@
                                     </div>
                                 </div>
                                 <div class="decision pl-4 pt-3">
-                                    <button class="btn btn-outline-dark w-20 rounded-0 " id="publish-free">Publish free
+                                    <button class="btn btn-outline-dark w-20 rounded-0 " id="publish-free">Continuer gratuitement
                                     </button>
                                 </div>
                             </div>
@@ -383,19 +383,16 @@
                                         <i class="fa-solid fa-check"></i> <span class="ml-2">Augmentation des suggestions</span>
                                     </div>
                                     <div class="pricing pb-2">
-                                        <i class="fa-solid fa-money-bill-1"></i> <span class="ml-2">10,000.0 ar / semaine</span>
+                                        <i class="fa-solid fa-money-bill-1"></i> <span class="ml-2">15,000.0 ar / semaine</span>
                                     </div>
                                 </div>
                                 <div class="decision pl-4 pt-3">
-                                    <button class="btn btn-success w-20 rounded-0" id="publish-boost">Publish & Boost
+                                    <button class="btn btn-success w-20 rounded-0" id="publish-boost">Booster maintenant
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary rounded-0" data-dismiss="modal">Go back</button>
                 </div>
             </div>
         </div>
@@ -406,7 +403,7 @@
         <div class="modal-dialog modal-dialog-centered modal-abonnement" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="searchModalLongTitle">Abonnez vous !!!!</h5>
+                    <h5 class="modal-title" id="searchModalLongTitle">Souscrire à un abonnement</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -418,7 +415,7 @@
                                 <div class="boost-header mb-2 bg-secondary">
                                 </div>
                                 <div class="boost-info border-bottom pl-3 pb-1">
-                                    <h3>Offre normale</h3>
+                                    <h3>Gratuit</h3>
                                 </div>
                                 <div class="advantage-list p-4 border-bottom">
                                     <div class="one-disadvantage pb-2">
@@ -435,7 +432,7 @@
                                     </div>
                                 </div>
                                 <div class="decision pl-4 pt-3">
-                                    <button class="btn btn-outline-dark w-20 rounded-0 " id="continue-free">Continue free
+                                    <button class="btn btn-outline-dark w-20 rounded-0 " id="continue-free">Continuer gratuitement
                                     </button>
                                 </div>
                             </div>
@@ -445,7 +442,7 @@
                                 <div class="boost-header mb-2 bg-success">
                                 </div>
                                 <div class="boost-info border-bottom pl-3 pb-1">
-                                    <h3>Abonne</h3>
+                                    <h3>Abonnement</h3>
                                 </div>
                                 <div class="advantage-list p-4 border-bottom">
                                     <div class="one-advantage pb-2">
@@ -458,7 +455,7 @@
                                         <i class="fa-solid fa-check"></i> <span class="ml-2">Avec google map</span>
                                     </div>
                                     <div class="pricing pb-2">
-                                        <i class="fa-solid fa-money-bill-1"></i> <span class="ml-2">20,000.0 ar / semaine</span>
+                                        <i class="fa-solid fa-money-bill-1"></i> <span class="ml-2">20,000.0 ar / mois</span>
                                     </div>
                                 </div>
                                 <div class="decision pl-4 pt-3">
@@ -470,7 +467,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary rounded-0" data-dismiss="modal">Go back</button>
+                    <button type="button" class="btn btn-secondary rounded-0" data-dismiss="modal">Fermer</button>
                 </div>
             </div>
         </div>
@@ -511,33 +508,38 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content rounded-0">
                 <div class="modal-header">
-                    <h5>Please enter your information in order to confirm the boost</h5>
+                    <h5>Veuillez saisir vos informations pour confirmer la transaction</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
                     </button>
                 </div>
 
                 <div class="modal-body">
+                    <div>
+                        <h4>Montant de la transaction :</h4>
+                        <div><span id="amount">0</span> x Semaines <span style="float: right">15 000 Ar</span> </div>
+                        <div>Total : <span style="float: right"><span id="total">0</span> Ar</span></div>
+                    </div>
                     <div class="form-group mt-0">
                         <label for="account">Carte bancaire</label>
                         <input type="text" name="account" id="account" min="1" placeholder="Votre carte bancaire">
                     </div>
 
                     <div class="form-group">
-                        <label for="display-duration">Duration</label>
-                        <select id="display-duration" name="duration">
+                        <label for="display-duration">Durée</label>
+                        <select id="display-duration" name="duration" onchange="changeAmount()">
                             <option selected>Pour combien de semaine?</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
                         </select>
                     </div>
 
                 </div>
 
                 <div class="modal-footer d-flex justify-content-between">
-                    <button class="btn btn-light rounded-0" type="button" data-dismiss="modal">Go back</button>
-                    <button class="btn btn-success rounded-0" id="post-boost">Post & Boost</button>
+                    <button class="btn btn-light rounded-0" type="button" data-dismiss="modal">Annuler</button>
+                    <button class="btn btn-success rounded-0" id="post-boost">Booster</button>
                 </div>
             </div>
         </div>
@@ -550,7 +552,7 @@
                 <form action="<?= site_url() ?>/SearchController/simpleSearch"  method="get" >
                     <div class="modal-header search-container">
                         <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
-                        <input type="search" name="criteria" class="search-title" id="search-criteria" placeholder="Enter something ...">
+                        <input type="search" name="criteria" class="search-title" id="search-criteria" placeholder="Saisissez quelque chose...">
                         <button type="button" class="btn btn-light add-bg rounded-circle" data-dismiss="modal" aria-label="Close">
                             <i class="fa-solid fa-xmark"></i>
                         </button>
@@ -559,7 +561,7 @@
                 </form>
 
                 <div class="modal-body">
-                    <span class="multi-text">Multicriteria <i class="fa-solid fa-caret-down" id="caret-down"></i> <i class="fa-solid fa-caret-up" id="caret-left"></i></span>
+                    <span class="multi-text">Plus d'options <i class="fa-solid fa-caret-down" id="caret-down"></i> <i class="fa-solid fa-caret-up" id="caret-left"></i></span>
                     <div class="search-box">
                         <form action="<?= site_url() ?>/SearchController/searchMulti" method="post">
                             <div class="row">
@@ -630,7 +632,7 @@
                                 </div>
 
                             </div>
-                            <input type="submit" value="Search" class="btn btn-primary rounded-0">
+                            <input type="submit" value="Rechercher" class="btn btn-primary rounded-0">
                         </form>
                     </div>
                 </div>
@@ -755,7 +757,15 @@
             });
         });
     </script>
-
+    <!--    Changement automatique du montant de boost -->
+    <script>
+        function changeAmount() {
+            let amount = $("#display-duration").val();
+            $("#amount").text(amount)
+            let price = 15000;
+            $("#total").text((amount*price).toLocaleString("FR"));
+        }
+    </script>
     <!-- jQuery validate -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>

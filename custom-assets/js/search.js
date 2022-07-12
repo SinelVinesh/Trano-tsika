@@ -1,4 +1,5 @@
 $("#search").click(() => {
+    console.log("ok");
     $("#searchModal").modal("show");
 });
 

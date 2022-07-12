@@ -5,6 +5,7 @@ input.search-title {
     border-radius: 25px;
     margin-right: 10px;
     background-color: rgba(107, 99, 99, 0.06);
+    border: none;
 }
 
 input.search-title:focus,

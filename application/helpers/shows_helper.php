@@ -97,7 +97,7 @@
             <h1>On vous remercie d\'avoir repondu</h1>
         </div>
         <div class="modal-footer d-flex justify-content-between">
-            <button class="btn btn-outline-secondary rounded-0 ignorer"><span>Ignorer</span></button>
+            <button class="btn btn-outline-secondary rounded-0 ignorer"><span>Fermer</span></button>
         </div>';
         }
 
@@ -129,7 +129,7 @@
         $display .= '
         </div>
         <div class="modal-footer d-flex justify-content-between">
-            <button class="btn btn-primary rounded-0  next"><span><i>Valider</i></span>
+            <button class="btn btn-primary rounded-0  next"><span><i>Suivant</i></span>
             </button>
             <button class="btn btn-outline-secondary rounded-0 ignorer"><span>Ignorer</span></button>
         </div>';

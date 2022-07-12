@@ -400,21 +400,26 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content rounded-0">
                 <div class="modal-header">
-                    <h5>Please enter your information in order to confirm the boost</h5>
+                    <h5>Veuillez saisir vos informations pour confirmer la transaction</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
                     </button>
                 </div>
                 <form action="<?= site_url("BoostController/pay_boost/".$pub["id_publication"])?>" method="post">
                     <div class="modal-body">
+                        <div>
+                            <h4>Montant de la transaction :</h4>
+                            <div><span id="amount">0</span> x Semaines <span id="price" style="float: right">15 000 Ar</span> </div>
+                            <div>Total : <span style="float: right"><span id="total">0</span> Ar</span></div>
+                        </div>
                         <div class="form-group mt-0">
                             <label for="account">Carte bancaire</label>
                             <input type="text" name="account" id="account" min="1" placeholder="Votre carte bancaire">
                         </div>
 
                         <div class="form-group">
-                            <label for="display-duration">Duration</label>
-                            <select id="display-duration" name="duration">
+                            <label for="display-duration">Durée</label>
+                            <select id="display-duration" name="duration" onchange="changeAmount()">
                                 <option selected>Pour combien de semaine?</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -424,8 +429,8 @@
                     </div>
 
                     <div class="modal-footer d-flex justify-content-between">
-                        <button class="btn btn-light rounded-0" type="button" data-dismiss="modal">Go back</button>
-                        <button class="btn btn-success rounded-0" id="post-boost">Post & Boost</button>
+                        <button class="btn btn-light rounded-0" type="button" data-dismiss="modal">Annuler</button>
+                        <button class="btn btn-success rounded-0" id="post-boost">Booster</button>
                     </div>
                 </form>
             </div>
@@ -515,9 +520,22 @@
 
                     directionDisplay.setDirections(result);
                 } else {
-                    console.log("tsy nety!");
+                    handleLocationError(true,infoWindow,map.getCenter(),false);
                 }
             })
+        }
+
+        function handleLocationError(browserHasGeolocation, infoWindow, pos,haveresult=true) {
+            infoWindow.setPosition(pos);
+            infoWindow.setContent(
+                browserHasGeolocation ?
+                    "Erreur: La récuperation de votre position a échoué ." :
+                    "Error: Votre navigateur ne support pas la géolocalisation."
+            );
+            if(!haveresult) {
+                infoWindow.setContent("Aucun itinéraire n'a été trouvé");
+            }
+            infoWindow.open(map);
         }
 
         function showRoute() {
@@ -711,6 +729,16 @@
             $("#quartiers").select2({dropdownAutoWidth : true, dropdownParent: "#searchModal"});
             $("#tags").select2({dropdownAutoWidth : true, dropdownParent: "#searchModal"});
         })
+    </script>
+
+<!--    Changement automatique du montant de boost -->
+    <script>
+        function changeAmount() {
+            let amount = $("#display-duration").val();
+            $("#amount").text(amount)
+            let price = 15000;
+            $("#total").text((amount*price).toLocaleString("FR"));
+        }
     </script>
 
 </body>
