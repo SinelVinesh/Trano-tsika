@@ -489,6 +489,99 @@
 
     <script>
         var map;
+        let marker;
+        var infoWindow = new google.maps.InfoWindow();
+
+        var directionService = new google.maps.DirectionsService();
+        var directionDisplay = new google.maps.DirectionsRenderer({
+            suppressMarkers: true
+        });
+
+        var calculateRoute = (start, dest) => {
+            var request = {
+                origin: start,
+                destination: dest,
+                travelMode: google.maps.TravelMode.DRIVING,
+                unitSystem: google.maps.UnitSystem.IMPERIAL
+            }
+
+            directionService.route(request, (result, status) => {
+                console.log(status);
+                if (status === "OK") {
+                    console.log(result);
+
+                    directionDisplay.setDirections(result);
+                } else {
+                    console.log("tsy nety!");
+                }
+            })
+        }
+
+        function showRoute() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude,
+                        };
+
+                        infoWindow.setPosition(pos);
+                        infoWindow.setContent(`
+                            <div class='card'>
+                                <div class="card-header">
+                                    Vous etes ici
+                                </div>
+                            </div>
+                        `);
+                        infoWindow.open(map);
+                        map.setCenter(pos);
+
+                        let start = new google.maps.LatLng(pos.lat, pos.lng);
+                        calculateRoute(start,marker.position);
+                    },
+                    () => {
+                        handleLocationError(true, infoWindow, map.getCenter());
+                    }
+                );
+            } else {
+                // Browser doesn't support Geolocation
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
+        }
+
+        function RouteControl(controlDiv, map) {
+            // Set CSS for the control border.
+            const controlUI = document.createElement("div");
+
+            controlUI.style.backgroundColor = "#fff";
+            controlUI.style.border = "2px solid #fff";
+            controlUI.style.borderRadius = "3px";
+            controlUI.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
+            controlUI.style.cursor = "pointer";
+            controlUI.style.marginTop = "8px";
+            controlUI.style.marginBottom = "22px";
+            controlUI.style.textAlign = "center";
+            controlUI.title = "Calculer le trajet";
+            controlDiv.appendChild(controlUI);
+
+            // Set CSS for the control interior.
+            const controlText = document.createElement("div");
+
+            controlText.style.color = "rgb(25,25,25)";
+            controlText.style.fontFamily = "Roboto,Arial,sans-serif";
+            controlText.style.fontSize = "16px";
+            controlText.style.lineHeight = "38px";
+            controlText.style.paddingLeft = "5px";
+            controlText.style.paddingRight = "5px";
+            controlText.innerHTML = "Calculer le trajet";
+            controlUI.appendChild(controlText);
+
+            // Setup the click event listeners: simply set the map to Chicago.
+            controlUI.addEventListener("click", () => {
+                showRoute();
+            });
+        }
 
         function initialize() {
             let pubPos = new google.maps.LatLng(<?= $pub['pos']['lat'] ?>, <?= $pub['pos']['lng'] ?>);
@@ -518,14 +611,16 @@
 
             map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-            new google.maps.Marker({
-                position: pubPos,
-                map: map
-            });
+            directionDisplay.setMap(map);
+            const div = document.createElement("div");
 
-            let marker = new google.maps.Marker
+            RouteControl(div,map);
+            map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(div);
+            marker = new google.maps.Marker({
+                        position: pubPos,
+                        map: map
+                    });
         }
-
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 
