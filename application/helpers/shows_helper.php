@@ -94,7 +94,7 @@
             </a>
         </div>
         <div class="modal-body">
-            <h1>On vous remercie d\'avoir repondu</h1>
+            <h1>On vous remercie d\'avoir répondu</h1>
         </div>
         <div class="modal-footer d-flex justify-content-between">
             <button class="btn btn-outline-secondary rounded-0 ignorer"><span>Fermer</span></button>
@@ -104,7 +104,7 @@
         $type =($survey["question"]["multi_res"]) ? "checkbox" : "radio";
         $id_question = $survey["question"]["id_question"];
         $question_intitule = $survey["question"]["intitule"];
-        $reponse_type = ($type == "checkbox") ? "( Reponse multicriteres )" : "" ;
+        $reponse_type = ($type == "checkbox") ? "( Réponses multiples )" : "" ;
         $reponse = '';
         foreach ($survey["reponses"] as $res) {  
             $id_tag = ($res["id_tag"]==null) ? -1 : $res["id_tag"] ;
