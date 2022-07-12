@@ -664,6 +664,10 @@
 
         $("#pay_abonnement_btn").click(()=>{
             $("#go-abonnement").trigger("click");
+        });
+        
+        $("#continue-free").click(() => {
+            $("#abonnement").modal("hide");
         })
     </script>
 
