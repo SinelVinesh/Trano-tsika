@@ -39,21 +39,21 @@
 
         public function searchMulti(){
             $this->load->model('Publication');
-            $input_names = array('titre','location','prix_min','prix_max','room_min','room_max');
+            $input_names = array('titre','location','prix','chambre');
             $data = $this->get_datas($input_names,'post');
             $data["tags"] = $this->input->post('tags[]');
             $data["tags_util"] = $this->input->post('tags_util[]');
 
             
-            $pubs = $this->Publication->search($data['titre'],$data['location'],$data['prix_min'],$data['prix_max'],$data['room_min'],$data['room_max'],
+            $pubs = $this->Publication->search($data['titre'],$data['location'],$data['prix']['min'],$data['prix']['max'],$data['chambre']['min'],$data['chambre']['max'],
             $this->input->post('tags[]'),$this->input->post('tags_util[]')
             ,$_SESSION["limit"],0,$_SESSION["id_client"]);
 
             $_SESSION["option"] = 1;
             $_SESSION["criterias"] = $data;
             $_SESSION["offset_search"] = 6;
-            $_SESSION["len"] = $this->Publication->count_search($data['titre'],$data['location'],$data['prix_min'],
-            $data['prix_max'],$data['room_min'],$data['room_max'],$this->input->post('tags[]'),$this->input->post('tags_util[]')
+            $_SESSION["len"] = $this->Publication->count_search($data['titre'],$data['location'],$data['prix']['min'],
+            $data['prix']['max'],$data['chambre']['min'],$data['chambre']['max'],$this->input->post('tags[]'),$this->input->post('tags_util[]')
             ,$_SESSION["limit"],0);
 
             $this->index($pubs,$_SESSION["len"]);
@@ -66,8 +66,8 @@
 
             if($_SESSION["option"] == 1){
                 $data = $_SESSION["criterias"];
-                $pubs = $this->Publication->search($data['titre'],$data['location'],$data['prix_min'],$data['prix_max'],$data['room_min'],
-                $data['room_max'],$data["tags"],$data["tags_util"],$_SESSION["limit"],$_SESSION["offset_search"],$_SESSION["id_client"]);
+                $pubs = $this->Publication->search($data['titre'],$data['location'],$data['prix']['min'],$data['prix']['max'],$data['chambre']['min'],
+                $data['chambre']['max'],$data["tags"],$data["tags_util"],$_SESSION["limit"],$_SESSION["offset_search"],$_SESSION["id_client"]);
             }else{
                 $pubs = $this->Publication->simpleSearch($_SESSION["criteria"],$_SESSION["limit"],$_SESSION["offset_search"],$_SESSION["id_client"]);
             }            

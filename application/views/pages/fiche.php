@@ -103,13 +103,16 @@
         <!--  main content  -->
         <div class="container">
             <?= validation_errors()?>
-            <div class="row publicite m-4">
-                <div class="col-12">
-                    <a href="<?= $publicite['lien'] ?>" title="Visiter">
-                        <img src="<?= base_url() ?>files/pubs/<?= $publicite['image'] ?>" alt="">
-                    </a>
+
+            <?php if(!$_SESSION['abonnement']) { ?>
+                <div class="row publicite m-4">
+                    <div class="col-12">
+                        <a href="<?= $publicite['lien'] ?>" title="Visiter">
+                            <img src="<?= base_url() ?>files/pubs/<?= $publicite['image'] ?>" alt="">
+                        </a>
+                    </div>
                 </div>
-            </div>
+            <?php } ?>
 
             <div class="fiche m-4 mt-0">
                 <div class="fiche-info">
