@@ -1,10 +1,12 @@
 <?php 
     class SearchController extends MY_Controller {
+
         public function __construct()
         {
             parent::__construct();
             $this->testAuthentication();
         }
+
         public function index($pubs=null,$len=0) {
             $this->load->model("Location");
             $this->load->model("DetailTag");
@@ -31,8 +33,13 @@
             $data["tags"] = $this->DetailTag->get_tags();
             $data["utils"] = $this->DetailUtilite->get_utilities();
             $data["pubs"] = $pubs;
+
             $data["len"] = $len;
-            $data["publicite"] = $this->Publicite->rand_pub();
+            
+            $data["publicite"] = null;
+            if(!$_SESSION["abonnement"]) {
+                $data["publicite"] = $this->Publicite->rand_pub();
+            }
 
             $this->load->view("pages/search.php",$data);
         }
