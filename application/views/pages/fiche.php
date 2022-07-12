@@ -88,6 +88,7 @@
                         <div class="dropdowns">
                             <span>Option(s)</span>
                             <ul class="drops-menu">
+                                <li id="go-mine"><a>Mes publications</a></li>
                                 <li id="go-out"><a>Log out</a></li>
                             </ul>
                         </div>
@@ -98,6 +99,10 @@
 
         <form action="<?= site_url("LoginController/LogOut") ?>" method="get" class="d-none">
             <button type="submit" id="logOut">out</button>
+        </form>
+
+        <form action="<?= site_url("ClientController") ?>" method="get" class="d-none">
+            <button type="submit" id="mine">mes publications</button>
         </form>
 
         <!--  main content  -->

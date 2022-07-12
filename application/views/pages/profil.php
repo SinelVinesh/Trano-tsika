@@ -92,6 +92,7 @@
                         <div class="dropdowns">
                             <span>Option(s)</span>
                             <ul class="drops-menu">
+                                <li id="go-mine"><a>Mes publications</a></li>
                                 <li id="go-out"><a>Log out</a></li>
                             </ul>
                         </div>
@@ -104,13 +105,12 @@
             <button type="submit" id="logOut">out</button>
         </form>
 
+        <form action="<?= site_url("ClientController") ?>" method="get" class="d-none">
+            <button type="submit" id="mine">mes publications</button>
+        </form>
+
         <!--  main content  -->
         <div class="container" id="pub-container">
-            <div class="mr-0">
-                <a href="<?= site_url("ClientController") ?>">
-                    <?= $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?>
-                </a>
-            </div>
 
             <!-- post form -->
             <div class="row align pt-4">

@@ -78,11 +78,6 @@
                     </li>
                 </ul>
 
-                <div class="user-img mr-0">
-                    <a class="btn btn-light bg-white border-0" href="<?= site_url("ClientController/") ?>" style="font-size: 14px;">
-                        <?= $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?>
-                    </a>
-                </div>
 
                 <ul class="setting-area ml-0">
                     <li>
@@ -90,6 +85,7 @@
                         <div class="dropdowns">
                             <span>Option(s)</span>
                             <ul class="drops-menu">
+                                <li id="go-mine"><a>Mes publications</a></li>
                                 <li id="go-out"><a>Log out</a></li>
                             </ul>
                         </div>
@@ -103,14 +99,14 @@
             <button type="submit" id="logOut">out</button>
         </form>
 
+        <form action="<?= site_url("ClientController") ?>" method="get" class="d-none">
+            <button type="submit" id="mine">mes publications</button>
+        </form>
+
 
         <!--  main content  -->
         <div class="container">
-            <div class="mr-0">
-                <a href="<?= site_url("ClientController") ?>">
-                    <?= $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?>
-                </a>
-            </div>
+
             <div class="modal-content mt-4 mb-3">
                 <form action="<?= site_url() ?>/SearchController/simpleSearch" method="get">
                     <div class="modal-header search-container">
