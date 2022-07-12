@@ -78,6 +78,9 @@
                     </li>
                 </ul>
 
+                <div class="user-img mr-0">
+                    <a class="btn btn-light bg-white border-0" style="font-size: 14px;"><?= $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?></a>
+                </div>
 
                 <ul class="setting-area ml-0">
                     <li>

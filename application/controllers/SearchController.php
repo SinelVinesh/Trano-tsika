@@ -35,7 +35,7 @@
             $data["pubs"] = $pubs;
 
             $data["len"] = $len;
-            
+
             $data["publicite"] = null;
             if(!$_SESSION["abonnement"]) {
                 $data["publicite"] = $this->Publicite->rand_pub();
