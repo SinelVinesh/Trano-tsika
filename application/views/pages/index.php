@@ -113,10 +113,10 @@
             <div class="row align pt-4">
                 <div class="central-meta rounded-0 add-shadow">
                     <div class="new-postbox">
-                        <figure>
-                            <img src="<?= base_url() ?>assets/images/resources/admin2.jpg" alt="">
-                        </figure>
-                        <div class="newpst-input">
+<!--                        <figure>-->
+<!--                            <img src="--><?//= base_url() ?><!--assets/images/resources/admin2.jpg" alt="">-->
+<!--                        </figure>-->
+                        <div class="newpst-input w-100">
                             <textarea rows="1" placeholder="Trouver un locataire..." id="show-post-modal"></textarea>
                             <div class="attachments">
                                 <ul>

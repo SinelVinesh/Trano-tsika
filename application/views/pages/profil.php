@@ -116,15 +116,15 @@
             <div class="row align pt-4">
                 <div class="central-meta rounded-0 add-shadow">
                     <div class="new-postbox">
-                        <figure>
-                            <img src="<?= base_url() ?>assets/images/resources/admin2.jpg" alt="">
-                        </figure>
-                        <div class="newpst-input">
-                            <textarea rows="1" placeholder="Post your house..." id="show-post-modal"></textarea>
+                        <!--                        <figure>-->
+                        <!--                            <img src="--><?//= base_url() ?><!--assets/images/resources/admin2.jpg" alt="">-->
+                        <!--                        </figure>-->
+                        <div class="newpst-input w-100">
+                            <textarea rows="1" placeholder="Trouver un locataire..." id="show-post-modal"></textarea>
                             <div class="attachments">
                                 <ul>
                                     <li>
-                                        <button class="btn btn-primary rounded-0" id="show-make-post"> Make a post</button>
+                                        <button class="btn btn-primary rounded-0" id="show-make-post">Poster une annonce</button>
                                     </li>
                                 </ul>
                             </div>
