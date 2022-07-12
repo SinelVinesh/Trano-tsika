@@ -1,0 +1,46 @@
+Quel localisation vous correspond le mieux ?
+Centre-ville (centre) *
+Peripherie (peripherie)
+Peut importe (centre,peripherie)
+
+Que priorisez-vous ?
+Le confort (confort)
+Le luxe (luxe)
+L'arbordabilité (abordable) *
+
+Quel type de residence vous-conviendrait le plus ?
+Un appartement (appartement)
+Une maison (maison)
+Une villa (villa)
+autre () *
+
+Quel est votre situation actuelle ?
+Etudiant (etudiant) *
+Salarie (salarie)
+Retraite (retraite)
+
+Laquelle de ces propostitions decrit au mieux votre situation ?
+Je vis seul(e) (individuel) *
+Je vis avec mon/ma partenaire (couple, appartement pour 2)
+Je vis avec plusieurs personnes (familiale, spacieux)
+
+Qu'aimeriez-vous avoir autour de chez vous ? *multiple
+Une pharmacie (sante)
+Un poste de police (securite)
+Une epicerie (epicerie) *
+Un supermarche (supermarche)
+Un marche (marche) *
+Un etablissement scolaire (ecole,lycee,universite) *
+
+Etes-vous plus premier plan ou second-plan ?
+Premier plan, pour sortir plus vite (premier plan) *
+Second plan, pour etre tranquille (second plan)
+
+Votre location doit-elle etre accessible par vehicule ?
+Oui, c'est capitale (acces vehicule)
+Non, pas forcément () *
+
+Votre location doit-elle etre meublé ?
+Oui, c'est plus facile ainsi (meublé)
+Non, je prefere mes meubles a moi ! () *
+
