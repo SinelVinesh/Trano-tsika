@@ -38,6 +38,7 @@ class DetailPublicationController extends MY_Controller {
 		$pub["commentaires"] = $this->Publication->get_limited_commentaire($id_pub,3,0);
 		$pub["messages"] = $this->Message->get_messages($_SESSION["id_client"], $id_pub);
         $pub["pos"] = $this->Publication->getPosition($id_pub);
+        $pub["isBoosted"] = $this->Publication->isBoosted($id_pub);
 
         $this->load->model("Location");
         $this->load->model("DetailTag");
