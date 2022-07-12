@@ -197,7 +197,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="row form-group">
                                 <label for="location">Localisation</label>
                                 <select style="width: 100%" name="location" class="custom-select form-control" id="quartiers-publier">
                                     <option value="">Choisir un quartier</option>
@@ -613,9 +613,9 @@
     <script>
         $(function() {
             $("#quartiers").select2({dropdownAutoWidth : true, dropdownParent: "#searchModal"});
-            $("#quartiers-publier").select2({dropdownAutoWidth : true});
+            $("#quartiers-publier").select2({dropdownAutoWidth : true, dropdownParent: "#make-post"});
             $("#tags").select2({dropdownAutoWidth : true, dropdownParent: "#searchModal"});
-            $("#tags-publier").select2({dropdownAutoWidth : true});
+            $("#tags-publier").select2({dropdownAutoWidth : true, dropdownParent: "#make-post"});
         })
     </script>
 
