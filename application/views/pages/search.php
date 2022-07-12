@@ -63,12 +63,12 @@
                             <ul class="drops-menu">
                             </ul>
                             <!-- notications -->
-<!--                            <a href="notifications.html" title="" class="more-mesg">view more</a>-->
+                            <!--                            <a href="notifications.html" title="" class="more-mesg">view more</a>-->
                         </div>
                     </li>
                     <li>
-                        <a href="#" title="Messages" class="menu-item" data-ripple="" id="show-discussions" >Messages</a>
-                        <div class="dropdowns" id="discussion-box" >
+                        <a href="#" title="Messages" class="menu-item" data-ripple="" id="show-discussions">Messages</a>
+                        <div class="dropdowns" id="discussion-box">
                             <span><span class="messageNumber"></span> New Messages</span>
                             <ul class="drops-menu">
 
@@ -78,9 +78,6 @@
                     </li>
                 </ul>
 
-                <div class="user-img mr-0">
-                    <a class="btn btn-light bg-white border-0" style="font-size: 14px;"><?= $_SESSION["first_name"]." ".$_SESSION["last_name"] ?></a>
-                </div>
 
                 <ul class="setting-area ml-0">
                     <li>
@@ -88,7 +85,8 @@
                         <div class="dropdowns">
                             <span>Option(s)</span>
                             <ul class="drops-menu">
-                                <li id="go-out" ><a>Log out</a></li>
+                                <li id="go-mine"><a>Mes publications</a></li>
+                                <li id="go-out"><a>Log out</a></li>
                             </ul>
                         </div>
                     </li>
@@ -101,18 +99,23 @@
             <button type="submit" id="logOut">out</button>
         </form>
 
+        <form action="<?= site_url("ClientController") ?>" method="get" class="d-none">
+            <button type="submit" id="mine">mes publications</button>
+        </form>
+
 
         <!--  main content  -->
         <div class="container">
+
             <div class="modal-content mt-4 mb-3">
-                <form action="<?= site_url() ?>/SearchController/simpleSearch"  method="get" >
+                <form action="<?= site_url() ?>/SearchController/simpleSearch" method="get">
                     <div class="modal-header search-container">
                         <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
                         <input type="search" name="criteria" class="search-title" id="search-criteria" placeholder="Enter something ...">
                         <button type="button" class="btn btn-light add-bg rounded-circle" data-dismiss="modal" aria-label="Close">
                             <i class="fa-solid fa-xmark"></i>
                         </button>
-                        <input type="submit" value="Search" id="go-search" class="d-none" >
+                        <input type="submit" value="Search" id="go-search" class="d-none">
                     </div>
                 </form>
 
@@ -195,16 +198,16 @@
             </div>
         </div>
 
-        <div class="container" id="pub-container" >
+        <div class="container" id="pub-container">
             <div class="row">
                 <div class="col-md-6">
                     <h4>Resultat(s) <?= $len  ?> </h4>
                 </div>
             </div>
             <?php
-                if($pubs != null){
-                    echo (displayPubs($pubs,$publicite)); 
-                }
+            if ($pubs != null) {
+                echo (displayPubs($pubs, $publicite));
+            }
             ?>
         </div>
         <button class="btn-view btn-load-more mb-4" id="load-next">Load More</button>
@@ -251,7 +254,7 @@
     </script>
 
     <!-- survey js // need survey ResponseUrl -->
-    <?php if($survey != null) { ?>
+    <?php if ($survey != null) { ?>
         <script src="<?= base_url() ?>custom-assets/js/survey.js"></script>
     <?php } ?>
 
@@ -272,13 +275,13 @@
         let pubIdclient;
         let idPublication;
         let lastMessageUrl = "<?= site_url("LastMessageController") ?>";
-        let loadingUrlBase = "<?= site_url("MessageController/load_message?client1=".$_SESSION['id_client']."&client2=") ?>";
+        let loadingUrlBase = "<?= site_url("MessageController/load_message?client1=" . $_SESSION['id_client'] . "&client2=") ?>";
     </script>
 
     <!--  need site_url, pubIdClient, idPublication, lastMesageUrl, loadingUrlBase -->
-    <script src="<?= base_url() ?>custom-assets/js/message-from-notif.js" ></script>
+    <script src="<?= base_url() ?>custom-assets/js/message-from-notif.js"></script>
     <script src="<?= base_url() ?>custom-assets/js/logOut.js"></script>
-    <script src="<?= base_url() ?>custom-assets/js/sendMessage.js" ></script>
+    <script src="<?= base_url() ?>custom-assets/js/sendMessage.js"></script>
 
 
     <script>
@@ -295,8 +298,12 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         $(function() {
-            $("#quartiers").select2({dropdownAutoWidth : true});
-            $("#tags").select2({dropdownAutoWidth : true});
+            $("#quartiers").select2({
+                dropdownAutoWidth: true
+            });
+            $("#tags").select2({
+                dropdownAutoWidth: true
+            });
         })
     </script>
 </body>

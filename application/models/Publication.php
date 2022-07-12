@@ -8,6 +8,12 @@
             // echo "sql   ".$sql;
         }
 
+        public function get_pub_by($limit, $offset, $id_client){
+            $sql = "SELECT * from v_publication where id_client = $id_client limit $limit offset $offset ";
+            $query=$this->db->query($sql);
+            return $query->result_array();
+        }
+
         public function get_pub($id){
             return $this->get_by_id("v_publication","id_publication",$id);
         }

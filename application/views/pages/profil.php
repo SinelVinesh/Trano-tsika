@@ -81,7 +81,9 @@
                 </ul>
 
                 <div class="user-img mr-0">
-                    <a href="<?= site_url("ClientController") ?>" class="btn btn-light bg-white border-0" style="font-size: 14px;"><?= $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?></a>
+                    <a class="btn btn-light bg-white border-0" href="<?= site_url("ClientController/") ?>" style="font-size: 14px;">
+                        <?= $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?>
+                    </a>
                 </div>
 
                 <ul class="setting-area ml-0">
@@ -109,6 +111,7 @@
 
         <!--  main content  -->
         <div class="container" id="pub-container">
+
             <!-- post form -->
             <div class="row align pt-4">
                 <div class="central-meta rounded-0 add-shadow">
@@ -700,7 +703,7 @@
     <script>
         $("#load-next").click(() => {
             $.ajax({
-                url: "<?= site_url("NextPublicationController") ?>"
+                url: "<?= site_url("ClientController/next_pub_client") ?>"
             }).done((data) => {
                 $("#pub-container").append(data);
             });
@@ -709,7 +712,7 @@
         window.onscroll = function(ev) {
             if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight)) {
                 $.ajax({
-                    url: "<?= site_url("NextPublicationController") ?>"
+                    url: "<?= site_url("ClientController/next_pub_client") ?>"
                 }).done((data) => {
                     $("#pub-container").append(data);
                 });
