@@ -91,7 +91,7 @@ a.pub-link {
 }
 
 
-#go-out {
+#go-out, #go-mine {
     cursor: pointer;
 }
 
@@ -111,5 +111,9 @@ a.pub-link {
 
 .publicite img{
     width: 100%;
+}
+
+.theme-layout {
+    min-height: 93vh;
 }
 
