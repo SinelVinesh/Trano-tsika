@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/boost.css">
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/style-post-message.css">
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/search.css">
-<!--    select2-->
+    <!--    select2-->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 </head>
@@ -65,23 +65,23 @@
                             <ul class="drops-menu">
                             </ul>
                             <!-- notications -->
-<!--                            <a href="notifications.html" title="" class="more-mesg">view more</a>-->
+                            <!--                            <a href="notifications.html" title="" class="more-mesg">view more</a>-->
                         </div>
                     </li>
                     <li>
-                        <a href="#" title="Messages" class="menu-item" data-ripple="" id="show-discussions" >Messages</a>
-                        <div class="dropdowns" id="discussion-box" >
+                        <a href="#" title="Messages" class="menu-item" data-ripple="" id="show-discussions">Messages</a>
+                        <div class="dropdowns" id="discussion-box">
                             <span><span class="messageNumber"></span> New Messages</span>
                             <ul class="drops-menu">
 
                             </ul>
-<!--                            <a href="messages.html" title="" class="more-mesg">view more</a>-->
+                            <!--                            <a href="messages.html" title="" class="more-mesg">view more</a>-->
                         </div>
                     </li>
                 </ul>
 
                 <div class="user-img mr-0">
-                    <a class="btn btn-light bg-white border-0" style="font-size: 14px;"><?= $_SESSION["first_name"]." ".$_SESSION["last_name"] ?></a>
+                    <a href="<?= site_url("ClientController") ?>" class="btn btn-light bg-white border-0" style="font-size: 14px;"><?= $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?></a>
                 </div>
 
                 <ul class="setting-area ml-0">
@@ -90,7 +90,7 @@
                         <div class="dropdowns">
                             <span>Option(s)</span>
                             <ul class="drops-menu">
-                                <li id="go-out" ><a>Log out</a></li>
+                                <li id="go-out"><a>Log out</a></li>
                             </ul>
                         </div>
                     </li>
@@ -104,6 +104,11 @@
 
         <!--  main content  -->
         <div class="container" id="pub-container">
+            <div class="mr-0">
+                <a href="<?= site_url("ClientController") ?>" >
+                    <?= $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?>
+                </a>            
+            </div>
 
             <!-- post form -->
             <div class="row align pt-4">
@@ -128,7 +133,7 @@
 
             <!-- posts -->
             <!-- helper which diplays the posts -->
-            <?= displayPubs($pubs,$publicite); ?>
+            <?= displayPubs($pubs, $publicite); ?>
         </div>
         <button class="btn-view btn-load-more mb-4" id="load-next">Load More</button>
     </div>
@@ -207,7 +212,7 @@
                                 </select>
                             </div>
 
-                            <?php if($_SESSION["abonnement"]) { ?>
+                            <?php if ($_SESSION["abonnement"]) { ?>
                                 <div class="utilities">
                                     <label>Liez votre maison avec google map <a data-target="#link-map" data-toggle="modal"><u class="link-map">Link to google map</u></a></label>
                                 </div>
@@ -234,7 +239,7 @@
                             <input type="hidden" name="img-removed" id="img-removed">
                             <input type="hidden" name="lat" id="lat" value="">
                             <input type="hidden" name="lng" id="lng" value="">
-                            <input type="hidden" name="duration" id="duration" >
+                            <input type="hidden" name="duration" id="duration">
 
                             <div class="container-img">
                                 <div class="label-container">
@@ -488,12 +493,12 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="<?= site_url("AbonnementController/makeAbonnement") ?>" method="POST" >
+                    <form action="<?= site_url("AbonnementController/makeAbonnement") ?>" method="POST">
                         <div class="form-group mt-0">
                             <label for="account">Carte bancaire</label>
                             <input type="text" name="account" id="account" min="1" placeholder="Votre carte bancaire">
                         </div>
-                        <input type="submit" value="abonnement" class="d-none" id="go-abonnement" >
+                        <input type="submit" value="abonnement" class="d-none" id="go-abonnement">
                     </form>
                 </div>
 
@@ -547,14 +552,14 @@
     <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form action="<?= site_url() ?>/SearchController/simpleSearch"  method="get" >
+                <form action="<?= site_url() ?>/SearchController/simpleSearch" method="get">
                     <div class="modal-header search-container">
                         <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
                         <input type="search" name="criteria" class="search-title" id="search-criteria" placeholder="Enter something ...">
                         <button type="button" class="btn btn-light add-bg rounded-circle" data-dismiss="modal" aria-label="Close">
                             <i class="fa-solid fa-xmark"></i>
                         </button>
-                        <input type="submit" value="Search" id="go-search" class="d-none" >
+                        <input type="submit" value="Search" id="go-search" class="d-none">
                     </div>
                 </form>
 
@@ -620,13 +625,13 @@
                                 <div class="utilities col-md-12">
                                     <label>Ajoutez des <a><u class="underline-custom">#tag</u></a> autant que possible pour
                                         ameliorez votre publication</label>
-                                        <div class="row p-0 m-0">
-                                            <select style="width: 100%" name="tags[]" id="tags" multiple="multiple">
+                                    <div class="row p-0 m-0">
+                                        <select style="width: 100%" name="tags[]" id="tags" multiple="multiple">
                                             <?php for ($i = 0; $i < count($tags); $i++) { ?>
                                                 <option value="<?= $tags[$i]["id_tag"] ?>"><?= $tags[$i]["nom_tag"] ?></option>
                                             <?php } ?>
-                                            </select>
-                                        </div>
+                                        </select>
+                                    </div>
                                 </div>
 
                             </div>
@@ -653,7 +658,6 @@
     <script src="<?= base_url() ?>custom-assets/js/message.js"></script>
 
     <script>
-
         <?php if (!$_SESSION["abonnement"]) { ?>
             $("#abonnement").modal("show");
         <?php } ?>
@@ -663,14 +667,13 @@
             $("#pay-abonnement").modal("show");
         });
 
-        $("#pay_abonnement_btn").click(()=>{
+        $("#pay_abonnement_btn").click(() => {
             $("#go-abonnement").trigger("click");
         });
 
         $("#continue-free").click(() => {
             $("#abonnement").modal("hide");
         });
-
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -680,8 +683,8 @@
     </script>
 
     <!-- survey js // need survey ResponseUrl -->
-    <?php if($survey != null) { ?>
-            <script src="<?= base_url() ?>custom-assets/js/survey.js"></script>         
+    <?php if ($survey != null) { ?>
+        <script src="<?= base_url() ?>custom-assets/js/survey.js"></script>
     <?php } ?>
 
     <script src="<?= base_url() ?>custom-assets/js/boost.js"></script>
@@ -727,29 +730,35 @@
         let pubIdclient;
         let idPublication;
         let lastMessageUrl = "<?= site_url("LastMessageController") ?>";
-        let loadingUrlBase = "<?= site_url("MessageController/load_message?client1=".$_SESSION['id_client']."&client2=") ?>";
+        let loadingUrlBase = "<?= site_url("MessageController/load_message?client1=" . $_SESSION['id_client'] . "&client2=") ?>";
     </script>
 
     <!--  need site_url, pubIdClient, idPublication, lastMesageUrl, loadingUrlBase -->
-    <script src="<?= base_url() ?>custom-assets/js/message-from-notif.js" ></script>
+    <script src="<?= base_url() ?>custom-assets/js/message-from-notif.js"></script>
 
-    <script src="<?= base_url() ?>custom-assets/js/sendMessage.js" ></script>
+    <script src="<?= base_url() ?>custom-assets/js/sendMessage.js"></script>
 
     <!-- select2-->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         $(function() {
-            $("#quartiers").select2({dropdownAutoWidth : true, dropdownParent: "#searchModal"});
+            $("#quartiers").select2({
+                dropdownAutoWidth: true,
+                dropdownParent: "#searchModal"
+            });
 
             $("#quartiers-publier").select2({
-                dropdownAutoWidth : true,
+                dropdownAutoWidth: true,
                 dropdownParent: "#make-post"
             });
 
-            $("#tags").select2({dropdownAutoWidth : true, dropdownParent: "#searchModal"});
+            $("#tags").select2({
+                dropdownAutoWidth: true,
+                dropdownParent: "#searchModal"
+            });
 
             $("#tags-publier").select2({
-                dropdownAutoWidth : true,
+                dropdownAutoWidth: true,
                 dropdownParent: "#make-post",
                 maximumSelectionLength: <?= $_SESSION['abonnement'] ? 10 : 5 ?>
             });
