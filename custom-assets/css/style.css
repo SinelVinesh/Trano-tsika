@@ -113,3 +113,7 @@ a.pub-link {
     width: 100%;
 }
 
+.theme-layout {
+    min-height: 93vh;
+}
+

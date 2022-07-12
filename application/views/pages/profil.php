@@ -117,7 +117,7 @@
                 <div class="central-meta rounded-0 add-shadow">
                     <div class="new-postbox">
                         <figure>
-                            <img src="assets/images/resources/admin2.jpg" alt="">
+                            <img src="<?= base_url() ?>assets/images/resources/admin2.jpg" alt="">
                         </figure>
                         <div class="newpst-input">
                             <textarea rows="1" placeholder="Post your house..." id="show-post-modal"></textarea>
