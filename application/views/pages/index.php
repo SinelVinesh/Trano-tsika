@@ -207,10 +207,11 @@
                                 </select>
                             </div>
 
-
-                            <div class="utilities">
-                                <label>Liez votre maison avec google map <a data-target="#link-map" data-toggle="modal"><u class="link-map">Link to google map</u></a></label>
-                            </div>
+                            <?php if($_SESSION["abonnement"]) { ?>
+                                <div class="utilities">
+                                    <label>Liez votre maison avec google map <a data-target="#link-map" data-toggle="modal"><u class="link-map">Link to google map</u></a></label>
+                                </div>
+                            <?php } ?>
 
                             <div>
                                 <label>Ajoutez des <a><u class="underline-custom">#tag</u></a> autant que possible pour
@@ -400,6 +401,111 @@
         </div>
     </div>
 
+    <!-- abonnement advantage -->
+    <div class="modal fade" id="abonnement" tabindex="-1" role="dialog" aria-labelledby="abonnementTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-abonnement" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="searchModalLongTitle">Abonnez vous !!!!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row d-flex justify-content-around">
+                        <div class="col-md-5 col-sm-6">
+                            <div class="boost-box w-100 m-1 pb-3 border mb-3">
+                                <div class="boost-header mb-2 bg-secondary">
+                                </div>
+                                <div class="boost-info border-bottom pl-3 pb-1">
+                                    <h3>Offre normale</h3>
+                                </div>
+                                <div class="advantage-list p-4 border-bottom">
+                                    <div class="one-disadvantage pb-2">
+                                        <i class="fa-solid fa-xmark"></i> <span class="ml-2">5 tags maximum</span>
+                                    </div>
+                                    <div class="one-disadvantage pb-2">
+                                        <i class="fa-solid fa-xmark"></i> <span class="ml-2">Publicite</span>
+                                    </div>
+                                    <div class="one-disadvantage pb-2">
+                                        <i class="fa-solid fa-xmark"></i> <span class="ml-2">Sans google map</span>
+                                    </div>
+                                    <div class="pricing pb-2">
+                                        <i class="fa-solid fa-money-bill-1"></i> <span class="ml-2">0.0 ar / semaine</span>
+                                    </div>
+                                </div>
+                                <div class="decision pl-4 pt-3">
+                                    <button class="btn btn-outline-dark w-20 rounded-0 " id="continue-free">Continue free
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 col-sm-6">
+                            <div class="boost-box w-100 m-1 pb-3 border mb-3">
+                                <div class="boost-header mb-2 bg-success">
+                                </div>
+                                <div class="boost-info border-bottom pl-3 pb-1">
+                                    <h3>Abonne</h3>
+                                </div>
+                                <div class="advantage-list p-4 border-bottom">
+                                    <div class="one-advantage pb-2">
+                                        <i class="fa-solid fa-check"></i> <span class="ml-2">Plus de tags</span>
+                                    </div>
+                                    <div class="one-advantage pb-2">
+                                        <i class="fa-solid fa-check"></i> <span class="ml-2">Sans publicite</span>
+                                    </div>
+                                    <div class="one-advantage pb-2">
+                                        <i class="fa-solid fa-check"></i> <span class="ml-2">Avec google map</span>
+                                    </div>
+                                    <div class="pricing pb-2">
+                                        <i class="fa-solid fa-money-bill-1"></i> <span class="ml-2">20,000.0 ar / semaine</span>
+                                    </div>
+                                </div>
+                                <div class="decision pl-4 pt-3">
+                                    <button class="btn btn-success w-20 rounded-0" id="sabonner">S'abonner
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary rounded-0" data-dismiss="modal">Go back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- abonnement payment -->
+    <div class="modal fade p-0" role="dialog" tabindex="-1" id="pay-abonnement">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-0">
+                <div class="modal-header">
+                    <h5>Entrez vos informations pour confirmez votre abonnement</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="<?= site_url("AbonnementController/makeAbonnement") ?>" method="POST" >
+                        <div class="form-group mt-0">
+                            <label for="account">Carte bancaire</label>
+                            <input type="text" name="account" id="account" min="1" placeholder="Votre carte bancaire">
+                        </div>
+                        <input type="submit" value="abonnement" class="d-none" id="go-abonnement" >
+                    </form>
+                </div>
+
+                <div class="modal-footer d-flex justify-content-between">
+                    <button class="btn btn-light rounded-0" type="button" data-dismiss="modal">Go back</button>
+                    <button class="btn btn-success rounded-0" id="pay_abonnement_btn">S'abonner</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- boost payment -->
     <div class="modal fade p-0" role="dialog" tabindex="-1" id="pay-boost">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -546,6 +652,21 @@
     <script src="<?= base_url() ?>custom-assets/js/image-preview.js"></script>
     <script src="<?= base_url() ?>custom-assets/js/message.js"></script>
 
+    <script>
+        <?php if (!$_SESSION["abonnement"]) { ?>
+            $("#abonnement").modal("show");
+        <?php } ?>
+
+        $("#sabonner").click(() => {
+            $("#abonnement").modal("hide");
+            $("#pay-abonnement").modal("show");
+        });
+
+        $("#pay_abonnement_btn").click(()=>{
+            $("#go-abonnement").trigger("click");
+        })
+    </script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
@@ -613,10 +734,20 @@
     <script>
         $(function() {
             $("#quartiers").select2({dropdownAutoWidth : true, dropdownParent: "#searchModal"});
-            $("#quartiers-publier").select2({dropdownAutoWidth : true, dropdownParent: "#make-post"});
+
+            $("#quartiers-publier").select2({
+                dropdownAutoWidth : true,
+                dropdownParent: "#make-post"
+            });
+
             $("#tags").select2({dropdownAutoWidth : true, dropdownParent: "#searchModal"});
-            $("#tags-publier").select2({dropdownAutoWidth : true, dropdownParent: "#make-post"});
-        })
+
+            $("#tags-publier").select2({
+                dropdownAutoWidth : true,
+                dropdownParent: "#make-post",
+                maximumSelectionLength: <?= $_SESSION['abonnement'] ? 10 : 5 ?>
+            });
+        });
     </script>
 
     <!-- jQuery validate -->

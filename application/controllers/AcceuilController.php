@@ -41,7 +41,10 @@ class AcceuilController extends MY_Controller
             $pubs[$i]["photo"] = $photos[0];
         }
 
-        $data["publicite"] = $this->Publicite->rand_pub();
+        $data["publicite"] = null;
+        if(!$_SESSION["abonnement"]) {
+            $data["publicite"] = $this->Publicite->rand_pub();
+        }
 
         $_SESSION["offset"] = $offset + $limit;
         $_SESSION["limit"] = $limit;

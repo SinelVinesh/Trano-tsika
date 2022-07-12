@@ -8,7 +8,7 @@ class Abonnement extends MY_Model
     }
 
     public function is_abonner($id_client) {
-        $this->get_row("abonnement", " and id_client = $id_client and date_abonnement::date + interval '30 day > current_date::date' ");
+        return $this->get_row("abonnement", " id_client = $id_client and (date_abonnement::date + interval '30 day') > current_date::date ") != null;
     }
 
 }

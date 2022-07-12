@@ -14,8 +14,12 @@ class NextPublicationController extends MY_Controller
         $limit = $_SESSION["limit"];
         $offset = $_SESSION["offset"];
 
-        $publicite =  ($offset % 12 == 0) ? $this->Publicite->rand_pub() : null;
-            
+        $publicite = null;
+
+        if(!$_SESSION["abonnement"]) {
+            $publicite =  ($offset % 12 == 0) ? $this->Publicite->rand_pub() : null;
+        }
+
         $pubs = $this->Publication->get_next_pub($limit, $offset,$_SESSION["id_client"]);
 
         for ($i = 0; $i < count($pubs); $i++) {

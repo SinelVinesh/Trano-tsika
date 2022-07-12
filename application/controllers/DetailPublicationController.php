@@ -48,8 +48,9 @@ class DetailPublicationController extends MY_Controller {
         $data["tags"] = $this->DetailTag->get_tags();
         $data["utils"] = $this->DetailUtilite->get_utilities();
 
-		$data["publicite"] = $this->Publicite->rand_pub();
-
+        if(!$_SESSION["abonnement"]) {
+            $data["publicite"] = $this->Publicite->rand_pub();
+        }
 
         $survey["question"] = $this->Question->next_question($_SESSION["id_client"]);
         if($survey["question"]){
