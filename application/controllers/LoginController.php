@@ -33,11 +33,17 @@
                     $_SESSION["id_client"] = $client["id_client"];
                     $_SESSION["first_name"] = $client["first_name"];
                     $_SESSION["last_name"] = $client["last_name"];
+                    $this->load->model("Abonnement", "abn");
+                    $_SESSION["abonnement"] = $this->abn->is_abonner($_SESSION['id_client']);
+
                     redirect(site_url("AcceuilController"));
-                }else{
+                }
+
+                else {
                     $data["error"] = "Verifier votre email ou mot de passe";
                     $this->load_view('pages/log.php',$data); 
                 }
+
             }else{
                 $this->load_view('pages/log.php',$data);  
             }

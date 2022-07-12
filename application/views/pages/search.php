@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/survey.css">
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/style-post-message.css">
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/search.css">
+    <!--    select2-->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <style>
         .theme-layout {
@@ -149,9 +151,9 @@
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <label for="location">Location</label>
-                                    <select name="location">
-                                        <option value="">Choisir une ville</option>
+                                    <label for="location">Localisation</label>
+                                    <select style="width: 100%" name="location" class="custom-select form-control" id="quartiers">
+                                        <option value="">Choisir un quartier</option>
                                         <?php foreach ($locations as $location) { ?>
                                             <option value="<?= $location["id_localisation"] ?>"><?= $location["nom_lieu"] ?></option>
                                         <?php } ?>
@@ -176,19 +178,12 @@
                                 <div class="utilities col-md-12">
                                     <label>Ajoutez des <a><u class="underline-custom">#tag</u></a> autant que possible pour
                                         ameliorez votre publication</label>
-                                    <div class="utilities-checks">
-                                        <div class="row p-0 m-0">
+                                    <div class="row p-0 m-0">
+                                        <select style="width: 100%" name="tags[]" id="tags" multiple="multiple">
                                             <?php for ($i = 0; $i < count($tags); $i++) { ?>
-                                                <div class="col-md-3 p-0 m-0">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="tags[]" value="<?= $tags[$i]["id_tag"]  ?>">
-                                                        <label class="form-check-label" for="<?= $tags[$i]["nom_tag"] ?>">
-                                                            <?= $tags[$i]["nom_tag"] ?>
-                                                        </label>
-                                                    </div>
-                                                </div>
+                                                <option value="<?= $tags[$i]["id_tag"] ?>"><?= $tags[$i]["nom_tag"] ?></option>
                                             <?php } ?>
-                                        </div>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -213,6 +208,15 @@
             ?>
         </div>
         <button class="btn-view btn-load-more mb-4" id="load-next">Load More</button>
+    </div>
+
+    <!-- modal survey -->
+    <div class="modal fade" id="survey" tabindex="-1" role="dialog" aria-labelledby="surveyTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered survey-modal" role="document">
+            <div class="modal-content form">
+                <?= displayNextQuestion($survey) ?>
+            </div>
+        </div>
     </div>
 
     <!--  footer  -->
@@ -252,7 +256,6 @@
     <?php } ?>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="<?= base_url() ?>custom-assets/js/survey.js"></script>
     <script src="<?= base_url() ?>custom-assets/js/search.js"></script>
 
     <script>
@@ -288,6 +291,14 @@
         });
     </script>
 
+    <!-- select2-->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(function() {
+            $("#quartiers").select2({dropdownAutoWidth : true});
+            $("#tags").select2({dropdownAutoWidth : true});
+        })
+    </script>
 </body>
 
 </html>

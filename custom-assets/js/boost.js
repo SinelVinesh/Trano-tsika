@@ -3,8 +3,11 @@ $("#show-make-post").click(() => {
 });
 
 $("#submit-make-post").click(() => {
-    $("#make-post").modal("hide");
-    $("#boost-advantage").modal("show");
+    $("#pub-form").validate();
+    if($("#pub-form").valid()) {
+        $("#make-post").modal("hide");
+        $("#boost-advantage").modal("show");
+    }
 });
 
 $("#publish-free").click(() => {

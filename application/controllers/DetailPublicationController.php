@@ -38,6 +38,7 @@ class DetailPublicationController extends MY_Controller {
 		$pub["commentaires"] = $this->Publication->get_limited_commentaire($id_pub,3,0);
 		$pub["messages"] = $this->Message->get_messages($_SESSION["id_client"], $id_pub);
         $pub["pos"] = $this->Publication->getPosition($id_pub);
+        $pub["isBoosted"] = $this->Publication->isBoosted($id_pub);
 
         $this->load->model("Location");
         $this->load->model("DetailTag");
@@ -46,8 +47,10 @@ class DetailPublicationController extends MY_Controller {
         $data["locations"] = $this->Location->get_locations();
         $data["tags"] = $this->DetailTag->get_tags();
         $data["utils"] = $this->DetailUtilite->get_utilities();
-		$data["publicite"] = $this->Publicite->rand_pub();
 
+        if(!$_SESSION["abonnement"]) {
+            $data["publicite"] = $this->Publicite->rand_pub();
+        }
 
         $survey["question"] = $this->Question->next_question($_SESSION["id_client"]);
         if($survey["question"]){

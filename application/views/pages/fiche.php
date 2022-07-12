@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/survey.css">
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/style-post-message.css">
     <link rel="stylesheet" href="<?= base_url() ?>custom-assets/css/search.css">
+    <!--    select2-->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 </head>
 
@@ -98,17 +100,21 @@
             <button type="submit" id="logOut">out</button>
         </form>
 
-
         <!--  main content  -->
-        <div class="container mt-4">
-            <div class="row publicite">
-                <div class="col-12">
-                    <a href="<?= $publicite['lien'] ?>" title="Visiter">
-                        <img src="<?= base_url() ?>files/pubs/<?= $publicite['image'] ?>" alt="">
-                    </a>
+        <div class="container">
+            <?= validation_errors()?>
+
+            <?php if(!$_SESSION['abonnement']) { ?>
+                <div class="row publicite m-4">
+                    <div class="col-12">
+                        <a href="<?= $publicite['lien'] ?>" title="Visiter">
+                            <img src="<?= base_url() ?>files/pubs/<?= $publicite['image'] ?>" alt="">
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="fiche m-4">
+            <?php } ?>
+
+            <div class="fiche m-4 mt-0">
                 <div class="fiche-info">
                     <div class="titre">
                         <h1><?= $pub["titre"] ?></h1>
@@ -140,10 +146,16 @@
                             <div class="col">
                                 <i class="fa-solid fa-user"></i>
                                 by <?= $pub["first_name"] . " " . $pub["last_name"] ?>
+                                <?php if($pub["id_client"] != $_SESSION["id_client"]) {?>
                                 <button data-toggle="modal" class="btn btn-primary btn-color ml-2" data-target="#message" id="contact-owner">Contact
                                     <i class="fa fa-paper-plane">
                                     </i>
                                 </button>
+                                <?php } else if(!$pub["isBoosted"]) {?>
+                                    <button data-toggle="modal" class="btn btn-success" data-target="#pay-boost" id="boost button">
+                                        Booster la publication
+                                    </button>
+                                <?php }?>
                             </div>
                         </div>
                     </div>
@@ -252,13 +264,13 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="messageTitle"><?= $pub["first_name"] . " " . $pub["last_name"] ?></h5>
+                    <h5 class="modal-title" id="user"></h5>
                     <a type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </a>
                 </div>
                 <div class="modal-body">
-                    <h6><?= $pub["titre"] ?></h6>
+                    <h6><span id="titre-message"></span></h6>
                     <div class="chat-list">
                         <ul id="onemessage">
 
@@ -293,14 +305,14 @@
     <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form action="<?= site_url() ?>/SearchController/simpleSearch" method="get">
+                <form action="<?= site_url() ?>/SearchController/simpleSearch"  method="get" >
                     <div class="modal-header search-container">
                         <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
                         <input type="search" name="criteria" class="search-title" id="search-criteria" placeholder="Enter something ...">
                         <button type="button" class="btn btn-light add-bg rounded-circle" data-dismiss="modal" aria-label="Close">
                             <i class="fa-solid fa-xmark"></i>
                         </button>
-                        <input type="submit" value="Search" id="go-search" class="d-none">
+                        <input type="submit" value="Search" id="go-search" class="d-none" >
                     </div>
                 </form>
 
@@ -339,9 +351,9 @@
                                 </div>
 
                                 <div class="form-group col-md-12">
-                                    <label for="location">Location</label>
-                                    <select name="location">
-                                        <option value="">Choisir une ville</option>
+                                    <label for="location">Localisation</label>
+                                    <select style="width: 100%" name="location" class="custom-select form-control" id="quartiers">
+                                        <option value="">Choisir un quartier</option>
                                         <?php foreach ($locations as $location) { ?>
                                             <option value="<?= $location["id_localisation"] ?>"><?= $location["nom_lieu"] ?></option>
                                         <?php } ?>
@@ -359,26 +371,18 @@
                                                 </label>
                                             </div>
                                         <?php } ?>
-
                                     </div>
                                 </div>
 
                                 <div class="utilities col-md-12">
                                     <label>Ajoutez des <a><u class="underline-custom">#tag</u></a> autant que possible pour
                                         ameliorez votre publication</label>
-                                    <div class="utilities-checks">
-                                        <div class="row p-0 m-0">
+                                    <div class="row p-0 m-0">
+                                        <select style="width: 100%" name="tags[]" id="tags" multiple="multiple">
                                             <?php for ($i = 0; $i < count($tags); $i++) { ?>
-                                                <div class="col-md-3 p-0 m-0">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" name="tags[]" value="<?= $tags[$i]["id_tag"]  ?>">
-                                                        <label class="form-check-label" for="<?= $tags[$i]["nom_tag"] ?>">
-                                                            <?= $tags[$i]["nom_tag"] ?>
-                                                        </label>
-                                                    </div>
-                                                </div>
+                                                <option value="<?= $tags[$i]["id_tag"] ?>"><?= $tags[$i]["nom_tag"] ?></option>
                                             <?php } ?>
-                                        </div>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -391,6 +395,42 @@
         </div>
     </div>
 
+    <!-- boost payment -->
+    <div class="modal fade p-0" role="dialog" tabindex="-1" id="pay-boost">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-0">
+                <div class="modal-header">
+                    <h5>Please enter your information in order to confirm the boost</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="fa-solid fa-xmark"></i></span>
+                    </button>
+                </div>
+                <form action="<?= site_url("BoostController/pay_boost/".$pub["id_publication"])?>" method="post">
+                    <div class="modal-body">
+                        <div class="form-group mt-0">
+                            <label for="account">Carte bancaire</label>
+                            <input type="text" name="account" id="account" min="1" placeholder="Votre carte bancaire">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="display-duration">Duration</label>
+                            <select id="display-duration" name="duration">
+                                <option selected>Pour combien de semaine?</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer d-flex justify-content-between">
+                        <button class="btn btn-light rounded-0" type="button" data-dismiss="modal">Go back</button>
+                        <button class="btn btn-success rounded-0" id="post-boost">Post & Boost</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
     <!--  post comment  -->
@@ -401,12 +441,9 @@
                 <div class="we-comment">
                     <div class="coment-head">
                         <h5>
-                            <a href="time-line.html" title="">
                                 <?= $_SESSION["first_name"] . " " . $_SESSION["last_name"] ?>
-                            </a>
                         </h5>
                         <span>a l'instant</span>
-                        <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
                     </div>
                     <p>${text}</p>
                 </div>
@@ -415,7 +452,13 @@
         commentArea.keyup((e) => {
             if (e.keyCode === 13) {
                 let curVal = commentArea.val();
-                $("#comment li:last").before(commentTemplate(curVal));
+                let firstLi = $("#comment li:first");
+
+                if (firstLi.attr("class")==="post-comment") {
+                    firstLi = $("#comment button");
+                }
+
+                firstLi.before(commentTemplate(curVal));
                 console.log(curVal);
                 $.ajax({
                     type: "POST",
@@ -449,6 +492,99 @@
 
     <script>
         var map;
+        let marker;
+        var infoWindow = new google.maps.InfoWindow();
+
+        var directionService = new google.maps.DirectionsService();
+        var directionDisplay = new google.maps.DirectionsRenderer({
+            suppressMarkers: true
+        });
+
+        var calculateRoute = (start, dest) => {
+            var request = {
+                origin: start,
+                destination: dest,
+                travelMode: google.maps.TravelMode.DRIVING,
+                unitSystem: google.maps.UnitSystem.IMPERIAL
+            }
+
+            directionService.route(request, (result, status) => {
+                console.log(status);
+                if (status === "OK") {
+                    console.log(result);
+
+                    directionDisplay.setDirections(result);
+                } else {
+                    console.log("tsy nety!");
+                }
+            })
+        }
+
+        function showRoute() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude,
+                        };
+
+                        infoWindow.setPosition(pos);
+                        infoWindow.setContent(`
+                            <div class='card'>
+                                <div class="card-header">
+                                    Vous etes ici
+                                </div>
+                            </div>
+                        `);
+                        infoWindow.open(map);
+                        map.setCenter(pos);
+
+                        let start = new google.maps.LatLng(pos.lat, pos.lng);
+                        calculateRoute(start,marker.position);
+                    },
+                    () => {
+                        handleLocationError(true, infoWindow, map.getCenter());
+                    }
+                );
+            } else {
+                // Browser doesn't support Geolocation
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
+        }
+
+        function RouteControl(controlDiv, map) {
+            // Set CSS for the control border.
+            const controlUI = document.createElement("div");
+
+            controlUI.style.backgroundColor = "#fff";
+            controlUI.style.border = "2px solid #fff";
+            controlUI.style.borderRadius = "3px";
+            controlUI.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
+            controlUI.style.cursor = "pointer";
+            controlUI.style.marginTop = "8px";
+            controlUI.style.marginBottom = "22px";
+            controlUI.style.textAlign = "center";
+            controlUI.title = "Calculer le trajet";
+            controlDiv.appendChild(controlUI);
+
+            // Set CSS for the control interior.
+            const controlText = document.createElement("div");
+
+            controlText.style.color = "rgb(25,25,25)";
+            controlText.style.fontFamily = "Roboto,Arial,sans-serif";
+            controlText.style.fontSize = "16px";
+            controlText.style.lineHeight = "38px";
+            controlText.style.paddingLeft = "5px";
+            controlText.style.paddingRight = "5px";
+            controlText.innerHTML = "Calculer le trajet";
+            controlUI.appendChild(controlText);
+
+            // Setup the click event listeners: simply set the map to Chicago.
+            controlUI.addEventListener("click", () => {
+                showRoute();
+            });
+        }
 
         function initialize() {
             let pubPos = new google.maps.LatLng(<?= $pub['pos']['lat'] ?>, <?= $pub['pos']['lng'] ?>);
@@ -478,14 +614,16 @@
 
             map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-            new google.maps.Marker({
-                position: pubPos,
-                map: map
-            });
+            directionDisplay.setMap(map);
+            const div = document.createElement("div");
 
-            let marker = new google.maps.Marker
+            RouteControl(div,map);
+            map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(div);
+            marker = new google.maps.Marker({
+                        position: pubPos,
+                        map: map
+                    });
         }
-
         google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 
@@ -523,10 +661,17 @@
     <script src="<?= base_url() ?>custom-assets/js/message-from-notif.js"></script>
 
     <script>
+
         $("#contact-owner").click(() => {
             pubIdclient = "<?= $pub["id_client"] ?>";
             idPublication = "<?= $pub["id_publication"] ?>";
+            let pubTitle = "<?= $pub["titre"] ?>";
+            let owner = "<?= $pub["first_name"] . " " . $pub["last_name"] ?>";
+
+            $("#titre-message").text(pubTitle);
+            $("#user").text(owner);
         });
+
     </script>
 
     <script src="<?= base_url() ?>custom-assets/js/sendMessage.js"></script>
@@ -544,6 +689,7 @@
                 $("#dislikecount").text(counters[1]);
             });
         });
+
         $("#Dislike").click(function() {
             <?php $url = site_url("DetailPublicationController/dislike/") . "/" . $pub["id_publication"]; ?>
             $.ajax({
@@ -554,6 +700,17 @@
                 $("#dislikecount").text(counters[1]);
             });
         });
+    </script>
+
+
+    <!-- select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script>
+        $(function() {
+            $("#quartiers").select2({dropdownAutoWidth : true, dropdownParent: "#searchModal"});
+            $("#tags").select2({dropdownAutoWidth : true, dropdownParent: "#searchModal"});
+        })
     </script>
 
 </body>

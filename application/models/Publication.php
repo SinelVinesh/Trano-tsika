@@ -138,5 +138,11 @@
 
             return $query->result_array();
         }
+
+        public function isBoosted($id_pub) {
+            $sql = "select $id_pub in (select id_publication from v_boost_encours) as boosted";
+            $query = $this->execute_query($sql);
+            return $query->row_array()['boosted'];
+        }
     }
 ?>

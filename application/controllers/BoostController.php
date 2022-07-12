@@ -5,20 +5,19 @@
             parent::__construct();
             $this->testAuthentication();
         }
-        public function pay_boost($id_pub,$duration){
+        public function pay_boost($id_pub){
             $this->load->model('Boost');
-            $inputs=["account_number,duration"];
-            $datas= $this->get_datas($inputs,"post");
-
-            if ($this->form_validation->run()){
+            $duration =$this->input->post("duration");
+            $account =$this->input->post("account");
+            if($duration != ""){
                 $date_debut=date('Y-m-d');
-                $d=strtotime("+".$datas["duration"]." weeks");
+                $d=strtotime("+".$duration." weeks");
                 $date_fin=date('Y-m-d',$d);
                 $this->Boost->insert($id_pub,$date_debut,$date_fin);
-                http_response_code(200);
+                redirect(site_url("pub/$id_pub"));
             }
             else{
-                http_response_code(400);
+                redirect(site_url("pub/$id_pub"));
             }
         }
     }
